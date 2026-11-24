@@ -1,0 +1,337 @@
+<title>Phonics App Wireframes</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Andika:wght@400;700&family=Fredoka:wght@500;600&family=Atkinson+Hyperlegible:wght@400;700&family=Noto+Sans+Thai:wght@400;600&display=swap">
+<style>
+/* Layout: a single review column; each screen is an iPad-ratio frame drawn with container units, notes sit beside it (stack on phones). */
+:root{
+  --bg:#F6F4EF; --fg:#1E2A44; --muted:#5D6880; --line:#D9D4C8; --panel:#FFFFFF; --accent:#3B7DD8; --chip:#EEF3FB;
+  /* app-screen palette (fixed look, same in both themes) */
+  --sky:#CFE6F7; --mint:#CFEFDF; --lav:#E3DAF5; --butter:#FFF1C2; --peach:#FFDCC8; --ink:#1E2A44; --cloud:#FBF8F2; --wire:#9AA6BD; --btn:#3B8EEA;
+  --f-letter:"Andika","Atkinson Hyperlegible",system-ui,sans-serif;
+  --f-head:"Fredoka","Atkinson Hyperlegible",system-ui,sans-serif;
+  --f-body:"Atkinson Hyperlegible","Noto Sans Thai",system-ui,sans-serif;
+  --f-thai:"Noto Sans Thai",system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#151A24;--fg:#E7EBF3;--muted:#A3ADC2;--line:#2C3446;--panel:#1C2230;--accent:#7FB0F2;--chip:#232C3E;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#151A24;--fg:#E7EBF3;--muted:#A3ADC2;--line:#2C3446;--panel:#1C2230;--accent:#7FB0F2;--chip:#232C3E;color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:16px;line-height:1.55}
+.wrap{max-width:1180px;margin:0 auto;padding-block:40px 80px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--f-head);font-weight:600;text-wrap:balance;line-height:1.2;margin:0}
+h1{font-size:2.3rem}
+h2{font-size:1.6rem;margin-top:56px;padding-top:24px;border-top:1px solid var(--line)}
+h3{font-size:1.15rem;margin:0 0 8px}
+p{margin:8px 0;max-width:70ch}
+.lede{color:var(--muted);font-size:1.08rem}
+.status{display:inline-block;font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;background:var(--chip);color:var(--accent);padding:4px 10px;border-radius:99px;margin-bottom:12px;font-weight:700}
+.thai{font-family:var(--f-thai)}
+code{font-size:.88em;background:var(--chip);padding:1px 5px;border-radius:4px}
+
+/* timeline */
+.tl{display:grid;grid-template-columns:84px 1fr;gap:0;margin-top:20px;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--panel)}
+.tl>div{padding:12px 14px;border-top:1px solid var(--line);min-width:0}
+.tl>div:nth-child(-n+2){border-top:0}
+.tl .t{font-variant-numeric:tabular-nums;font-weight:700;color:var(--accent);background:var(--chip)}
+.tl .row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.tl .k{font-size:.72rem;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);display:block;margin-bottom:2px}
+@media (max-width:760px){.tl .row{grid-template-columns:1fr;gap:6px}.tl{grid-template-columns:58px 1fr}}
+
+/* screen + notes */
+.screen{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(0,1fr);gap:28px;margin-top:24px;align-items:start}
+@media (max-width:900px){.screen{grid-template-columns:1fr}}
+.notes ol{margin:0;padding-left:22px}
+.notes li{margin:6px 0}
+.notes .say{display:block;font-style:italic;color:var(--muted)}
+.cap{font-size:.85rem;color:var(--muted);margin-top:8px}
+
+/* iPad frame */
+.ipad{position:relative;width:100%;max-width:100%;aspect-ratio:1194/834;container-type:inline-size;background:var(--sky);border-radius:2.2cqw;border:10px solid #2A3142;box-shadow:0 10px 30px rgba(20,30,50,.18);overflow:hidden;font-family:var(--f-letter);color:var(--ink)}
+.ipad.mint{background:linear-gradient(var(--sky) 0 55%,var(--mint) 55%)}
+.abs{position:absolute}
+.ib{position:absolute;width:7.4cqw;height:7.4cqw;border-radius:2cqw;background:var(--btn);color:#fff;display:grid;place-items:center;font-size:3.4cqw;font-family:var(--f-body);box-shadow:0 .4cqw 0 #2a6fc0}
+.ib small{position:absolute;bottom:-2.6cqw;font-size:1.4cqw;color:var(--ink);font-weight:700;white-space:nowrap}
+.tl-home{left:2.7%;top:3.8%}.tr-replay{right:2.7%;top:3.8%}.br-help{right:2.7%;bottom:6%;background:var(--lav);color:var(--ink);box-shadow:0 .4cqw 0 #b9abdc}
+.pill{position:absolute;left:50%;top:4.5%;transform:translateX(-50%);background:var(--butter);border-radius:99px;padding:.8cqw 2.6cqw;font-size:2.2cqw;font-weight:700;white-space:nowrap}
+.instr{position:absolute;left:0;right:0;top:14%;text-align:center;font-size:2.9cqw;font-weight:700}
+.card{position:absolute;background:var(--cloud);border-radius:2.4cqw;box-shadow:0 .5cqw 0 rgba(30,42,68,.08)}
+.wire{border:.25cqw dashed var(--wire);border-radius:1.6cqw;display:grid;place-items:center;color:#6E7A93;font-family:var(--f-body);font-size:1.5cqw;text-align:center}
+.co{position:absolute;width:3.2cqw;height:3.2cqw;border-radius:50%;background:#E4572E;color:#fff;font:700 1.7cqw/3.2cqw var(--f-body);text-align:center;z-index:5;box-shadow:0 0 0 .35cqw #fff}
+.tile{width:11.7cqw;height:13.4cqw;background:#fff;border-radius:1.8cqw;display:grid;place-items:center;font-size:9cqw;font-weight:700;box-shadow:0 .6cqw 0 #c9c1ae;line-height:1}
+.slot{width:13cqw;height:14.6cqw;border-radius:1.8cqw;border:.4cqw dashed var(--wire);display:grid;place-items:center;font-size:9cqw;font-weight:700;background:rgba(255,255,255,.45);line-height:1}
+.slot.f{border:.4cqw solid #fff;background:#fff;box-shadow:0 .6cqw 0 #c9c1ae}
+.slot.glow{box-shadow:0 0 0 .8cqw var(--lav),0 .6cqw 0 #c9c1ae}
+.slot.lit{background:var(--butter);border-color:var(--butter)}
+.row-c{position:absolute;left:0;right:0;display:flex;justify-content:center;gap:2.2cqw}
+.blend{position:absolute;left:28%;right:28%;height:1.6cqw;border-radius:99px;background:rgba(255,255,255,.7)}
+.blend.on{background:linear-gradient(90deg,var(--butter),#FFD36B)}
+.act{position:absolute;background:var(--btn);color:#fff;border-radius:99px;font:700 2.3cqw var(--f-body);padding:1.3cqw 3cqw;box-shadow:0 .5cqw 0 #2a6fc0;white-space:nowrap}
+.act.soft{background:#fff;color:var(--ink);box-shadow:0 .5cqw 0 #c9c1ae}
+.dim{opacity:.35}
+
+/* iPhone frame */
+.iphone{position:relative;width:100%;max-width:560px;aspect-ratio:852/393;container-type:inline-size;background:var(--sky);border-radius:5cqw;border:8px solid #2A3142;overflow:hidden;font-family:var(--f-letter);color:var(--ink)}
+.iphone .ib{width:6.4cqw;height:6.4cqw;font-size:3cqw}
+.iphone .tile{width:8.5cqw;height:10cqw;font-size:6.5cqw}
+.iphone .slot{width:10cqw;height:11.5cqw;font-size:7cqw}
+
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;margin-top:20px}
+@media (max-width:760px){.grid2{grid-template-columns:1fr}}
+.stateLabel{font-family:var(--f-head);font-weight:600;margin:0 0 8px}
+.stateLabel span{display:inline-block;background:var(--chip);color:var(--accent);border-radius:6px;padding:0 8px;margin-right:6px}
+.box{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:16px 18px}
+table{border-collapse:collapse;width:100%;font-size:.93rem}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:.75rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.tw{overflow-x:auto}
+pre.mermaid{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:16px;overflow-x:auto}
+.files{columns:2;column-gap:28px}
+@media (max-width:640px){.files{columns:1}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+
+<div class="wrap">
+  <span class="status">Design v1 · awaiting approval</span>
+  <h1>Phonics App Wireframes</h1>
+  <p class="lede">Level 1 (s, a, t, p) for a 6-year-old Thai learner of English. iPad landscape first. Weeks are now levels; each level has 4–6 pages a child can open freely. Source curriculum: Iris's 12-Week Home Phonics Plan.</p>
+
+  <h2>The first 60 seconds</h2>
+  <p>A grown-up has finished the one-time setup. Iris is handed the iPad on Home.</p>
+  <div class="tl">
+    <div class="t">0:00</div><div><div class="row"><div><span class="k">Appears</span>Home: pastel pond, Pat the penguin, one huge ▶ today button showing <b>s a t p</b>.</div><div><span class="k">She hears</span>After 1 s: "Tap to start."</div><div><span class="k">She can tap</span>▶ today. 🔁 replay. Stickers. (🔒 needs a 3 s hold.)</div></div></div>
+    <div class="t">0:04</div><div><div class="row"><div><span class="k">Appears</span>▶ button breathes slowly. No countdown.</div><div><span class="k">She hears</span>Silence. One repeat only after 10 s idle.</div><div><span class="k">She can tap</span>Same.</div></div></div>
+    <div class="t">0:06</div><div><div class="row"><div><span class="k">Appears</span>Today's Lesson: "level 1 · page 1", five stones: ears, sounds, try, words, sticker.</div><div><span class="k">She hears</span>"Today you meet four sounds."</div><div><span class="k">She can tap</span>▶ on stone 1, any stone, ⌂, 🔁.</div></div></div>
+    <div class="t">0:11</div><div><div class="row"><div><span class="k">Appears</span>Ears warm-up: pictures of a sock, a pen, a pot. No printed words.</div><div><span class="k">She hears</span>"Tap a picture."</div><div><span class="k">She can tap</span>Each picture (plays "sock", "pen", "pot"). → next after two.</div></div></div>
+    <div class="t">0:30</div><div><div class="row"><div><span class="k">Appears</span>Sound Card: giant <b>s</b>, mouth picture, snake action.</div><div><span class="k">She hears</span>"Tap to hear the sound."</div><div><span class="k">She can tap</span>The s or 🔊, the mouth, the snake.</div></div></div>
+    <div class="t">0:34</div><div><div class="row"><div><span class="k">Appears</span>The s glows while the sound plays.</div><div><span class="k">She hears</span>"sssss" (1.5 s, no "uh"). Then "Snake sound. Teeth together."</div><div><span class="k">She can tap</span>s again to replay. A new tap cuts the old clip.</div></div></div>
+    <div class="t">0:42</div><div><div class="row"><div><span class="k">Appears</span>Mirror chip "your turn". → next fades in.</div><div><span class="k">She hears</span>"Your turn." Then 4 s of quiet for her to say it.</div><div><span class="k">She can tap</span>🔊 to compare, → next.</div></div></div>
+    <div class="t">0:55</div><div><div class="row"><div><span class="k">Appears</span>Card slides to <b>a</b>. Dot 2 of 4 fills.</div><div><span class="k">She hears</span>"Tap to hear the sound."</div><div><span class="k">She can tap</span>🔊 a.</div></div></div>
+  </div>
+  <p class="cap">Never in the first minute: a timer, a score, a buzzer, a capital letter, or a word she hasn't been taught.</p>
+
+  <h2>Screen flow</h2>
+  <div class="grid2">
+    <div><h3>First launch</h3>
+<pre class="mermaid">
+flowchart TD
+  A[App icon] --> B[Welcome · grown-up<br/>EN / TH]
+  B --> C[Sound check<br/>Can you hear it?]
+  C --> D[How a session works]
+  D --> E[Home · Tap to start]
+  E --> F[Today's Lesson<br/>Level 1 · Page 1]
+  F --> G[5 stages]
+  G --> H[Session Finish]
+  H --> E
+</pre></div>
+    <div><h3>Completion and resume</h3>
+<pre class="mermaid">
+flowchart TD
+  H[Home ▶ today] --> Q{Page in progress?}
+  Q -- yes --> R[Today's Lesson<br/>Welcome back]
+  R --> S[Start of saved stage]
+  Q -- no --> N[Next page not done<br/>or pinned page]
+  S --> Fin[Session Finish<br/>pick a sticker]
+  N --> Fin
+  Fin --> Ag[↻ again: same page]
+  Fin --> Ho[⌂ home]
+  Fin --> P5[Page 5: grown-up time<br/>hold 3 s → mark skills]
+  X[⌂ during lesson] --> St{Stop for today?}
+  St -- stop --> Fin
+  St -- keep going --> S
+</pre></div>
+  </div>
+  <p class="cap">Interruption (call, app switch, lock): audio stops, the stage is saved, the screen stays the same, and 🔁 pulses. Nothing auto-plays on return.</p>
+
+  <h2>Home</h2>
+  <div class="screen">
+    <div>
+      <div class="ipad mint" role="img" aria-label="Home screen wireframe">
+        <div class="ib tr-replay">🔁<small>again</small></div>
+        <div class="card wire abs" style="left:6%;top:24%;width:18%;height:42%">Pat the penguin<br>(waves)</div>
+        <div class="card abs" style="left:30%;top:28%;width:40%;height:34%;background:#fff;display:flex;align-items:center;justify-content:center;gap:3cqw;box-shadow:0 .9cqw 0 #c9c1ae">
+          <div style="width:9cqw;height:9cqw;border-radius:50%;background:var(--btn);color:#fff;display:grid;place-items:center;font-size:4cqw">▶</div>
+          <div style="text-align:center"><div style="font-size:8cqw;font-weight:700;letter-spacing:1cqw;line-height:1">s a t p</div><div style="font-size:2.6cqw;font-weight:700;font-family:var(--f-body)">today</div></div>
+        </div>
+        <div class="abs" style="left:0;right:0;top:66%;text-align:center;font-size:2.2cqw;font-weight:700">level 1 · page 1</div>
+        <div class="ib" style="left:2.7%;bottom:6%;background:var(--peach);color:var(--ink);box-shadow:0 .4cqw 0 #e0b9a2">📖<small>stickers</small></div>
+        <div class="ib" style="right:2.7%;bottom:6%;width:5cqw;height:5cqw;font-size:2.2cqw;background:#e6e2da;color:#6b6b6b;box-shadow:none">🔒</div>
+        <div class="co" style="left:31%;top:25%">1</div><div class="co" style="right:1.6%;top:2%">2</div><div class="co" style="left:9.5%;bottom:17%">3</div><div class="co" style="right:1.2%;bottom:15%">4</div>
+      </div>
+    </div>
+    <div class="notes box">
+      <h3>One tap to today's lesson</h3>
+      <ol>
+        <li><b>▶ today</b> (360 × 220 pt) shows this level's letters. Goes straight into the current page, resuming if half-done.<span class="say">"Tap to start." / "Welcome back. Tap to go on."</span></li>
+        <li><b>🔁 replay</b> repeats the instruction. Same spot on every screen.</li>
+        <li><b>Sticker book</b>: earned stickers only. No shop, no currency.</li>
+        <li><b>Grown-ups</b>: 3-second hold, a ring fills. A quick tap does nothing.</li>
+      </ol>
+    </div>
+  </div>
+
+  <h2>Sound Card</h2>
+  <div class="screen">
+    <div>
+      <div class="ipad" role="img" aria-label="Sound Card wireframe for the letter s">
+        <div class="ib tl-home">⌂<small>home</small></div>
+        <div class="pill">level 1 · page 1 · ●○○○</div>
+        <div class="ib tr-replay">🔁<small>again</small></div>
+        <div class="instr">Tap to hear the sound.</div>
+        <div class="card abs" style="left:5%;top:23%;width:47%;height:58%;display:grid;place-items:center">
+          <div style="font-size:27cqw;font-weight:700;line-height:.9;margin-top:-3cqw">s</div>
+          <div class="act" style="position:absolute;bottom:4cqw">🔊 hear</div>
+        </div>
+        <div class="card abs" style="left:55%;top:23%;width:32%;height:58%;padding:1.4cqw;display:grid;grid-template-rows:1.3fr auto 1fr auto;gap:1cqw">
+          <div class="wire" style="background:var(--peach)">mouth picture<br>teeth together, smile</div>
+          <div style="font:700 1.9cqw var(--f-body);text-align:center">teeth together, hiss</div>
+          <div class="wire" style="background:var(--mint)">🐍 snake hand</div>
+          <div class="act soft" style="position:static;text-align:center">🪞 your turn</div>
+        </div>
+        <div class="act" style="right:13%;bottom:6.5%">next →</div>
+        <div class="ib br-help">✋?<small>help</small></div>
+        <div class="co" style="left:6%;top:25%">1</div><div class="co" style="left:56%;top:25%">2</div><div class="co" style="left:56%;top:54%">3</div><div class="co" style="left:56%;top:70%">4</div><div class="co" style="right:12%;bottom:15%">5</div><div class="co" style="right:1.2%;bottom:17%">6</div>
+      </div>
+    </div>
+    <div class="notes box">
+      <h3>Hear it, see the mouth, copy it</h3>
+      <ol>
+        <li><b>Letter (300 pt) or 🔊</b> plays the phoneme; the letter glows for its length. Nothing plays on entry except the instruction.<span class="say">"sssss"</span></li>
+        <li><b>Mouth picture</b>: after the first play, the tip plays once. Tap to hear it again.<span class="say">"Snake sound. Teeth together."</span></li>
+        <li><b>Action</b>: snake hand (s), ants (a), tap the table (t), blow a candle (p).</li>
+        <li><b>Your turn</b> appears with a mirror icon, then 4 s of quiet. No microphone, no scoring.<span class="say">"Your turn."</span></li>
+        <li><b>next</b> appears after the first play. Never timed.</li>
+        <li><b>Help</b>: 1st tap, slow model with the mouth animating; 2nd tap, grown-up tip in English/Thai.</li>
+      </ol>
+    </div>
+  </div>
+
+  <h2>Word Builder: sat → pat</h2>
+  <p>Page 3, stage "try". Only taught letters are in the tray. Tap a tile to send it to the next empty slot (drag also works); tap a placed tile to send it back.</p>
+  <div class="grid2">
+    <div>
+      <p class="stateLabel"><span>A</span>Build sat</p>
+      <div class="ipad" role="img" aria-label="Word Builder, empty slots">
+        <div class="ib tl-home">⌂</div><div class="pill">level 1 · page 3</div><div class="ib tr-replay">🔁</div>
+        <div class="instr">Build sat.</div>
+        <div class="row-c" style="top:27%"><div class="slot"></div><div class="slot"></div><div class="slot"></div></div>
+        <div class="blend" style="top:50%"></div>
+        <div class="row-c" style="top:62%"><div class="tile">s</div><div class="tile">a</div><div class="tile">t</div><div class="tile">p</div></div>
+        <div class="ib br-help">✋?</div>
+      </div>
+      <p class="cap">Hears: "Build sat." Each tile plays its sound as it lands.</p>
+    </div>
+    <div>
+      <p class="stateLabel"><span>B</span>Wrong tile</p>
+      <div class="ipad" role="img" aria-label="Word Builder, wrong tile in first slot">
+        <div class="ib tl-home">⌂</div><div class="pill">level 1 · page 3</div><div class="ib tr-replay">🔁</div>
+        <div class="instr">Build sat.</div>
+        <div class="row-c" style="top:27%"><div class="slot f glow">p</div><div class="slot"></div><div class="slot"></div></div>
+        <div class="blend" style="top:50%"></div>
+        <div class="row-c" style="top:62%"><div class="tile">s</div><div class="tile">a</div><div class="tile">t</div><div class="tile dim">p</div></div>
+        <div class="ib br-help">✋?</div>
+      </div>
+      <p class="cap">Soft lavender glow, no red. Hears: "Try the first sound." then "s… a… t". Tap p to send it back.</p>
+    </div>
+    <div>
+      <p class="stateLabel"><span>C</span>Built: say the sounds</p>
+      <div class="ipad" role="img" aria-label="Word Builder, sat built, blend bar lit">
+        <div class="ib tl-home">⌂</div><div class="pill">level 1 · page 3</div><div class="ib tr-replay">🔁</div>
+        <div class="instr">Say the sounds. Now say the word.</div>
+        <div class="row-c" style="top:27%"><div class="slot f lit">s</div><div class="slot f lit">a</div><div class="slot f">t</div></div>
+        <div class="blend on" style="top:50%"></div>
+        <div class="abs" style="left:0;right:0;top:54%;text-align:center;font:700 1.7cqw var(--f-body);color:#556">swipe to blend →</div>
+        <div class="row-c" style="top:64%"><div class="tile dim">p</div></div>
+        <div class="act dim" style="left:50%;transform:translateX(-50%);bottom:6%">🔊 hear the word</div>
+        <div class="ib br-help">✋?</div>
+      </div>
+      <p class="cap">Swiping lights tiles left to right, playing each sound. "hear the word" fades in after 5 s of quiet or one swipe. No picture yet.</p>
+    </div>
+    <div>
+      <p class="stateLabel"><span>D</span>Reveal</p>
+      <div class="ipad" role="img" aria-label="Word Builder, word heard and picture shown">
+        <div class="ib tl-home">⌂</div><div class="pill">level 1 · page 3</div><div class="ib tr-replay">🔁</div>
+        <div class="instr">sat</div>
+        <div class="row-c" style="top:27%;left:-30%"><div class="slot f">s</div><div class="slot f">a</div><div class="slot f">t</div></div>
+        <div class="card wire abs" style="left:60%;top:24%;width:30%;height:40%;background:var(--cloud)">picture:<br>Pat sitting on a log<br><span class="thai" style="font-size:1.6cqw">นั่ง (Thai help on)</span></div>
+        <div class="act" style="right:13%;bottom:6.5%">next →</div>
+        <div class="ib br-help">✋?</div>
+      </div>
+      <p class="cap">Hears the natural word "sat". Then the picture slides in, with Thai meaning only if Thai help is on.</p>
+    </div>
+    <div>
+      <p class="stateLabel"><span>E</span>Change one sound</p>
+      <div class="ipad" role="img" aria-label="Word Builder, s removed, make pat">
+        <div class="ib tl-home">⌂</div><div class="pill">level 1 · page 3</div><div class="ib tr-replay">🔁</div>
+        <div class="instr">Change one sound. Make pat.</div>
+        <div class="row-c" style="top:27%"><div class="slot"></div><div class="slot f">a</div><div class="slot f">t</div></div>
+        <div class="blend" style="top:50%"></div>
+        <div class="row-c" style="top:62%"><div class="tile">s</div><div class="tile">p</div></div>
+        <div class="ib br-help">✋?</div>
+      </div>
+      <p class="cap">No slot is highlighted at first. Help ladder: replay "p… a… t", then pulse slot 1, then ghost the p tile.</p>
+    </div>
+    <div>
+      <p class="stateLabel"><span>F</span>New word</p>
+      <div class="ipad" role="img" aria-label="Word Builder, pat built">
+        <div class="ib tl-home">⌂</div><div class="pill">level 1 · page 3</div><div class="ib tr-replay">🔁</div>
+        <div class="instr" style="font-size:2.5cqw">You changed one sound and made a new word!</div>
+        <div class="row-c" style="top:27%"><div class="slot f lit">p</div><div class="slot f">a</div><div class="slot f">t</div></div>
+        <div class="blend on" style="top:50%"></div>
+        <div class="row-c" style="top:62%"><div class="tile dim">s</div></div>
+        <div class="act dim" style="left:50%;transform:translateX(-50%);bottom:6%">🔊 hear the word</div>
+        <div class="ib br-help">✋?</div>
+      </div>
+      <p class="cap">Then "Say the sounds. Now say the word." The same reveal follows: "pat", then a picture of Pat patting a puppy.</p>
+    </div>
+  </div>
+
+  <h2>Later: iPhone adaptation</h2>
+  <div class="screen">
+    <div>
+      <div class="iphone" role="img" aria-label="Word Builder on iPhone landscape">
+        <div class="ib" style="left:3%;top:6%">⌂</div><div class="ib" style="right:3%;top:6%">🔁</div>
+        <div class="abs" style="left:0;right:0;top:9%;text-align:center;font:700 3.4cqw var(--f-letter)">Build sat.</div>
+        <div class="row-c" style="top:27%;gap:2cqw"><div class="slot f">s</div><div class="slot f">a</div><div class="slot"></div></div>
+        <div class="row-c" style="top:63%;gap:2cqw"><div class="tile dim">s</div><div class="tile dim">a</div><div class="tile">t</div><div class="tile">p</div></div>
+        <div class="ib" style="right:3%;bottom:7%;background:var(--lav);color:var(--ink);box-shadow:none">✋?</div>
+      </div>
+    </div>
+    <div class="notes box">
+      <h3>Same screens, smaller chrome</h3>
+      <p>Buttons shrink to 56 pt, tiles to 72 × 84 pt. The tray stays in one row under the slots. The Sound Card's side panel moves under the letter as a swipe row. Nothing depends on the iPad's side-by-side layout.</p>
+    </div>
+  </div>
+
+  <h2>What changed from the reference mockups</h2>
+  <div class="tw"><table>
+    <tr><th>Mockup</th><th>Problem</th><th>Change</th></tr>
+    <tr><td>Page 1 "Pat sat."</td><td>Capital P not taught</td><td>Single lowercase words in Level 1. Pat stays a name in narration.</td></tr>
+    <tr><td>Page 2 "Tap, tap! Pip naps."</td><td>i, n and plural -s are Level 2 and 10</td><td>Replaced with Trace. Pip arrives in Level 2 when i is taught.</td></tr>
+    <tr><td>Page 3 "…look at the map." cap / mat / map</td><td>oo, th, c, m, n, d untaught</td><td>Replaced with Word Builder sat → pat.</td></tr>
+    <tr><td>Page 4 "Pip fans the dog by the pot."</td><td>f, n, d, g, o, "by", "the" untaught</td><td>Replaced with last-sound listening (pictures allowed).</td></tr>
+    <tr><td>Page 5 "The duck splashes in the tub."</td><td>Level 4–12 content</td><td>Replaced with the reading show: sat, tap, pat, at.</td></tr>
+    <tr><td>Whole-word 🔊 chips from the start</td><td>Gives the answer before she tries</td><td>Whole word only after the attempt; picture after that.</td></tr>
+  </table></div>
+  <p class="cap">Kept: the plush penguins, pastel pond, big rounded type and butter-yellow chips as the visual direction.</p>
+
+  <h2>Decisions needed</h2>
+  <div class="box"><ol>
+    <li><b>Accent:</b> Standard Southern British English (recommended, matches the source sequence and the short-o hint) or General American.</li>
+    <li><b>Add "a" and "is" as Level 5 tricky words</b> so the plan's Level 5–6 sentences become readable.</li>
+    <li><b>Sound hunt and tissue game stay parent-led</b>, with no camera or microphone.</li>
+    <li><b>Names:</b> keep Pat in Level 1; introduce Pip at Level 2.</li>
+  </ol></div>
+
+  <h2>Full design package</h2>
+  <p>In the repository under <code>docs/design/</code>:</p>
+  <ul class="files">
+    <li><code>01-first-60-seconds-and-flow.md</code></li>
+    <li><code>02-screens-and-wireframes.md</code></li>
+    <li><code>03-level-1-lesson-plan-and-page-script.md</code></li>
+    <li><code>04-wording-sheet.md</code></li>
+    <li><code>05-audio-manifest.csv</code> (72 assets)</li>
+    <li><code>05-audio-notes.md</code></li>
+    <li><code>06-curriculum-flags.md</code></li>
+    <li><code>07-level-map-2-12.md</code></li>
+    <li><code>08-verification-checklist.md</code></li>
+  </ul>
+</div>
