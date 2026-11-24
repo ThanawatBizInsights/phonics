@@ -38,7 +38,20 @@ struct RootView: View {
         }
         .onChange(of: scenePhase) { _, phase in
             // Leaving the foreground (or the app switcher) stops audio. Nothing auto-plays on return.
-            if phase != .active { app.audio.interrupt() }
+            if phase != .active {
+                app.audio.interrupt()
+                app.music.pause()
+            } else {
+                // Background music resumes only if the saved setting is on.
+                app.music.start()
+            }
+        }
+        .onChange(of: app.route) { _, route in
+            app.music.setLevel(app.musicLevel(for: route))
+        }
+        .onAppear {
+            app.music.setLevel(app.musicLevel(for: app.route))
+            app.music.start()
         }
     }
 
@@ -47,6 +60,19 @@ struct RootView: View {
         switch app.route {
         case .home:
             HomeView()
+        case .shelf:
+            StorybookShelfView()
+        case .story(let bookID, let page):
+            StoryPageView(bookID: bookID, startPage: page)
+                .id("story-\(bookID)-\(page)")
+        case .phonics(let level):
+            PhonicsHomeView(level: level)
+        case .sound(let level, let tileID):
+            SoundDetailView(level: level, tileID: tileID)
+        case .stickers:
+            StickersView()
+        case .trophies:
+            TrophyShelfView()
         case .lesson(let page, let resume):
             LessonView(page: page, resume: resume)
                 .id("lesson-\(app.lessonSession)")

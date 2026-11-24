@@ -668,6 +668,48 @@
           "thai": null
         },
         {
+          "text": "map",
+          "role": "reading",
+          "gpcs": [
+            {
+              "grapheme": "m",
+              "phoneme": "m"
+            },
+            {
+              "grapheme": "a",
+              "phoneme": "æ"
+            },
+            {
+              "grapheme": "p",
+              "phoneme": "p"
+            }
+          ],
+          "audio": null,
+          "picture": null,
+          "thai": null
+        },
+        {
+          "text": "mat",
+          "role": "reading",
+          "gpcs": [
+            {
+              "grapheme": "m",
+              "phoneme": "m"
+            },
+            {
+              "grapheme": "a",
+              "phoneme": "æ"
+            },
+            {
+              "grapheme": "t",
+              "phoneme": "t"
+            }
+          ],
+          "audio": null,
+          "picture": null,
+          "thai": null
+        },
+        {
           "text": "goat",
           "role": "listening",
           "gpcs": null,
@@ -1286,6 +1328,27 @@
           "thai": null
         },
         {
+          "text": "tub",
+          "role": "reading",
+          "gpcs": [
+            {
+              "grapheme": "t",
+              "phoneme": "t"
+            },
+            {
+              "grapheme": "u",
+              "phoneme": "ʌ"
+            },
+            {
+              "grapheme": "b",
+              "phoneme": "b"
+            }
+          ],
+          "audio": null,
+          "picture": null,
+          "thai": null
+        },
+        {
           "text": "ball",
           "role": "listening",
           "gpcs": null,
@@ -1365,6 +1428,27 @@
             {
               "grapheme": "t",
               "phoneme": "t"
+            }
+          ],
+          "audio": null,
+          "picture": null,
+          "thai": null
+        },
+        {
+          "text": "bag",
+          "role": "reading",
+          "gpcs": [
+            {
+              "grapheme": "b",
+              "phoneme": "b"
+            },
+            {
+              "grapheme": "a",
+              "phoneme": "æ"
+            },
+            {
+              "grapheme": "g",
+              "phoneme": "g"
             }
           ],
           "audio": null,

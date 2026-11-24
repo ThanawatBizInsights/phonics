@@ -29,6 +29,8 @@ REVIEW = {
   "word_pen": (READY, "Take 1. Voiced vowel F1 419 / F2 2011 Hz (/ɛ/ range); nasal ending"),
   "word_pot": (READY, "Take 1. Final /t/ release -32.5 dB after 80 ms closure"),
   "effect_soft_chime": ("Ready – generated tone (not speech)", "Synthesised in tools; peak -14 dBFS"),
+  "music_pond_loop": ("Ready – loop auto-checked; needs your listening sign-off",
+                      "ElevenLabs Music v2.5, instrumental mode (lyrics_type instrumental, 50 s render). Loop point 42.035 s (before the source's fade-out at ~48 s), 2 s equal-power crossfade into the head, length a multiple of 64 samples; -23 LUFS; seam step 0.0174 vs body 0.0177 (no click). 16-bit WAV so it loops gaplessly. Seam preview: docs/audio-review/music_loop_seam_preview.wav. Take 1 (auto lyrics mode) kept for comparison only."),
 }
 
 ROWS = [
@@ -144,6 +146,19 @@ ROWS = [
  ("5 Optional effect", "effect_soft_chime", "Soft two-note chime (E6 then A6), 1.4 s", "effect", "Any activity; Finish",
   "A stage is completed; a sticker is picked (if Chime is on). Speech waits for it; never plays over narration",
   "Generated tone, peak -14 dBFS, quieter than speech. Not teaching audio.", "mus_chime_finish; sfx_sticker_land; effect_sticker_chime"),
+ ("6 Story narration (voice on hold)", "story_l1_p1", "Pat sat.", "story line", "Storybook Level 1 page 1",
+  "Read to me button; tap again to replay. Disabled with 'Audio coming later' until recorded", "Natural read-aloud; final t released.", ""),
+ ("6 Story narration (voice on hold)", "story_l1_p2", "Tap, tap!", "story line", "Storybook Level 1 page 2",
+  "Read to me button", "Two crisp taps; final p released.", ""),
+ ("6 Story narration (voice on hold)", "story_l1_p3", "Pat gives the puppy a pat.", "story line", "Storybook Level 1 page 3",
+  "Read to me button", "", ""),
+ ("6 Story narration (voice on hold)", "story_l1_p4", "Pat taps at the edge of the log.", "story line", "Storybook Level 1 page 4",
+  "Read to me button", "", ""),
+ ("6 Story narration (voice on hold)", "story_l1_p5", "Pat sat. The puppy stayed beside him.", "story line", "Storybook Level 1 page 5",
+  "Read to me button", "", ""),
+ ("7 Background music", "music_pond_loop", "Original instrumental loop: felt piano, pizzicato strings, marimba, ~80 BPM", "music", "Whole app (one player)",
+  "Starts on launch if Music is on; continues across screens; pauses in background; ducks under teaching audio",
+  "Instrumental only. Low under story and phonics screens.", ""),
 ]
 
 def main():
@@ -152,10 +167,16 @@ def main():
         w.writerow(["batch", "audio_id", "filename", "line_or_sound", "clip_type", "screen",
                     "playback_trigger", "pronunciation_notes", "status", "source", "review_notes", "replaces_design_ids"])
         for b, i, line, t, screen, trig, notes, rep in ROWS:
-            accent = "General American. " if not i.startswith("effect") else ""
-            status, review = REVIEW.get(i, (READY, "Take 1. Exact line; passes level and timing checks"))
-            source = "" if status == HUMAN else ("tools (generated tone)" if i.startswith("effect") else VOICE)
-            w.writerow([b, i, f"{i}.wav", line, t, screen, trig, (accent + notes).strip(), status, source, review, rep])
+            accent = "General American. " if not i.startswith(("effect", "music")) else ""
+            if i.startswith("story_"):
+                status, review = ("To record", "Voice on hold: record after the narrator voice is chosen")
+            else:
+                status, review = REVIEW.get(i, (READY, "Take 1. Exact line; passes level and timing checks"))
+            source = ("" if status in (HUMAN, "To record") else
+                      "tools (generated tone)" if i.startswith("effect") else
+                      "ElevenLabs Music (eleven_music_v2_5)" if i.startswith("music") else VOICE)
+            ext = "wav"
+            w.writerow([b, i, f"{i}.{ext}", line, t, screen, trig, (accent + notes).strip(), status, source, review, rep])
     print("wrote", os.path.relpath(OUT, ROOT), len(ROWS), "clips")
 
 if __name__ == "__main__":

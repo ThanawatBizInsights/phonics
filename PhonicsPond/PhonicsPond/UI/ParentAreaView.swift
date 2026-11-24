@@ -10,7 +10,7 @@ struct ParentAreaView: View {
 
     enum Section: String, CaseIterable, Identifiable {
         case progress = "Progress"
-        case pages = "Pages"
+        case pages = "Books"
         case offline = "Off-screen activities"
         case settings = "Settings"
         case audio = "Recordings"
@@ -128,7 +128,39 @@ struct ParentAreaView: View {
 
     // MARK: Pages
 
+    /// Storybook progress for each book; open any unlocked book.
     private var pages: some View {
+        List {
+            SwiftUI.Section("Storybook") {
+                ForEach(app.library.books.sorted { $0.level < $1.level }) { book in
+                    let p = app.store.data.book(book.id)
+                    let unlocked = app.store.data.isUnlocked(book, in: app.library)
+                    HStack {
+                        Text("Level \(book.level)").fontWeight(.semibold)
+                        Text(book.title).foregroundStyle(.secondary)
+                        Spacer()
+                        Text(book.status == .draft ? "Story coming soon" :
+                             "\(p.pageTrophies.count)/\(book.pages.count) pages\(p.levelTrophy ? " · big trophy" : "")")
+                            .foregroundStyle(.secondary)
+                            .monospacedDigit()
+                        Button("Open") {
+                            dismiss()
+                            app.openStory(book.id)
+                        }
+                        .buttonStyle(.bordered)
+                        .disabled(!unlocked)
+                    }
+                }
+            }
+            SwiftUI.Section {
+                Text("Books open in order: finishing every page of a level earns its big trophy and opens the next book. Levels 2–12 open once their stories are written.")
+                    .font(.footnote).foregroundStyle(.secondary)
+            }
+        }
+    }
+
+    /// Retired v1.0 lesson pages (not reachable from the child's navigation).
+    private var legacyLessonPages: some View {
         List {
             SwiftUI.Section("Level 1 · s a t p") {
                 ForEach(app.plan.pages, id: \.page) { page in
@@ -195,6 +227,8 @@ struct ParentAreaView: View {
 
     private var settings: some View {
         Form {
+            Toggle("Background music", isOn: Binding(get: { app.store.data.settings.musicOn }, set: { app.setMusic($0) }))
+                .accessibilityIdentifier("settings.music")
             Toggle("Soft chime after a sticker", isOn: Binding(get: { app.store.data.settings.chime }, set: { app.setChime($0) }))
             Toggle("Thai help for grown-ups and meanings", isOn: Binding(
                 get: { app.store.data.settings.thaiHelp },

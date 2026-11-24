@@ -7,6 +7,13 @@ import Observation
 final class AppModel {
     enum Route: Equatable {
         case home
+        case shelf
+        case story(bookID: String, page: Int)
+        case phonics(level: Int)
+        case sound(level: Int, tileID: String)
+        case stickers
+        case trophies
+        // Retired from navigation in v1.1 (kept so the old Level 1 lesson code still builds).
         case lesson(page: Int, resume: Bool)
         case stickerBook
     }
@@ -21,6 +28,9 @@ final class AppModel {
     let plan: LessonPlan
     let store: ProgressStore
     let audio: AudioPlayer
+    let music: MusicPlayer
+    let library: StoryLibrary
+    let phonicsCatalog: PhonicsCatalog
     /// Content problems found at launch (shown in the grown-up area; should be empty).
     let contentIssues: [EligibilityIssue]
 
@@ -28,6 +38,8 @@ final class AppModel {
         do {
             curriculum = try Curriculum.load(from: bundle)
             plan = try LessonPlan.load(level: 1, bundle: bundle)
+            library = try StoryLibrary.load(from: bundle)
+            phonicsCatalog = try PhonicsCatalog.load(from: bundle)
         } catch {
             fatalError("Phonics Pond content failed to load: \(error)")
         }
@@ -37,11 +49,15 @@ final class AppModel {
         if ProcessInfo.processInfo.arguments.contains("-uiTestReset") { store.reset() }
         #endif
         audio = AudioPlayer(bundle: bundle)
+        music = MusicPlayer(enabled: store.data.settings.musicOn, bundle: bundle)
         contentIssues = EligibilityValidator.validate(curriculum) + EligibilityValidator.validate(plan, against: curriculum)
         #if DEBUG
         for issue in contentIssues { print("[content] \(issue)") }
         #endif
         audio.effectsEnabled = store.data.settings.chime
+        // Background music ducks while teaching audio plays (ready for the voice recordings).
+        let music = self.music
+        audio.onSpeechChange = { speaking in music.duck(speaking) }
     }
 
     var levelDefinition: LevelDefinition? { curriculum.level(level) }
@@ -76,6 +92,72 @@ final class AppModel {
     func openParentArea() {
         audio.stop()
         showParentArea = true
+    }
+
+    // MARK: Storybook, Phonics, Stickers (v1.1)
+
+    func openShelf() {
+        audio.stop()
+        route = .shelf
+    }
+
+    /// Opens a book at a page (clamped), saving the position.
+    func openStory(_ bookID: String, page: Int? = nil) {
+        guard let book = library.book(id: bookID), store.data.isUnlocked(book, in: library) else { return }
+        audio.stop()
+        let target = min(max(page ?? store.data.book(bookID).lastPage, 0), book.pages.count - 1)
+        store.update { $0.setStoryPosition(bookID: bookID, page: target) }
+        route = .story(bookID: bookID, page: target)
+    }
+
+    /// The book and page "Continue story" opens: the last book read, else Level 1.
+    var continueBookID: String {
+        if let id = store.data.lastBook, let book = library.book(id: id), store.data.isUnlocked(book, in: library) { return id }
+        return library.book(level: 1)?.id ?? "book.l1"
+    }
+
+    /// "Level 1 · Page 3" for the Home card, when a book has been started.
+    var storyProgressLine: String? {
+        guard let id = store.data.lastBook, let book = library.book(id: id) else { return nil }
+        return "Level \(book.level) · Page \(store.data.book(id).lastPage + 1)"
+    }
+
+    func openPhonics(level: Int? = nil) {
+        audio.stop()
+        route = .phonics(level: level ?? unlockedLevels.last ?? 1)
+    }
+
+    func openSound(level: Int, tileID: String) {
+        audio.stop()
+        route = .sound(level: level, tileID: tileID)
+    }
+
+    func openStickers() {
+        audio.stop()
+        route = .stickers
+    }
+
+    func openTrophies() {
+        audio.stop()
+        route = .trophies
+    }
+
+    /// Levels a child can open in Phonics and Storybook.
+    var unlockedLevels: [Int] {
+        library.books.filter { store.data.isUnlocked($0, in: library) }.map(\.level).sorted()
+    }
+
+    func setMusic(_ on: Bool) {
+        store.update { $0.settings.musicOn = on }
+        music.setEnabled(on)
+    }
+
+    /// Music sits lower under reading and phonics screens.
+    func musicLevel(for route: Route) -> MusicPlayer.Level {
+        switch route {
+        case .story, .phonics, .sound, .lesson: return .reading
+        default: return .home
+        }
     }
 
     // MARK: Content lookups
@@ -130,7 +212,11 @@ final class AppModel {
     }
 
     /// Every Level 1 clip the build can play, in recording-batch order.
-    var level1AudioIDs: [String] { AudioCatalog.ids(plan: plan, curriculum: curriculum) }
+    var level1AudioIDs: [String] {
+        AudioCatalog.ids(plan: plan, curriculum: curriculum)
+            + (library.book(level: 1)?.pages.map(\.narration) ?? [])
+            + [MusicPlayer.trackID]
+    }
 }
 
 /// Lists the clips used by a lesson plan (phonemes, words, blends, prompts, effects).

@@ -113,6 +113,43 @@ for page in plan["pages"]:
                 addw(w); b = "blend_" + "_".join(w)
                 if b not in blends: blends.append(b)
 
+# 2b. Storybooks and phonics examples
+books = json.load(open(os.path.join(APP, "Resources", "Content", "storybooks.json"), encoding="utf-8"))["books"]
+ids = set()
+for b in books:
+    lv = b["level"]
+    if b["id"] in ids: problems.append(f"duplicate book id {b['id']}")
+    ids.add(b["id"])
+    req = [p for p in b["pages"] if p.get("required", True)]
+    if len(req) < 5: problems.append(f"{b['id']}: only {len(req)} required pages (need 5+)")
+    if "pip" in b.get("cast", []) and lv < 2: problems.append(f"{b['id']}: Pip before Level 2")
+    for p in b["pages"]:
+        if p["id"] in ids: problems.append(f"duplicate page id {p['id']}")
+        ids.add(p["id"])
+        if not 1 <= len(p["chips"]) <= 3: problems.append(f"{p['id']}: needs 1–3 chips")
+        for c in p["chips"]:
+            if not readable(c, lv): problems.append(f"{p['id']}: chip '{c}' is not readable at Level {lv}")
+        if p.get("hearSounds") and p["hearSounds"] not in p["chips"]:
+            problems.append(f"{p['id']}: hearSounds word must be one of the chips")
+        if p["mode"] == "tryReading":
+            for tok in [t for t in re.split(r"[^a-z]+", (p["line"] or "").lower()) if t]:
+                if not readable(tok, lv): problems.append(f"{p['id']}: try-reading word '{tok}' is not taught at Level {lv}")
+        if b["status"] == "ready":
+            if not p["line"]: problems.append(f"{p['id']}: ready book page has no line")
+            if not p["layers"]: problems.append(f"{p['id']}: ready book page has no scene layers")
+phon = json.load(open(os.path.join(APP, "Resources", "Content", "phonics_examples.json"), encoding="utf-8"))["levels"]
+for lvl in phon:
+    for t in lvl["tiles"]:
+        if not t["examples"]: problems.append(f"phonics L{lvl['level']} {t['grapheme']}: no examples")
+        for w in t["examples"]:
+            if not readable(w, lvl["level"]): problems.append(f"phonics L{lvl['level']} {t['grapheme']}: '{w}' not readable")
+            wd = word(w, lvl["level"])
+            if t["phoneme"] and wd and not any(g["grapheme"] == t["grapheme"] and g["phoneme"] == t["phoneme"] for g in wd["gpcs"]):
+                problems.append(f"phonics L{lvl['level']} {t['grapheme']}: '{w}' does not use {t['grapheme']} → /{t['phoneme']}/")
+if any(w in ("sap", "as") for t in phon[0]["tiles"] for w in t["examples"]):
+    problems.append("Level 1 phonics examples must not include sap or as")
+story_audio = [p["narration"] for b in books if b["level"] == 1 for p in b["pages"]]
+
 # 3. Audio IDs: Swift enums + derived clips vs manifest
 swift = open(os.path.join(APP, "Core", "AudioIDs.swift"), encoding="utf-8").read()
 prompt_block = swift.split("enum Prompt")[1].split("var text")[0]
@@ -120,7 +157,7 @@ prompts = re.findall(r'case \w+ = "([a-z_]+)"', prompt_block)
 effect_block = swift.split("enum Effect")[1].split("}")[0]
 effects = re.findall(r'case \w+ = "([a-z_]+)"', effect_block)
 phonemes = [g["audio"] for g in next(L for L in levels if L["level"] == 1)["graphemes"] if g["audio"]]
-build_ids = phonemes + words_audio + blends + prompts + effects
+build_ids = phonemes + words_audio + blends + prompts + effects + story_audio + ["music_pond_loop"]
 
 # Every Prompt case must have on-screen text
 for p in prompts:
@@ -134,7 +171,7 @@ mids = [r["audio_id"] for r in rows]
 if len(mids) != len(set(mids)):
     problems.append("manifest has duplicate audio IDs")
 for r in rows:
-    if r["filename"] != r["audio_id"] + ".wav":
+    if r["filename"] not in (r["audio_id"] + ".wav", r["audio_id"] + ".m4a"):
         problems.append(f"manifest filename mismatch for {r['audio_id']}")
     bundled = os.path.exists(os.path.join(APP, "Resources", "Audio", r["filename"]))
     if r["status"].startswith("Ready") and not bundled:

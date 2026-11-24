@@ -1,5 +1,47 @@
 # Level 1 Artwork: Supplied and Still Needed
 
+## v1.1: Transparent Asset Kit
+
+The Phonics Pond Transparent Asset Kit is merged into `Assets.xcassets`, which now holds 73 image sets.
+
+**Covers and Home**
+- Covers: `book_cover_01…12`. The level number, lock and trophy badges are live overlays.
+- Home tiles: `home_storybook`, `home_phonics`, `home_stickers`, `home_grownups`.
+
+**Level 1 scenes** (layered over `pond_background`; each character wobbles)
+
+| Page | Scene |
+|---|---|
+| 1 | `pat_sitting_on_log` |
+| 2 | `pat_tapping_log` |
+| 3 | `pat_patting` |
+| 4 | `pat_tapping_log` + `puppy_sitting` |
+| 5 | `pat_and_puppy_on_log`, with a sunset tint |
+
+**Rewards, stickers, icons and friends**
+- Rewards: `trophy_page`, `trophy_level`.
+- Stickers: `sticker_album`, `sticker_blank_star`.
+- Icons: `icon_*`, used in round buttons. A system symbol is the fallback.
+- Friends for later books: `pip_waving_cutout`, `duck_sitting`, plus the props `prop_daisies`, `prop_lily_pad` and `prop_log`.
+
+**Not used as controls**
+- `button_*`, `home_card` and `story_panel` are kept in the catalog, but panels and buttons stay native SwiftUI, as the kit README recommends.
+- These PNGs are 362 px squares without stretch insets, so they can't be stretched into controls.
+
+**Fixes made to the kit art**
+- **Removed a faint alpha haze around the art** on `book_cover_07…12`, `duck_sitting`, `puppy_sitting`, `prop_daisies`, `prop_lily_pad` and `prop_log`: alpha below 64 → 0, a ramp from 64 to 128, then trimmed. Each was checked visually.
+- **Kept the existing higher-resolution versions** of `pat_waving_cutout`, `pat_patting` and `pat_tapping` (1200 px), because the art matches the kit.
+- **Replaced with the kit version:** `action_s/a/t/p` (now transparent) and `sticker_star`.
+- **Renamed:**
+  - `sticker_penguin` became `sticker_pat`, and `sticker_lilypad` became `sticker_lily`.
+  - Saved stickers keep their old IDs and are mapped to the new art.
+
+The puppy and Pip cut-outs listed as needed below are now supplied: `puppy_sitting` and `pip_waving_cutout`.
+
+**Still needed for v1.1**
+- Page scenes for Levels 2–12, once their stories are written.
+- Meaning pictures for later-level words, where the Phonics and Stickers screens show one.
+
 Every screen is built live in SwiftUI (buttons, text, letters, panels). Artwork is used only for illustrations
 without baked-in controls or lesson text. The approved reference images all contain controls or text, so they were
 used as layout references, and only clean regions were cropped as interim illustrations.

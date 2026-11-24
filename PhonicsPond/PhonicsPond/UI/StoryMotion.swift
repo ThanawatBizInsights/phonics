@@ -51,10 +51,10 @@ struct StoryCharacterArt {
         "pat": StoryCharacterArt(id: "pat", name: "Pat the penguin", cutout: "pat_waving_cutout", fallback: "pat_waving",
                                  period: 2.8, phase: 0, amplitude: 2.2, scale: 1, firstLevel: 1),
         // The golden puppy Pat pats. Needs its own cut-out to stand in a scene.
-        "puppy": StoryCharacterArt(id: "puppy", name: "the puppy", cutout: "puppy_cutout", fallback: nil,
+        "puppy": StoryCharacterArt(id: "puppy", name: "the puppy", cutout: "puppy_sitting", fallback: nil,
                                    period: 2.15, phase: 1.3, amplitude: 2.8, scale: 0.62, firstLevel: 1),
         // Pip joins in Level 2, when short i as in "sit" is taught.
-        "pip": StoryCharacterArt(id: "pip", name: "Pip", cutout: "pip_cutout", fallback: nil,
+        "pip": StoryCharacterArt(id: "pip", name: "Pip", cutout: "pip_waving_cutout", fallback: nil,
                                  period: 3.25, phase: 2.1, amplitude: 2.0, scale: 0.95, firstLevel: 2),
     ]
 

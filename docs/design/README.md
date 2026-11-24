@@ -3,6 +3,8 @@
 An original English phonics app for a 6-year-old Thai learner, built from `source/Iris-12-Week-Home-Phonics-Plan.md`. "Week" is now **Level**; each level has 4–6 **pages** that replace the Mon–Fri days. iPad landscape first, adaptable to iPhone.
 
 **Status: approved. Build 1 (Level 1, iPad) is in `PhonicsPond/`; see `PhonicsPond/README.md`.**
+
+**v1.1 (Storybook wireframe v2):** Home → Storybook / Phonics / Stickers, a 12-book shelf, a five-page Level 1 storybook ("Pat by the Pond"), page and level trophies, and background music. The `Version_1.1.zip` mockups were used as visual reference and the Transparent Asset Kit as art. Levels 2–12 are drafts (beats and target words only). See `PhonicsPond/README.md` › v1.1.
 Approved decisions: General American; tricky words a and is in Level 5; sound hunt and tissue game offline-only; Pat in Level 1, Pip from Level 2.
 Build 1 files: `level-1-audio-manifest.csv` (recording list), `level-1-asset-list.md` (artwork).
 

@@ -15,7 +15,14 @@ enum StickerKind: String, Codable, CaseIterable, Identifiable {
     case penguin, lilypad, star
 
     var id: String { rawValue }
-    var assetName: String { "sticker_\(rawValue)" }
+    /// Raw values stay as saved in earlier builds; the art comes from the v1.1 asset kit.
+    var assetName: String {
+        switch self {
+        case .penguin: return "sticker_pat"
+        case .lilypad: return "sticker_lily"
+        case .star: return "sticker_star"
+        }
+    }
     var label: String {
         switch self {
         case .penguin: return "penguin sticker"
@@ -98,6 +105,40 @@ struct AppSettings: Codable, Equatable {
     var thaiHelp = false
     var pronoun = "her"
     var pinnedPage: Int?
+    /// Background music (Grown-ups › Settings). On by default.
+    var musicOn = true
+
+    init() {}
+
+    /// Tolerant decoding: settings saved by earlier builds (without `musicOn`) still load.
+    init(from decoder: Decoder) throws {
+        let c = try decoder.container(keyedBy: CodingKeys.self)
+        chime = try c.decodeIfPresent(Bool.self, forKey: .chime) ?? true
+        thaiHelp = try c.decodeIfPresent(Bool.self, forKey: .thaiHelp) ?? false
+        pronoun = try c.decodeIfPresent(String.self, forKey: .pronoun) ?? "her"
+        pinnedPage = try c.decodeIfPresent(Int.self, forKey: .pinnedPage)
+        musicOn = try c.decodeIfPresent(Bool.self, forKey: .musicOn) ?? true
+    }
+}
+
+/// Saved state of one storybook. Page and level trophies are sets, so a reread never adds a duplicate.
+struct BookProgress: Codable, Equatable {
+    var lastPage = 0
+    var completedPages: Set<String> = []
+    var pageTrophies: Set<String> = []
+    var levelTrophy = false
+    var completedAt: Date?
+
+    init() {}
+
+    init(from decoder: Decoder) throws {
+        let c = try decoder.container(keyedBy: CodingKeys.self)
+        lastPage = try c.decodeIfPresent(Int.self, forKey: .lastPage) ?? 0
+        completedPages = try c.decodeIfPresent(Set<String>.self, forKey: .completedPages) ?? []
+        pageTrophies = try c.decodeIfPresent(Set<String>.self, forKey: .pageTrophies) ?? []
+        levelTrophy = try c.decodeIfPresent(Bool.self, forKey: .levelTrophy) ?? false
+        completedAt = try c.decodeIfPresent(Date.self, forKey: .completedAt)
+    }
 }
 
 /// Everything saved on the device. Local only: no account, no network.
@@ -112,6 +153,32 @@ struct ProgressData: Codable, Equatable {
     /// Touch results the app can check, e.g. "trace.s" or "lastSound.correct".
     var appSeen: [String: Int] = [:]
     var settings = AppSettings()
+    /// Storybook progress by book ID (e.g. "book.l1").
+    var books: [String: BookProgress] = [:]
+    /// The book last opened, for "Continue story".
+    var lastBook: String?
+    /// Sticker practice: items already drawn from each pool, so nothing repeats until the pool is used up.
+    var stickerDrawn: [String: [String]] = [:]
+
+    init() {}
+
+    /// Tolerant decoding: progress saved by earlier builds (no storybook fields yet) still loads,
+    /// including stickers, positions and grown-up observations.
+    init(from decoder: Decoder) throws {
+        let c = try decoder.container(keyedBy: CodingKeys.self)
+        schema = try c.decodeIfPresent(Int.self, forKey: .schema) ?? 1
+        level = try c.decodeIfPresent(Int.self, forKey: .level) ?? 1
+        lastPage = try c.decodeIfPresent(Int.self, forKey: .lastPage) ?? 1
+        hasLaunchedBefore = try c.decodeIfPresent(Bool.self, forKey: .hasLaunchedBefore) ?? false
+        pages = try c.decodeIfPresent([String: PageProgress].self, forKey: .pages) ?? [:]
+        stickers = try c.decodeIfPresent([EarnedSticker].self, forKey: .stickers) ?? []
+        observations = try c.decodeIfPresent([LearningObservation].self, forKey: .observations) ?? []
+        appSeen = try c.decodeIfPresent([String: Int].self, forKey: .appSeen) ?? [:]
+        settings = try c.decodeIfPresent(AppSettings.self, forKey: .settings) ?? AppSettings()
+        books = try c.decodeIfPresent([String: BookProgress].self, forKey: .books) ?? [:]
+        lastBook = try c.decodeIfPresent(String.self, forKey: .lastBook)
+        stickerDrawn = try c.decodeIfPresent([String: [String]].self, forKey: .stickerDrawn) ?? [:]
+    }
 
     static func key(level: Int, page: Int) -> String { "\(level)-\(page)" }
 

@@ -1,0 +1,712 @@
+{
+ "version": 1,
+ "levels": [
+  {
+   "level": 1,
+   "tiles": [
+    {
+     "id": "l1.s.s",
+     "grapheme": "s",
+     "phoneme": "s",
+     "label": "s as in sat",
+     "audio": "phoneme_s",
+     "examples": [
+      "sat"
+     ]
+    },
+    {
+     "id": "l1.a.æ",
+     "grapheme": "a",
+     "phoneme": "æ",
+     "label": "short a as in sat",
+     "audio": "phoneme_short_a",
+     "examples": [
+      "at",
+      "sat"
+     ]
+    },
+    {
+     "id": "l1.t.t",
+     "grapheme": "t",
+     "phoneme": "t",
+     "label": "t as in sat",
+     "audio": "phoneme_t",
+     "examples": [
+      "tap",
+      "at"
+     ]
+    },
+    {
+     "id": "l1.p.p",
+     "grapheme": "p",
+     "phoneme": "p",
+     "label": "p as in pat",
+     "audio": "phoneme_p",
+     "examples": [
+      "pat",
+      "tap"
+     ]
+    }
+   ]
+  },
+  {
+   "level": 2,
+   "tiles": [
+    {
+     "id": "l2.i.ɪ",
+     "grapheme": "i",
+     "phoneme": "ɪ",
+     "label": "short i as in sit",
+     "audio": "phoneme_i",
+     "examples": [
+      "pin",
+      "tin",
+      "sit"
+     ]
+    },
+    {
+     "id": "l2.n.n",
+     "grapheme": "n",
+     "phoneme": "n",
+     "label": "",
+     "audio": "phoneme_n",
+     "examples": [
+      "pin",
+      "tin",
+      "man"
+     ]
+    },
+    {
+     "id": "l2.m.m",
+     "grapheme": "m",
+     "phoneme": "m",
+     "label": "",
+     "audio": "phoneme_m",
+     "examples": [
+      "man",
+      "mad"
+     ]
+    },
+    {
+     "id": "l2.d.d",
+     "grapheme": "d",
+     "phoneme": "d",
+     "label": "",
+     "audio": "phoneme_d",
+     "examples": [
+      "mad",
+      "dad",
+      "dip"
+     ]
+    }
+   ]
+  },
+  {
+   "level": 3,
+   "tiles": [
+    {
+     "id": "l3.g.g",
+     "grapheme": "g",
+     "phoneme": "g",
+     "label": "",
+     "audio": "phoneme_g",
+     "examples": [
+      "dog",
+      "got"
+     ]
+    },
+    {
+     "id": "l3.o.ɑ",
+     "grapheme": "o",
+     "phoneme": "ɑ",
+     "label": "short o as in hot (GA)",
+     "audio": "phoneme_o",
+     "examples": [
+      "dog",
+      "cot",
+      "got"
+     ]
+    },
+    {
+     "id": "l3.c.k",
+     "grapheme": "c",
+     "phoneme": "k",
+     "label": "",
+     "audio": "phoneme_c",
+     "examples": [
+      "cot",
+      "cap",
+      "can"
+     ]
+    },
+    {
+     "id": "l3.k.k",
+     "grapheme": "k",
+     "phoneme": "k",
+     "label": "",
+     "audio": "phoneme_k",
+     "examples": [
+      "kit"
+     ]
+    }
+   ]
+  },
+  {
+   "level": 4,
+   "tiles": [
+    {
+     "id": "l4.ck.k",
+     "grapheme": "ck",
+     "phoneme": "k",
+     "label": "",
+     "audio": "phoneme_ck",
+     "examples": [
+      "sock",
+      "duck",
+      "kick"
+     ]
+    },
+    {
+     "id": "l4.e.ɛ",
+     "grapheme": "e",
+     "phoneme": "ɛ",
+     "label": "short e as in bed",
+     "audio": "phoneme_e",
+     "examples": [
+      "peg",
+      "pen",
+      "red"
+     ]
+    },
+    {
+     "id": "l4.u.ʌ",
+     "grapheme": "u",
+     "phoneme": "ʌ",
+     "label": "short u as in cup",
+     "audio": "phoneme_u",
+     "examples": [
+      "duck",
+      "rug",
+      "sun"
+     ]
+    },
+    {
+     "id": "l4.r.r",
+     "grapheme": "r",
+     "phoneme": "r",
+     "label": "",
+     "audio": "phoneme_r",
+     "examples": [
+      "red",
+      "rug",
+      "run"
+     ]
+    }
+   ]
+  },
+  {
+   "level": 5,
+   "tiles": [
+    {
+     "id": "l5.h.h",
+     "grapheme": "h",
+     "phoneme": "h",
+     "label": "",
+     "audio": "phoneme_h",
+     "examples": [
+      "hat",
+      "hill"
+     ]
+    },
+    {
+     "id": "l5.b.b",
+     "grapheme": "b",
+     "phoneme": "b",
+     "label": "",
+     "audio": "phoneme_b",
+     "examples": [
+      "big",
+      "bus",
+      "bell"
+     ]
+    },
+    {
+     "id": "l5.f.f",
+     "grapheme": "f",
+     "phoneme": "f",
+     "label": "",
+     "audio": "phoneme_f",
+     "examples": [
+      "fan",
+      "fun"
+     ]
+    },
+    {
+     "id": "l5.ff.f",
+     "grapheme": "ff",
+     "phoneme": "f",
+     "label": "",
+     "audio": "phoneme_ff",
+     "examples": [
+      "off"
+     ]
+    },
+    {
+     "id": "l5.l.l",
+     "grapheme": "l",
+     "phoneme": "l",
+     "label": "",
+     "audio": "phoneme_l",
+     "examples": [
+      "leg"
+     ]
+    },
+    {
+     "id": "l5.ll.l",
+     "grapheme": "ll",
+     "phoneme": "l",
+     "label": "",
+     "audio": "phoneme_ll",
+     "examples": [
+      "hill",
+      "bell",
+      "doll"
+     ]
+    },
+    {
+     "id": "l5.ss.s",
+     "grapheme": "ss",
+     "phoneme": "s",
+     "label": "",
+     "audio": "phoneme_ss",
+     "examples": [
+      "kiss"
+     ]
+    }
+   ]
+  },
+  {
+   "level": 6,
+   "tiles": [
+    {
+     "id": "l6.a.æ",
+     "grapheme": "a",
+     "phoneme": "æ",
+     "label": "review",
+     "audio": "phoneme_short_a",
+     "examples": [
+      "hat",
+      "fan",
+      "bag"
+     ]
+    },
+    {
+     "id": "l6.e.ɛ",
+     "grapheme": "e",
+     "phoneme": "ɛ",
+     "label": "review",
+     "audio": "phoneme_e",
+     "examples": [
+      "pen",
+      "red",
+      "leg"
+     ]
+    },
+    {
+     "id": "l6.i.ɪ",
+     "grapheme": "i",
+     "phoneme": "ɪ",
+     "label": "review",
+     "audio": "phoneme_i",
+     "examples": [
+      "pit",
+      "kit",
+      "big"
+     ]
+    },
+    {
+     "id": "l6.o.ɑ",
+     "grapheme": "o",
+     "phoneme": "ɑ",
+     "label": "review",
+     "audio": "phoneme_o",
+     "examples": [
+      "top",
+      "off",
+      "hot"
+     ]
+    },
+    {
+     "id": "l6.u.ʌ",
+     "grapheme": "u",
+     "phoneme": "ʌ",
+     "label": "review",
+     "audio": "phoneme_u",
+     "examples": [
+      "fun",
+      "tub",
+      "bug"
+     ]
+    }
+   ]
+  },
+  {
+   "level": 7,
+   "tiles": [
+    {
+     "id": "l7.j.dʒ",
+     "grapheme": "j",
+     "phoneme": "dʒ",
+     "label": "",
+     "audio": "phoneme_j",
+     "examples": [
+      "jam",
+      "jet"
+     ]
+    },
+    {
+     "id": "l7.v.v",
+     "grapheme": "v",
+     "phoneme": "v",
+     "label": "",
+     "audio": "phoneme_v",
+     "examples": [
+      "van",
+      "vet"
+     ]
+    },
+    {
+     "id": "l7.w.w",
+     "grapheme": "w",
+     "phoneme": "w",
+     "label": "",
+     "audio": "phoneme_w",
+     "examples": [
+      "web",
+      "wet"
+     ]
+    },
+    {
+     "id": "l7.x.ks",
+     "grapheme": "x",
+     "phoneme": "ks",
+     "label": "",
+     "audio": "phoneme_x",
+     "examples": [
+      "box",
+      "fox",
+      "six"
+     ]
+    }
+   ]
+  },
+  {
+   "level": 8,
+   "tiles": [
+    {
+     "id": "l8.y.j",
+     "grapheme": "y",
+     "phoneme": "j",
+     "label": "",
+     "audio": "phoneme_y",
+     "examples": [
+      "yes",
+      "yet"
+     ]
+    },
+    {
+     "id": "l8.z.z",
+     "grapheme": "z",
+     "phoneme": "z",
+     "label": "",
+     "audio": "phoneme_z",
+     "examples": [
+      "zip",
+      "zap",
+      "quiz"
+     ]
+    },
+    {
+     "id": "l8.zz.z",
+     "grapheme": "zz",
+     "phoneme": "z",
+     "label": "",
+     "audio": "phoneme_zz",
+     "examples": [
+      "buzz",
+      "fizz"
+     ]
+    },
+    {
+     "id": "l8.qu.kw",
+     "grapheme": "qu",
+     "phoneme": "kw",
+     "label": "",
+     "audio": "phoneme_qu",
+     "examples": [
+      "quiz",
+      "quick",
+      "quit"
+     ]
+    }
+   ]
+  },
+  {
+   "level": 9,
+   "tiles": [
+    {
+     "id": "l9.sh.ʃ",
+     "grapheme": "sh",
+     "phoneme": "ʃ",
+     "label": "",
+     "audio": "phoneme_sh",
+     "examples": [
+      "ship",
+      "shop",
+      "fish"
+     ]
+    },
+    {
+     "id": "l9.ch.tʃ",
+     "grapheme": "ch",
+     "phoneme": "tʃ",
+     "label": "",
+     "audio": "phoneme_ch",
+     "examples": [
+      "chip",
+      "chin",
+      "much"
+     ]
+    },
+    {
+     "id": "l9.th.θ",
+     "grapheme": "th",
+     "phoneme": "θ",
+     "label": "th as in thin",
+     "audio": "phoneme_th",
+     "examples": [
+      "thin",
+      "bath",
+      "moth"
+     ]
+    },
+    {
+     "id": "l9.th.ð",
+     "grapheme": "th",
+     "phoneme": "ð",
+     "label": "th as in this",
+     "audio": "phoneme_th",
+     "examples": [
+      "this"
+     ]
+    }
+   ]
+  },
+  {
+   "level": 10,
+   "tiles": [
+    {
+     "id": "l10.ng.ŋ",
+     "grapheme": "ng",
+     "phoneme": "ŋ",
+     "label": "",
+     "audio": "phoneme_ng",
+     "examples": [
+      "ring",
+      "sing",
+      "king"
+     ]
+    },
+    {
+     "id": "l10.nk.ŋk",
+     "grapheme": "nk",
+     "phoneme": "ŋk",
+     "label": "",
+     "audio": "phoneme_nk",
+     "examples": [
+      "pink",
+      "bank",
+      "sink"
+     ]
+    },
+    {
+     "id": "l10.s.z",
+     "grapheme": "s",
+     "phoneme": "z",
+     "label": "plural s as in dogs",
+     "audio": "phoneme_s",
+     "examples": [
+      "dogs",
+      "hens",
+      "pens"
+     ]
+    }
+   ]
+  },
+  {
+   "level": 11,
+   "tiles": [
+    {
+     "id": "l11.blend.st",
+     "grapheme": "st",
+     "phoneme": "",
+     "label": "blend",
+     "audio": "blend_st",
+     "examples": [
+      "stop"
+     ]
+    },
+    {
+     "id": "l11.blend.sp",
+     "grapheme": "sp",
+     "phoneme": "",
+     "label": "blend",
+     "audio": "blend_sp",
+     "examples": [
+      "spot"
+     ]
+    },
+    {
+     "id": "l11.blend.sn",
+     "grapheme": "sn",
+     "phoneme": "",
+     "label": "blend",
+     "audio": "blend_sn",
+     "examples": [
+      "snap"
+     ]
+    },
+    {
+     "id": "l11.blend.sl",
+     "grapheme": "sl",
+     "phoneme": "",
+     "label": "blend",
+     "audio": "blend_sl",
+     "examples": [
+      "slip"
+     ]
+    },
+    {
+     "id": "l11.blend.fl",
+     "grapheme": "fl",
+     "phoneme": "",
+     "label": "blend",
+     "audio": "blend_fl",
+     "examples": [
+      "flag"
+     ]
+    },
+    {
+     "id": "l11.blend.pl",
+     "grapheme": "pl",
+     "phoneme": "",
+     "label": "blend",
+     "audio": "blend_pl",
+     "examples": [
+      "plum"
+     ]
+    },
+    {
+     "id": "l11.blend.cl",
+     "grapheme": "cl",
+     "phoneme": "",
+     "label": "blend",
+     "audio": "blend_cl",
+     "examples": [
+      "clap"
+     ]
+    },
+    {
+     "id": "l11.blend.fr",
+     "grapheme": "fr",
+     "phoneme": "",
+     "label": "blend",
+     "audio": "blend_fr",
+     "examples": [
+      "frog",
+      "frogs"
+     ]
+    },
+    {
+     "id": "l11.blend.tr",
+     "grapheme": "tr",
+     "phoneme": "",
+     "label": "blend",
+     "audio": "blend_tr",
+     "examples": [
+      "trip"
+     ]
+    },
+    {
+     "id": "l11.blend.gr",
+     "grapheme": "gr",
+     "phoneme": "",
+     "label": "blend",
+     "audio": "blend_gr",
+     "examples": [
+      "grin"
+     ]
+    }
+   ]
+  },
+  {
+   "level": 12,
+   "tiles": [
+    {
+     "id": "l12.blend.st",
+     "grapheme": "-st",
+     "phoneme": "",
+     "label": "blend",
+     "audio": "blend_st",
+     "examples": [
+      "fast",
+      "best",
+      "nest"
+     ]
+    },
+    {
+     "id": "l12.blend.nd",
+     "grapheme": "-nd",
+     "phoneme": "",
+     "label": "blend",
+     "audio": "blend_nd",
+     "examples": [
+      "hand",
+      "sand"
+     ]
+    },
+    {
+     "id": "l12.blend.mp",
+     "grapheme": "-mp",
+     "phoneme": "",
+     "label": "blend",
+     "audio": "blend_mp",
+     "examples": [
+      "jump",
+      "lamp"
+     ]
+    },
+    {
+     "id": "l12.blend.nt",
+     "grapheme": "-nt",
+     "phoneme": "",
+     "label": "blend",
+     "audio": "blend_nt",
+     "examples": [
+      "tent"
+     ]
+    },
+    {
+     "id": "l12.blend.lk",
+     "grapheme": "-lk",
+     "phoneme": "",
+     "label": "blend",
+     "audio": "blend_lk",
+     "examples": [
+      "milk"
+     ]
+    }
+   ]
+  }
+ ]
+}

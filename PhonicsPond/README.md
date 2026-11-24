@@ -1,7 +1,62 @@
 # Phonics Pond (iPad, SwiftUI)
 
-Level 1 (s, a, t, p) of an original phonics app for a 6-year-old Thai learner of English.
-iPad landscape, laid out on an 11-inch canvas (1194 × 834 pt) and scaled to other iPads.
+An original phonics app for a 6-year-old Thai learner of English. iPad landscape, laid out on an
+11-inch canvas (1194 × 834 pt) and scaled to other iPads.
+
+## v1.1: Storybook, Phonics, Stickers
+
+- **Home** has three large cards (Storybook, Phonics, Stickers) with Pat by the pond, plus a hold-to-open
+  **Grown-ups** lock. Cards come from one array in `UI/V11/HomeView.swift`, and the row below is kept clear
+  for future activities.
+- **Storybook shelf**: 12 illustrated covers on two screens of six. A cover is open, finished (big trophy),
+  locked, or coming soon. **Continue story** opens the saved page.
+- **Story pages** work for books of any length (Level 1 has 5). Each page shows:
+  - Back to books, "Level 1 · Page X of Y", and Read to me.
+  - The layered scene, the line, and one to three word chips.
+  - Hear sounds (where set), and previous/next. The last page shows Finish story.
+- **Trophies**: the first finish of a page earns a small trophy, and finishing every required page earns
+  the level's big trophy. Both are saved in one write with the unlock. Rereading never awards a duplicate.
+- **Phonics**: a sound picker for unlocked levels, then a sound detail screen with the mouth and gesture
+  art and two or three examples checked against the curriculum.
+- **Stickers**: random word or sound from completed levels only, with no repeats until the pool is used up.
+  There's an optional single-level filter and My trophies. With nothing finished, it says
+  "Finish Level 1 to start sticker practice."
+- **Levels**: only Level 1 ("Pat by the Pond") is `ready`. Levels 2–12 are `draft`: they have titles,
+  covers, story beats and target words, but no lines or scenes, so they stay "coming soon".
+  To finish a level:
+  1. Write its lines and layers in `tools/build_storybooks.py`.
+  2. Set it to `ready`.
+  3. Run `tools/build_storybooks.py` and `tools/validate_content.py`.
+- The old five-stone Level 1 lessons are retired from navigation. Their code (`LessonView`,
+  `UI/Activities`, `LegacyLessonHomeView`) is kept.
+
+### Background music
+
+- **The track:** `Resources/Audio/music_pond_loop.wav` is one original instrumental loop, generated with
+  ElevenLabs Music in instrumental mode.
+- **How the loop was made:**
+  - Cut at 42.0 s, before the source fade-out.
+  - A 2 s equal-power crossfade into the head.
+  - −23 LUFS.
+  - Bundled as 16-bit WAV, because an IMA4 CAF clicked at the seam.
+  - Rebuild it with `tools/make_music_loop.py`.
+- **Status:** the loop is auto-checked but still needs your listening sign-off. The seam preview is
+  `docs/audio-review/music_loop_seam_preview.wav`.
+- **Playback (`Audio/MusicPlayer.swift`):**
+  - One player for the whole app.
+  - Low under story and phonics screens (0.16), a little louder elsewhere (0.28).
+  - Ducks to 0.05 while any teaching clip plays.
+  - Pauses when the app leaves the foreground, and resumes only if **Grown-ups → Settings → Background
+    music** is on. That setting is saved.
+
+### Voice on hold
+
+- **Waiting for recordings:** story narration (`story_l1_p1…p5`), phonemes and blends.
+- **Controls without a recording** are disabled, with a "coming later" caption and the accessibility label
+  "… Audio coming later".
+- **Pages never need audio** to be read or finished.
+- **The Ava word clips still play.**
+- **No text-to-speech or voice selection** is in this update.
 
 ## Open, run, test
 
@@ -12,10 +67,20 @@ Requirements: Xcode 16 or later (the project uses synchronized folders), iOS 17 
 3. Set your team under Signing & Capabilities if you run on a device (bundle ID `app.phonicspond.PhonicsPond`).
 4. Run (⌘R). Test (⌘U) runs the unit tests and the UI flow tests.
 
+Manual check on the simulator:
+1. Home → each of the three cards.
+2. Storybook: both shelf screens.
+3. Read all five Level 1 pages; each first finish shows a small trophy, and Finish story shows the big trophy.
+4. Quit and relaunch: Continue story reopens the saved page.
+5. Reread: no new trophy.
+6. Stickers: random word and sound, then the Level 1 filter.
+7. Music keeps looping across screens and stays lower on story pages.
+8. Grown-ups → Settings → Background music Off survives a relaunch.
+
 From the command line:
 
 ```bash
-xcodebuild test -project PhonicsPond/PhonicsPond.xcodeproj -scheme PhonicsPond -destination 'platform=iOS Simulator,name=iPad Pro 11-inch (M4)'
+xcodebuild test -project PhonicsPond/PhonicsPond.xcodeproj -scheme PhonicsPond -destination 'platform=iOS Simulator,name=iPad Pro 13-inch (M5)'
 ```
 
 Checks that run without Xcode (content, audio list, Swift syntax):
@@ -30,7 +95,7 @@ pip install tree-sitter tree-sitter-language-pack && python3 tools/check_swift_s
 
 ## Audio status (Level 1)
 
-34 clips are bundled in `Resources/Audio/`. They use one General American ElevenLabs voice (Ava – Clear Warm Educator) and include every instruction and cue line plus the 7 whole words. Each passed automated checks: the line matches the screen text, /æ/ formants, the final consonant is released, and nothing is clipped. **No one has listened to them yet.** Their status is "Ready – auto-checked; needs your listening sign-off".
+34 voice clips (plus the music loop) are bundled in `Resources/Audio/`. They use one General American ElevenLabs voice (Ava – Clear Warm Educator) and include every instruction and cue line plus the 7 whole words. Each passed automated checks: the line matches the screen text, /æ/ formants, the final consonant is released, and nothing is clipped. **No one has listened to them yet.** Their status is "Ready – auto-checked; needs your listening sign-off".
 
 These 6 clips are **Needs human recording**: `phoneme_s`, `phoneme_short_a`, `phoneme_t`, `phoneme_p`, `blend_s_a_t`, `blend_p_a_t`. The ElevenLabs takes added vowels or letter names, so they're kept out of the app. They're in `docs/audio-review/rejected/` for reference. Until the recordings arrive, "hear the sounds" and letter taps show the debug "audio pending" banner.
 
@@ -61,16 +126,17 @@ Anything missing shows a marked "art needed" placeholder with the asset name.
 | Folder | Contents |
 |---|---|
 | `PhonicsPond/App` | App entry, `AppModel` (routes, content, store, audio) |
-| `PhonicsPond/Core` | Pure logic: curriculum + eligibility validator, lesson plan, progress, Word Builder model, tracing paths, audio IDs |
-| `PhonicsPond/Audio` | `AudioPlayer`: one speech channel, stop-before-play, interruptions, missing-file handling |
-| `PhonicsPond/UI` | Theme, components, Home, lesson container + stone picker, Parent Area |
+| `PhonicsPond/Core` | Pure logic: curriculum + eligibility validator, storybooks + trophies + sticker pools (`Storybook.swift`), progress, lesson plan, Word Builder, tracing, audio IDs |
+| `PhonicsPond/Audio` | `AudioPlayer` (one speech channel, stop-before-play, interruptions, missing files); `MusicPlayer` (looping background music, ducking) |
+| `PhonicsPond/UI/V11` | v1.1 Home, shelf, story pages, trophy overlays and shelf, Phonics, Stickers, shared kit components |
+| `PhonicsPond/UI` | Theme, components, root routing, Parent Area, retired lesson screens |
 | `PhonicsPond/UI/Activities` | Picture tap, sound cards, review, offline card, oral blend, trace, Word Builder, last sound, read words, grown-up check, finish |
-| `PhonicsPond/Resources/Content` | `curriculum.json` (Levels 1–12), `lesson_level1.json` (Level 1 pages) |
-| `PhonicsPondTests` | Content eligibility, Word Builder, progress/resume, tracing, audio player |
-| `PhonicsPondUITests` | Home → sticker, grown-up hold, sat → pat + resume, last sound, stop and resume |
+| `PhonicsPond/Resources/Content` | `curriculum.json` (Levels 1–12), `storybooks.json` (12 books), `phonics_examples.json`, `lesson_level1.json` (retired lessons) |
+| `PhonicsPondTests` | Content eligibility, storybooks, trophies, unlocks, sticker pools, old-save decoding, music, Word Builder, tracing, audio player |
+| `PhonicsPondUITests` | Home destinations, 12 covers, read + resume, trophies once, missing audio, sticker filter, music toggle, Reduce Motion |
 | `tools/` | Generators for the curriculum JSON, recording list and Xcode project; validators |
 
-`curriculum.json` is generated by `tools/build_curriculum.py`; the Xcode project by `tools/gen_xcodeproj.py`;
+`curriculum.json` is generated by `tools/build_curriculum.py`; `storybooks.json` and `phonics_examples.json` by `tools/build_storybooks.py`; the Xcode project by `tools/gen_xcodeproj.py`;
 the recording list by `tools/build_audio_manifest.py`.
 
 ## Motion and feedback

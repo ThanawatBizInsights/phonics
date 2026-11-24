@@ -83,15 +83,19 @@ enum ArtworkNames {
     static let patSittingLog = "pat_sitting_log"
 
     /// Story pictures that are transparent cut-outs of characters (drawn as wobbling layers).
-    static let characterCutouts: Set<String> = ["pat_waving_cutout", "pat_patting", "pat_tapping", "puppy_cutout", "pip_cutout"]
+    static let characterCutouts: Set<String> = ["pat_waving_cutout", "pat_patting", "pat_tapping", "puppy_sitting", "pip_waving_cutout",
+                                                "pat_sitting_on_log", "pat_tapping_log", "pat_and_puppy_on_log", "duck_sitting"]
 
     static let requiredAssets: [String] = [
         pondBackground, patWavingCutout, patWaving, patSittingLog, "pat_patting", "pat_tapping",
         "object_sock", "object_pen", "object_pot",
         "mouth_s", "action_s", "mouth_a", "action_a",
         "mouth_t", "action_t", "mouth_p", "action_p",
-        "sticker_penguin", "sticker_lilypad", "sticker_star",
-        "puppy_cutout"
+        "sticker_pat", "sticker_lily", "sticker_star", "puppy_sitting",
+        "pat_sitting_on_log", "pat_tapping_log", "pat_and_puppy_on_log", "pip_waving_cutout",
+        "trophy_page", "trophy_level", "home_storybook", "home_phonics", "home_stickers", "home_grownups",
+        "book_cover_01", "book_cover_02", "book_cover_03", "book_cover_04", "book_cover_05", "book_cover_06",
+        "book_cover_07", "book_cover_08", "book_cover_09", "book_cover_10", "book_cover_11", "book_cover_12"
     ]
 
     static var missing: [String] { requiredAssets.filter { UIImage(named: $0) == nil } }

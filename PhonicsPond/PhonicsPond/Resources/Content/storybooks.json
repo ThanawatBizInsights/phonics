@@ -1,0 +1,1046 @@
+{
+ "version": 1,
+ "books": [
+  {
+   "id": "book.l1",
+   "level": 1,
+   "title": "Pat by the Pond",
+   "status": "ready",
+   "cover": "book_cover_01",
+   "cast": [
+    "pat",
+    "puppy"
+   ],
+   "pages": [
+    {
+     "id": "l1.p1",
+     "mode": "tryReading",
+     "line": "Pat sat.",
+     "chips": [
+      "sat"
+     ],
+     "beat": "Pat sits on a log and looks across the pond.",
+     "layers": [
+      {
+       "asset": "pat_sitting_on_log",
+       "x": 0.5,
+       "width": 0.56,
+       "wobble": true
+      }
+     ],
+     "narration": "story_l1_p1",
+     "hearSounds": "sat",
+     "required": true,
+     "sunset": false
+    },
+    {
+     "id": "l1.p2",
+     "mode": "tryReading",
+     "line": "Tap, tap!",
+     "chips": [
+      "tap"
+     ],
+     "beat": "Pat taps the log and listens.",
+     "layers": [
+      {
+       "asset": "pat_tapping_log",
+       "x": 0.5,
+       "width": 0.56,
+       "wobble": true
+      }
+     ],
+     "narration": "story_l1_p2",
+     "hearSounds": null,
+     "required": true,
+     "sunset": false
+    },
+    {
+     "id": "l1.p3",
+     "mode": "readTogether",
+     "line": "Pat gives the puppy a pat.",
+     "chips": [
+      "pat"
+     ],
+     "beat": "A golden puppy comes over. Pat gently pats its head.",
+     "layers": [
+      {
+       "asset": "pat_patting",
+       "x": 0.5,
+       "width": 0.58,
+       "wobble": true
+      }
+     ],
+     "narration": "story_l1_p3",
+     "hearSounds": "pat",
+     "required": true,
+     "sunset": false
+    },
+    {
+     "id": "l1.p4",
+     "mode": "readTogether",
+     "line": "Pat taps at the edge of the log.",
+     "chips": [
+      "at",
+      "tap"
+     ],
+     "beat": "Pat taps the log again and looks toward the water.",
+     "layers": [
+      {
+       "asset": "pat_tapping_log",
+       "x": 0.42,
+       "width": 0.52,
+       "wobble": true
+      },
+      {
+       "asset": "puppy_sitting",
+       "x": 0.8,
+       "width": 0.22,
+       "wobble": true
+      }
+     ],
+     "narration": "story_l1_p4",
+     "hearSounds": null,
+     "required": true,
+     "sunset": false
+    },
+    {
+     "id": "l1.p5",
+     "mode": "readTogether",
+     "line": "Pat sat. The puppy stayed beside him.",
+     "chips": [
+      "sat",
+      "pat",
+      "tap"
+     ],
+     "beat": "Pat sits beside the puppy in the sunset.",
+     "layers": [
+      {
+       "asset": "pat_and_puppy_on_log",
+       "x": 0.5,
+       "width": 0.58,
+       "wobble": true
+      }
+     ],
+     "narration": "story_l1_p5",
+     "hearSounds": null,
+     "sunset": true,
+     "required": true
+    }
+   ]
+  },
+  {
+   "id": "book.l2",
+   "level": 2,
+   "title": "Pip Comes to Play",
+   "status": "draft",
+   "cover": "book_cover_02",
+   "cast": [
+    "pat",
+    "pip"
+   ],
+   "pages": [
+    {
+     "id": "l2.p1",
+     "mode": "readTogether",
+     "line": null,
+     "chips": [
+      "sit"
+     ],
+     "beat": "Pip arrives.",
+     "layers": [],
+     "narration": "story_l2_p1",
+     "hearSounds": null,
+     "required": true,
+     "sunset": false
+    },
+    {
+     "id": "l2.p2",
+     "mode": "readTogether",
+     "line": null,
+     "chips": [
+      "pin"
+     ],
+     "beat": "Sits with Pat.",
+     "layers": [],
+     "narration": "story_l2_p2",
+     "hearSounds": null,
+     "required": true,
+     "sunset": false
+    },
+    {
+     "id": "l2.p3",
+     "mode": "readTogether",
+     "line": null,
+     "chips": [
+      "tin"
+     ],
+     "beat": "Finds a tin.",
+     "layers": [],
+     "narration": "story_l2_p3",
+     "hearSounds": null,
+     "required": true,
+     "sunset": false
+    },
+    {
+     "id": "l2.p4",
+     "mode": "readTogether",
+     "line": null,
+     "chips": [
+      "nap"
+     ],
+     "beat": "Settles for a nap.",
+     "layers": [],
+     "narration": "story_l2_p4",
+     "hearSounds": null,
+     "required": true,
+     "sunset": false
+    },
+    {
+     "id": "l2.p5",
+     "mode": "readTogether",
+     "line": null,
+     "chips": [
+      "mad"
+     ],
+     "beat": "Wakes up.",
+     "layers": [],
+     "narration": "story_l2_p5",
+     "hearSounds": null,
+     "required": true,
+     "sunset": false
+    }
+   ]
+  },
+  {
+   "id": "book.l3",
+   "level": 3,
+   "title": "The Pond Map",
+   "status": "draft",
+   "cover": "book_cover_03",
+   "cast": [
+    "pat",
+    "pip"
+   ],
+   "pages": [
+    {
+     "id": "l3.p1",
+     "mode": "readTogether",
+     "line": null,
+     "chips": [
+      "map"
+     ],
+     "beat": "Pat and Pip find a map.",
+     "layers": [],
+     "narration": "story_l3_p1",
+     "hearSounds": null,
+     "required": true,
+     "sunset": false
+    },
+    {
+     "id": "l3.p2",
+     "mode": "readTogether",
+     "line": null,
+     "chips": [
+      "cap"
+     ],
+     "beat": "Pick up a cap.",
+     "layers": [],
+     "narration": "story_l3_p2",
+     "hearSounds": null,
+     "required": true,
+     "sunset": false
+    },
+    {
+     "id": "l3.p3",
+     "mode": "readTogether",
+     "line": null,
+     "chips": [
+      "mat"
+     ],
+     "beat": "Cross a mat.",
+     "layers": [],
+     "narration": "story_l3_p3",
+     "hearSounds": null,
+     "required": true,
+     "sunset": false
+    },
+    {
+     "id": "l3.p4",
+     "mode": "readTogether",
+     "line": null,
+     "chips": [
+      "pot"
+     ],
+     "beat": "Find a pot.",
+     "layers": [],
+     "narration": "story_l3_p4",
+     "hearSounds": null,
+     "required": true,
+     "sunset": false
+    },
+    {
+     "id": "l3.p5",
+     "mode": "readTogether",
+     "line": null,
+     "chips": [
+      "dog"
+     ],
+     "beat": "Spot a dog.",
+     "layers": [],
+     "narration": "story_l3_p5",
+     "hearSounds": null,
+     "required": true,
+     "sunset": false
+    }
+   ]
+  },
+  {
+   "id": "book.l4",
+   "level": 4,
+   "title": "Duck Day",
+   "status": "draft",
+   "cover": "book_cover_04",
+   "cast": [
+    "pat",
+    "pip"
+   ],
+   "pages": [
+    {
+     "id": "l4.p1",
+     "mode": "readTogether",
+     "line": null,
+     "chips": [
+      "duck"
+     ],
+     "beat": "They spot a duck.",
+     "layers": [],
+     "narration": "story_l4_p1",
+     "hearSounds": null,
+     "required": true,
+     "sunset": false
+    },
+    {
+     "id": "l4.p2",
+     "mode": "readTogether",
+     "line": null,
+     "chips": [
+      "sock"
+     ],
+     "beat": "Find a sock.",
+     "layers": [],
+     "narration": "story_l4_p2",
+     "hearSounds": null,
+     "required": true,
+     "sunset": false
+    },
+    {
+     "id": "l4.p3",
+     "mode": "readTogether",
+     "line": null,
+     "chips": [
+      "red"
+     ],
+     "beat": "Cross to a red peg.",
+     "layers": [],
+     "narration": "story_l4_p3",
+     "hearSounds": null,
+     "required": true,
+     "sunset": false
+    },
+    {
+     "id": "l4.p4",
+     "mode": "readTogether",
+     "line": null,
+     "chips": [
+      "peg"
+     ],
+     "beat": "Bring a cup.",
+     "layers": [],
+     "narration": "story_l4_p4",
+     "hearSounds": null,
+     "required": true,
+     "sunset": false
+    },
+    {
+     "id": "l4.p5",
+     "mode": "readTogether",
+     "line": null,
+     "chips": [
+      "cup"
+     ],
+     "beat": "Watch the duck rest.",
+     "layers": [],
+     "narration": "story_l4_p5",
+     "hearSounds": null,
+     "required": true,
+     "sunset": false
+    }
+   ]
+  },
+  {
+   "id": "book.l5",
+   "level": 5,
+   "title": "Fan and Tub",
+   "status": "draft",
+   "cover": "book_cover_05",
+   "cast": [
+    "pat",
+    "pip"
+   ],
+   "pages": [
+    {
+     "id": "l5.p1",
+     "mode": "readTogether",
+     "line": null,
+     "chips": [
+      "fan"
+     ],
+     "beat": "Pip finds a fan.",
+     "layers": [],
+     "narration": "story_l5_p1",
+     "hearSounds": null,
+     "required": true,
+     "sunset": false
+    },
+    {
+     "id": "l5.p2",
+     "mode": "readTogether",
+     "line": null,
+     "chips": [
+      "dog"
+     ],
+     "beat": "Sees the dog by the pot.",
+     "layers": [],
+     "narration": "story_l5_p2",
+     "hearSounds": null,
+     "required": true,
+     "sunset": false
+    },
+    {
+     "id": "l5.p3",
+     "mode": "readTogether",
+     "line": null,
+     "chips": [
+      "pot"
+     ],
+     "beat": "Cools the dog.",
+     "layers": [],
+     "narration": "story_l5_p3",
+     "hearSounds": null,
+     "required": true,
+     "sunset": false
+    },
+    {
+     "id": "l5.p4",
+     "mode": "readTogether",
+     "line": null,
+     "chips": [
+      "tub"
+     ],
+     "beat": "Brings a tub.",
+     "layers": [],
+     "narration": "story_l5_p4",
+     "hearSounds": null,
+     "required": true,
+     "sunset": false
+    },
+    {
+     "id": "l5.p5",
+     "mode": "readTogether",
+     "line": null,
+     "chips": [
+      "hill"
+     ],
+     "beat": "Watches the duck splash.",
+     "layers": [],
+     "narration": "story_l5_p5",
+     "hearSounds": null,
+     "required": true,
+     "sunset": false
+    }
+   ]
+  },
+  {
+   "id": "book.l6",
+   "level": 6,
+   "title": "Pack a Bag",
+   "status": "draft",
+   "cover": "book_cover_06",
+   "cast": [
+    "pat",
+    "pip"
+   ],
+   "pages": [
+    {
+     "id": "l6.p1",
+     "mode": "readTogether",
+     "line": null,
+     "chips": [
+      "bag"
+     ],
+     "beat": "They pack a bag.",
+     "layers": [],
+     "narration": "story_l6_p1",
+     "hearSounds": null,
+     "required": true,
+     "sunset": false
+    },
+    {
+     "id": "l6.p2",
+     "mode": "readTogether",
+     "line": null,
+     "chips": [
+      "red"
+     ],
+     "beat": "Spot a red bug.",
+     "layers": [],
+     "narration": "story_l6_p2",
+     "hearSounds": null,
+     "required": true,
+     "sunset": false
+    },
+    {
+     "id": "l6.p3",
+     "mode": "readTogether",
+     "line": null,
+     "chips": [
+      "bug"
+     ],
+     "beat": "Take a break in the heat.",
+     "layers": [],
+     "narration": "story_l6_p3",
+     "hearSounds": null,
+     "required": true,
+     "sunset": false
+    },
+    {
+     "id": "l6.p4",
+     "mode": "readTogether",
+     "line": null,
+     "chips": [
+      "hot"
+     ],
+     "beat": "Find a lost cup.",
+     "layers": [],
+     "narration": "story_l6_p4",
+     "hearSounds": null,
+     "required": true,
+     "sunset": false
+    },
+    {
+     "id": "l6.p5",
+     "mode": "readTogether",
+     "line": null,
+     "chips": [
+      "cup"
+     ],
+     "beat": "Unpack together.",
+     "layers": [],
+     "narration": "story_l6_p5",
+     "hearSounds": null,
+     "required": true,
+     "sunset": false
+    }
+   ]
+  },
+  {
+   "id": "book.l7",
+   "level": 7,
+   "title": "The Rainy Box",
+   "status": "draft",
+   "cover": "book_cover_07",
+   "cast": [
+    "pat",
+    "pip"
+   ],
+   "pages": [
+    {
+     "id": "l7.p1",
+     "mode": "readTogether",
+     "line": null,
+     "chips": [
+      "jam"
+     ],
+     "beat": "Rain starts.",
+     "layers": [],
+     "narration": "story_l7_p1",
+     "hearSounds": null,
+     "required": true,
+     "sunset": false
+    },
+    {
+     "id": "l7.p2",
+     "mode": "readTogether",
+     "line": null,
+     "chips": [
+      "wet"
+     ],
+     "beat": "A box gets wet.",
+     "layers": [],
+     "narration": "story_l7_p2",
+     "hearSounds": null,
+     "required": true,
+     "sunset": false
+    },
+    {
+     "id": "l7.p3",
+     "mode": "readTogether",
+     "line": null,
+     "chips": [
+      "box"
+     ],
+     "beat": "A fox arrives.",
+     "layers": [],
+     "narration": "story_l7_p3",
+     "hearSounds": null,
+     "required": true,
+     "sunset": false
+    },
+    {
+     "id": "l7.p4",
+     "mode": "readTogether",
+     "line": null,
+     "chips": [
+      "fox"
+     ],
+     "beat": "They spot a van.",
+     "layers": [],
+     "narration": "story_l7_p4",
+     "hearSounds": null,
+     "required": true,
+     "sunset": false
+    },
+    {
+     "id": "l7.p5",
+     "mode": "readTogether",
+     "line": null,
+     "chips": [
+      "van"
+     ],
+     "beat": "Move the box to shelter.",
+     "layers": [],
+     "narration": "story_l7_p5",
+     "hearSounds": null,
+     "required": true,
+     "sunset": false
+    }
+   ]
+  },
+  {
+   "id": "book.l8",
+   "level": 8,
+   "title": "Buzz and Quiz",
+   "status": "draft",
+   "cover": "book_cover_08",
+   "cast": [
+    "pat",
+    "pip"
+   ],
+   "pages": [
+    {
+     "id": "l8.p1",
+     "mode": "readTogether",
+     "line": null,
+     "chips": [
+      "buzz"
+     ],
+     "beat": "A bee buzzes.",
+     "layers": [],
+     "narration": "story_l8_p1",
+     "hearSounds": null,
+     "required": true,
+     "sunset": false
+    },
+    {
+     "id": "l8.p2",
+     "mode": "readTogether",
+     "line": null,
+     "chips": [
+      "zip"
+     ],
+     "beat": "Pip checks a zipper.",
+     "layers": [],
+     "narration": "story_l8_p2",
+     "hearSounds": null,
+     "required": true,
+     "sunset": false
+    },
+    {
+     "id": "l8.p3",
+     "mode": "readTogether",
+     "line": null,
+     "chips": [
+      "quiz"
+     ],
+     "beat": "Pat finds a quiz card.",
+     "layers": [],
+     "narration": "story_l8_p3",
+     "hearSounds": null,
+     "required": true,
+     "sunset": false
+    },
+    {
+     "id": "l8.p4",
+     "mode": "readTogether",
+     "line": null,
+     "chips": [
+      "quick"
+     ],
+     "beat": "They play.",
+     "layers": [],
+     "narration": "story_l8_p4",
+     "hearSounds": null,
+     "required": true,
+     "sunset": false
+    },
+    {
+     "id": "l8.p5",
+     "mode": "readTogether",
+     "line": null,
+     "chips": [
+      "yes"
+     ],
+     "beat": "Listen for the bee again.",
+     "layers": [],
+     "narration": "story_l8_p5",
+     "hearSounds": null,
+     "required": true,
+     "sunset": false
+    }
+   ]
+  },
+  {
+   "id": "book.l9",
+   "level": 9,
+   "title": "Ship and Fish",
+   "status": "draft",
+   "cover": "book_cover_09",
+   "cast": [
+    "pat",
+    "pip"
+   ],
+   "pages": [
+    {
+     "id": "l9.p1",
+     "mode": "readTogether",
+     "line": null,
+     "chips": [
+      "ship"
+     ],
+     "beat": "They see a ship.",
+     "layers": [],
+     "narration": "story_l9_p1",
+     "hearSounds": null,
+     "required": true,
+     "sunset": false
+    },
+    {
+     "id": "l9.p2",
+     "mode": "readTogether",
+     "line": null,
+     "chips": [
+      "fish"
+     ],
+     "beat": "Spot a fish.",
+     "layers": [],
+     "narration": "story_l9_p2",
+     "hearSounds": null,
+     "required": true,
+     "sunset": false
+    },
+    {
+     "id": "l9.p3",
+     "mode": "readTogether",
+     "line": null,
+     "chips": [
+      "chip"
+     ],
+     "beat": "Find a chip.",
+     "layers": [],
+     "narration": "story_l9_p3",
+     "hearSounds": null,
+     "required": true,
+     "sunset": false
+    },
+    {
+     "id": "l9.p4",
+     "mode": "readTogether",
+     "line": null,
+     "chips": [
+      "thin"
+     ],
+     "beat": "Cross a thin board.",
+     "layers": [],
+     "narration": "story_l9_p4",
+     "hearSounds": null,
+     "required": true,
+     "sunset": false
+    },
+    {
+     "id": "l9.p5",
+     "mode": "readTogether",
+     "line": null,
+     "chips": [
+      "this"
+     ],
+     "beat": "Point to the ship again.",
+     "layers": [],
+     "narration": "story_l9_p5",
+     "hearSounds": null,
+     "required": true,
+     "sunset": false
+    }
+   ]
+  },
+  {
+   "id": "book.l10",
+   "level": 10,
+   "title": "Ring and Sing",
+   "status": "draft",
+   "cover": "book_cover_10",
+   "cast": [
+    "pat",
+    "pip"
+   ],
+   "pages": [
+    {
+     "id": "l10.p1",
+     "mode": "readTogether",
+     "line": null,
+     "chips": [
+      "ring"
+     ],
+     "beat": "A bell rings.",
+     "layers": [],
+     "narration": "story_l10_p1",
+     "hearSounds": null,
+     "required": true,
+     "sunset": false
+    },
+    {
+     "id": "l10.p2",
+     "mode": "readTogether",
+     "line": null,
+     "chips": [
+      "sing"
+     ],
+     "beat": "Birds sing.",
+     "layers": [],
+     "narration": "story_l10_p2",
+     "hearSounds": null,
+     "required": true,
+     "sunset": false
+    },
+    {
+     "id": "l10.p3",
+     "mode": "readTogether",
+     "line": null,
+     "chips": [
+      "pink"
+     ],
+     "beat": "They spot a pink sign.",
+     "layers": [],
+     "narration": "story_l10_p3",
+     "hearSounds": null,
+     "required": true,
+     "sunset": false
+    },
+    {
+     "id": "l10.p4",
+     "mode": "readTogether",
+     "line": null,
+     "chips": [
+      "cats"
+     ],
+     "beat": "Meet cats.",
+     "layers": [],
+     "narration": "story_l10_p4",
+     "hearSounds": null,
+     "required": true,
+     "sunset": false
+    },
+    {
+     "id": "l10.p5",
+     "mode": "readTogether",
+     "line": null,
+     "chips": [
+      "dogs"
+     ],
+     "beat": "Count the dogs.",
+     "layers": [],
+     "narration": "story_l10_p5",
+     "hearSounds": null,
+     "required": true,
+     "sunset": false
+    }
+   ]
+  },
+  {
+   "id": "book.l11",
+   "level": 11,
+   "title": "Frog Spot",
+   "status": "draft",
+   "cover": "book_cover_11",
+   "cast": [
+    "pat",
+    "pip"
+   ],
+   "pages": [
+    {
+     "id": "l11.p1",
+     "mode": "readTogether",
+     "line": null,
+     "chips": [
+      "stop"
+     ],
+     "beat": "They stop at a spot.",
+     "layers": [],
+     "narration": "story_l11_p1",
+     "hearSounds": null,
+     "required": true,
+     "sunset": false
+    },
+    {
+     "id": "l11.p2",
+     "mode": "readTogether",
+     "line": null,
+     "chips": [
+      "spot"
+     ],
+     "beat": "Find a flag.",
+     "layers": [],
+     "narration": "story_l11_p2",
+     "hearSounds": null,
+     "required": true,
+     "sunset": false
+    },
+    {
+     "id": "l11.p3",
+     "mode": "readTogether",
+     "line": null,
+     "chips": [
+      "flag"
+     ],
+     "beat": "Spot a frog.",
+     "layers": [],
+     "narration": "story_l11_p3",
+     "hearSounds": null,
+     "required": true,
+     "sunset": false
+    },
+    {
+     "id": "l11.p4",
+     "mode": "readTogether",
+     "line": null,
+     "chips": [
+      "frog"
+     ],
+     "beat": "Clap.",
+     "layers": [],
+     "narration": "story_l11_p4",
+     "hearSounds": null,
+     "required": true,
+     "sunset": false
+    },
+    {
+     "id": "l11.p5",
+     "mode": "readTogether",
+     "line": null,
+     "chips": [
+      "clap",
+      "grin"
+     ],
+     "beat": "Grin at the finish.",
+     "layers": [],
+     "narration": "story_l11_p5",
+     "hearSounds": null,
+     "required": true,
+     "sunset": false
+    }
+   ]
+  },
+  {
+   "id": "book.l12",
+   "level": 12,
+   "title": "Camp by the Pond",
+   "status": "draft",
+   "cover": "book_cover_12",
+   "cast": [
+    "pat",
+    "pip"
+   ],
+   "pages": [
+    {
+     "id": "l12.p1",
+     "mode": "readTogether",
+     "line": null,
+     "chips": [
+      "hand"
+     ],
+     "beat": "They make a handprint.",
+     "layers": [],
+     "narration": "story_l12_p1",
+     "hearSounds": null,
+     "required": true,
+     "sunset": false
+    },
+    {
+     "id": "l12.p2",
+     "mode": "readTogether",
+     "line": null,
+     "chips": [
+      "sand"
+     ],
+     "beat": "Cross sand.",
+     "layers": [],
+     "narration": "story_l12_p2",
+     "hearSounds": null,
+     "required": true,
+     "sunset": false
+    },
+    {
+     "id": "l12.p3",
+     "mode": "readTogether",
+     "line": null,
+     "chips": [
+      "jump"
+     ],
+     "beat": "Jump.",
+     "layers": [],
+     "narration": "story_l12_p3",
+     "hearSounds": null,
+     "required": true,
+     "sunset": false
+    },
+    {
+     "id": "l12.p4",
+     "mode": "readTogether",
+     "line": null,
+     "chips": [
+      "tent"
+     ],
+     "beat": "Pitch a tent.",
+     "layers": [],
+     "narration": "story_l12_p4",
+     "hearSounds": null,
+     "required": true,
+     "sunset": false
+    },
+    {
+     "id": "l12.p5",
+     "mode": "readTogether",
+     "line": null,
+     "chips": [
+      "milk"
+     ],
+     "beat": "Have milk at camp.",
+     "layers": [],
+     "narration": "story_l12_p5",
+     "hearSounds": null,
+     "required": true,
+     "sunset": false
+    }
+   ]
+  }
+ ]
+}

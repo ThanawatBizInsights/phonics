@@ -27,6 +27,8 @@ final class AudioPlayer: NSObject {
     @ObservationIgnored private var effectPlayer: AVAudioPlayer?
     @ObservationIgnored private var completion: (() -> Void)?
     @ObservationIgnored private var token = 0
+    /// Told when teaching speech starts (true) and stops (false), so background music can duck.
+    @ObservationIgnored var onSpeechChange: ((Bool) -> Void)?
     @ObservationIgnored private var playRequestedAt = Date.distantPast
     @ObservationIgnored private var observers: [NSObjectProtocol] = []
     @ObservationIgnored private let bundle: Bundle
@@ -65,6 +67,7 @@ final class AudioPlayer: NSObject {
         currentID = id
         self.highlight = highlight
         self.completion = completion
+        if isAvailable(id) { onSpeechChange?(true) }
         let wait = effectRemaining
         if wait > 0.02 {
             Task { @MainActor in
@@ -174,12 +177,14 @@ final class AudioPlayer: NSObject {
         completion = nil
         currentID = nil
         highlight = nil
+        onSpeechChange?(false)
     }
 
     fileprivate func finish(token finishedToken: Int) {
         guard finishedToken == token else { return }
         currentID = nil
         highlight = nil
+        onSpeechChange?(false)
         player = nil
         let done = completion
         completion = nil
