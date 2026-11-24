@@ -82,7 +82,9 @@ enum Skill: String, Codable, CaseIterable, Identifiable {
     }
 }
 
-struct Observation: Codable, Equatable, Identifiable {
+/// A grown-up's dated mark for one skill and item. (Not named `Observation`: that would shadow
+/// the Observation framework that `@Observable` expands into.)
+struct LearningObservation: Codable, Equatable, Identifiable {
     var id = UUID()
     let level: Int
     let skill: Skill
@@ -106,7 +108,7 @@ struct ProgressData: Codable, Equatable {
     var hasLaunchedBefore = false
     var pages: [String: PageProgress] = [:]
     var stickers: [EarnedSticker] = []
-    var observations: [Observation] = []
+    var observations: [LearningObservation] = []
     /// Touch results the app can check, e.g. "trace.s" or "lastSound.correct".
     var appSeen: [String: Int] = [:]
     var settings = AppSettings()
@@ -136,7 +138,7 @@ struct ProgressData: Codable, Equatable {
         return p.started && !p.done
     }
 
-    func latestMark(level: Int = 1, skill: Skill, item: String) -> Observation? {
+    func latestMark(level: Int = 1, skill: Skill, item: String) -> LearningObservation? {
         observations.last { $0.level == level && $0.skill == skill && $0.item == item }
     }
 
@@ -196,7 +198,7 @@ struct ProgressData: Codable, Equatable {
     }
 
     mutating func mark(_ mark: Mark, skill: Skill, item: String, level: Int = 1, date: Date = Date()) {
-        observations.append(Observation(level: level, skill: skill, item: item, mark: mark, date: date))
+        observations.append(LearningObservation(level: level, skill: skill, item: item, mark: mark, date: date))
     }
 
     mutating func count(_ key: String, by amount: Int = 1) {
