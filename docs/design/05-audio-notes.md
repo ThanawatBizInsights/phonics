@@ -1,5 +1,13 @@
 # 05 · Audio Manifest Notes
 
+> **Build 1 update:** for Level 1, `level-1-audio-manifest.csv` replaces the Level 1 rows of `05-audio-manifest.csv`.
+> It lists only clips the app actually plays (40), uses the new file names (`phoneme_s.wav`, `word_sat.wav`, `prompt_your_turn.wav`),
+> maps each row to the design-phase clip(s) it replaces, and uses **General American** (approved), not the British accent below.
+> Design-phase clips not used in this build: ph_s_tile (merged into phoneme_s), seg_tap, seg_at, wd_spoon, wd_soap, wd_pillow,
+> wd_cat, wd_cup, wd_hat, wd_map, the per-page intros for pages 2–5 (one "Tap the glowing stone." line instead),
+> nar_g_hear_word, nar_g_tap_boxes, nar_g_tap_sound_you_hear, nar_g_tap_again, nar_g_all_done, nar_l1p1_hunt_s/p,
+> nar_l1p2_watch, nar_l1p2_tray, nar_l1p3_watch, nar_l1p5_build_at, the UI tap effects and the separate sticker pop.
+
 The manifest itself is `05-audio-manifest.csv` (72 assets for Level 1). Columns: filename, asset type, exact script or phoneme, IPA, delivery notes, playback trigger, pages used, source, review status, reviewer, review date, Thai gloss for adults.
 
 ## Voice and accent

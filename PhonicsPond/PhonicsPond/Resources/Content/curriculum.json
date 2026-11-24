@@ -1,0 +1,3114 @@
+{
+  "version": 1,
+  "accent": "General American (cot-caught merged: short o is /ɑ/)",
+  "levels": [
+    {
+      "level": 1,
+      "title": "s a t p",
+      "playable": true,
+      "characters": [
+        "Pat"
+      ],
+      "focus": "Final /t/ and /p/ are released and heard.",
+      "graphemes": [
+        {
+          "grapheme": "s",
+          "phoneme": "s",
+          "audio": "phoneme_s",
+          "label": "s as in sat"
+        },
+        {
+          "grapheme": "a",
+          "phoneme": "æ",
+          "audio": "phoneme_short_a",
+          "label": "short a as in sat"
+        },
+        {
+          "grapheme": "t",
+          "phoneme": "t",
+          "audio": "phoneme_t",
+          "label": "t as in sat"
+        },
+        {
+          "grapheme": "p",
+          "phoneme": "p",
+          "audio": "phoneme_p",
+          "label": "p as in pat"
+        }
+      ],
+      "tricky": [],
+      "words": [
+        {
+          "text": "sat",
+          "role": "reading",
+          "gpcs": [
+            {
+              "grapheme": "s",
+              "phoneme": "s"
+            },
+            {
+              "grapheme": "a",
+              "phoneme": "æ"
+            },
+            {
+              "grapheme": "t",
+              "phoneme": "t"
+            }
+          ],
+          "audio": "word_sat",
+          "picture": "pat_sitting_log",
+          "thai": "นั่ง (แล้ว)"
+        },
+        {
+          "text": "tap",
+          "role": "reading",
+          "gpcs": [
+            {
+              "grapheme": "t",
+              "phoneme": "t"
+            },
+            {
+              "grapheme": "a",
+              "phoneme": "æ"
+            },
+            {
+              "grapheme": "p",
+              "phoneme": "p"
+            }
+          ],
+          "audio": "word_tap",
+          "picture": "pat_tapping",
+          "thai": "แตะ, เคาะเบาๆ"
+        },
+        {
+          "text": "pat",
+          "role": "reading",
+          "gpcs": [
+            {
+              "grapheme": "p",
+              "phoneme": "p"
+            },
+            {
+              "grapheme": "a",
+              "phoneme": "æ"
+            },
+            {
+              "grapheme": "t",
+              "phoneme": "t"
+            }
+          ],
+          "audio": "word_pat",
+          "picture": "pat_patting",
+          "thai": "ตบเบาๆ, ลูบ"
+        },
+        {
+          "text": "at",
+          "role": "reading",
+          "gpcs": [
+            {
+              "grapheme": "a",
+              "phoneme": "æ"
+            },
+            {
+              "grapheme": "t",
+              "phoneme": "t"
+            }
+          ],
+          "audio": "word_at",
+          "picture": null,
+          "thai": "ที่"
+        },
+        {
+          "text": "sock",
+          "role": "listening",
+          "gpcs": null,
+          "audio": "word_sock",
+          "picture": "object_sock",
+          "thai": "ถุงเท้า"
+        },
+        {
+          "text": "pen",
+          "role": "listening",
+          "gpcs": null,
+          "audio": "word_pen",
+          "picture": "object_pen",
+          "thai": "ปากกา"
+        },
+        {
+          "text": "pot",
+          "role": "listening",
+          "gpcs": null,
+          "audio": "word_pot",
+          "picture": "object_pot",
+          "thai": "หม้อ"
+        },
+        {
+          "text": "spoon",
+          "role": "listening",
+          "gpcs": null,
+          "audio": null,
+          "picture": null,
+          "thai": "ช้อน"
+        },
+        {
+          "text": "soap",
+          "role": "listening",
+          "gpcs": null,
+          "audio": null,
+          "picture": null,
+          "thai": "สบู่"
+        },
+        {
+          "text": "pillow",
+          "role": "listening",
+          "gpcs": null,
+          "audio": null,
+          "picture": null,
+          "thai": "หมอน"
+        }
+      ],
+      "sentences": []
+    },
+    {
+      "level": 2,
+      "title": "i n m d",
+      "playable": false,
+      "characters": [
+        "Pip"
+      ],
+      "focus": "Final /d/ stays voiced. Short /ɪ/ stays short.",
+      "graphemes": [
+        {
+          "grapheme": "i",
+          "phoneme": "ɪ",
+          "audio": null,
+          "label": "short i as in sit"
+        },
+        {
+          "grapheme": "n",
+          "phoneme": "n",
+          "audio": null,
+          "label": ""
+        },
+        {
+          "grapheme": "m",
+          "phoneme": "m",
+          "audio": null,
+          "label": ""
+        },
+        {
+          "grapheme": "d",
+          "phoneme": "d",
+          "audio": null,
+          "label": ""
+        }
+      ],
+      "tricky": [
+        {
+          "word": "I",
+          "note": null
+        }
+      ],
+      "words": [
+        {
+          "text": "pin",
+          "role": "reading",
+          "gpcs": [
+            {
+              "grapheme": "p",
+              "phoneme": "p"
+            },
+            {
+              "grapheme": "i",
+              "phoneme": "ɪ"
+            },
+            {
+              "grapheme": "n",
+              "phoneme": "n"
+            }
+          ],
+          "audio": null,
+          "picture": null,
+          "thai": null
+        },
+        {
+          "text": "tin",
+          "role": "reading",
+          "gpcs": [
+            {
+              "grapheme": "t",
+              "phoneme": "t"
+            },
+            {
+              "grapheme": "i",
+              "phoneme": "ɪ"
+            },
+            {
+              "grapheme": "n",
+              "phoneme": "n"
+            }
+          ],
+          "audio": null,
+          "picture": null,
+          "thai": null
+        },
+        {
+          "text": "sit",
+          "role": "reading",
+          "gpcs": [
+            {
+              "grapheme": "s",
+              "phoneme": "s"
+            },
+            {
+              "grapheme": "i",
+              "phoneme": "ɪ"
+            },
+            {
+              "grapheme": "t",
+              "phoneme": "t"
+            }
+          ],
+          "audio": null,
+          "picture": null,
+          "thai": null
+        },
+        {
+          "text": "man",
+          "role": "reading",
+          "gpcs": [
+            {
+              "grapheme": "m",
+              "phoneme": "m"
+            },
+            {
+              "grapheme": "a",
+              "phoneme": "æ"
+            },
+            {
+              "grapheme": "n",
+              "phoneme": "n"
+            }
+          ],
+          "audio": null,
+          "picture": null,
+          "thai": null
+        },
+        {
+          "text": "mad",
+          "role": "reading",
+          "gpcs": [
+            {
+              "grapheme": "m",
+              "phoneme": "m"
+            },
+            {
+              "grapheme": "a",
+              "phoneme": "æ"
+            },
+            {
+              "grapheme": "d",
+              "phoneme": "d"
+            }
+          ],
+          "audio": null,
+          "picture": null,
+          "thai": null
+        },
+        {
+          "text": "dad",
+          "role": "reading",
+          "gpcs": [
+            {
+              "grapheme": "d",
+              "phoneme": "d"
+            },
+            {
+              "grapheme": "a",
+              "phoneme": "æ"
+            },
+            {
+              "grapheme": "d",
+              "phoneme": "d"
+            }
+          ],
+          "audio": null,
+          "picture": null,
+          "thai": null
+        },
+        {
+          "text": "dip",
+          "role": "reading",
+          "gpcs": [
+            {
+              "grapheme": "d",
+              "phoneme": "d"
+            },
+            {
+              "grapheme": "i",
+              "phoneme": "ɪ"
+            },
+            {
+              "grapheme": "p",
+              "phoneme": "p"
+            }
+          ],
+          "audio": null,
+          "picture": null,
+          "thai": null
+        },
+        {
+          "text": "it",
+          "role": "reading",
+          "gpcs": [
+            {
+              "grapheme": "i",
+              "phoneme": "ɪ"
+            },
+            {
+              "grapheme": "t",
+              "phoneme": "t"
+            }
+          ],
+          "audio": null,
+          "picture": null,
+          "thai": null
+        },
+        {
+          "text": "in",
+          "role": "reading",
+          "gpcs": [
+            {
+              "grapheme": "i",
+              "phoneme": "ɪ"
+            },
+            {
+              "grapheme": "n",
+              "phoneme": "n"
+            }
+          ],
+          "audio": null,
+          "picture": null,
+          "thai": null
+        },
+        {
+          "text": "nap",
+          "role": "reading",
+          "gpcs": [
+            {
+              "grapheme": "n",
+              "phoneme": "n"
+            },
+            {
+              "grapheme": "a",
+              "phoneme": "æ"
+            },
+            {
+              "grapheme": "p",
+              "phoneme": "p"
+            }
+          ],
+          "audio": null,
+          "picture": null,
+          "thai": null
+        },
+        {
+          "text": "pit",
+          "role": "reading",
+          "gpcs": [
+            {
+              "grapheme": "p",
+              "phoneme": "p"
+            },
+            {
+              "grapheme": "i",
+              "phoneme": "ɪ"
+            },
+            {
+              "grapheme": "t",
+              "phoneme": "t"
+            }
+          ],
+          "audio": null,
+          "picture": null,
+          "thai": null
+        }
+      ],
+      "sentences": [
+        "I sit.",
+        "I nap."
+      ]
+    },
+    {
+      "level": 3,
+      "title": "g o c k",
+      "playable": false,
+      "characters": [],
+      "focus": "Voiced /g/. Final /k/ released.",
+      "graphemes": [
+        {
+          "grapheme": "g",
+          "phoneme": "g",
+          "audio": null,
+          "label": ""
+        },
+        {
+          "grapheme": "o",
+          "phoneme": "ɑ",
+          "audio": null,
+          "label": "short o as in hot (GA)"
+        },
+        {
+          "grapheme": "c",
+          "phoneme": "k",
+          "audio": null,
+          "label": ""
+        },
+        {
+          "grapheme": "k",
+          "phoneme": "k",
+          "audio": null,
+          "label": ""
+        }
+      ],
+      "tricky": [
+        {
+          "word": "the",
+          "note": null
+        },
+        {
+          "word": "to",
+          "note": null
+        }
+      ],
+      "words": [
+        {
+          "text": "dog",
+          "role": "reading",
+          "gpcs": [
+            {
+              "grapheme": "d",
+              "phoneme": "d"
+            },
+            {
+              "grapheme": "o",
+              "phoneme": "ɑ"
+            },
+            {
+              "grapheme": "g",
+              "phoneme": "g"
+            }
+          ],
+          "audio": null,
+          "picture": null,
+          "thai": null
+        },
+        {
+          "text": "cot",
+          "role": "reading",
+          "gpcs": [
+            {
+              "grapheme": "c",
+              "phoneme": "k"
+            },
+            {
+              "grapheme": "o",
+              "phoneme": "ɑ"
+            },
+            {
+              "grapheme": "t",
+              "phoneme": "t"
+            }
+          ],
+          "audio": null,
+          "picture": null,
+          "thai": null
+        },
+        {
+          "text": "got",
+          "role": "reading",
+          "gpcs": [
+            {
+              "grapheme": "g",
+              "phoneme": "g"
+            },
+            {
+              "grapheme": "o",
+              "phoneme": "ɑ"
+            },
+            {
+              "grapheme": "t",
+              "phoneme": "t"
+            }
+          ],
+          "audio": null,
+          "picture": null,
+          "thai": null
+        },
+        {
+          "text": "cap",
+          "role": "reading",
+          "gpcs": [
+            {
+              "grapheme": "c",
+              "phoneme": "k"
+            },
+            {
+              "grapheme": "a",
+              "phoneme": "æ"
+            },
+            {
+              "grapheme": "p",
+              "phoneme": "p"
+            }
+          ],
+          "audio": null,
+          "picture": null,
+          "thai": null
+        },
+        {
+          "text": "kit",
+          "role": "reading",
+          "gpcs": [
+            {
+              "grapheme": "k",
+              "phoneme": "k"
+            },
+            {
+              "grapheme": "i",
+              "phoneme": "ɪ"
+            },
+            {
+              "grapheme": "t",
+              "phoneme": "t"
+            }
+          ],
+          "audio": null,
+          "picture": null,
+          "thai": null
+        },
+        {
+          "text": "pot",
+          "role": "reading",
+          "gpcs": [
+            {
+              "grapheme": "p",
+              "phoneme": "p"
+            },
+            {
+              "grapheme": "o",
+              "phoneme": "ɑ"
+            },
+            {
+              "grapheme": "t",
+              "phoneme": "t"
+            }
+          ],
+          "audio": null,
+          "picture": null,
+          "thai": null
+        },
+        {
+          "text": "top",
+          "role": "reading",
+          "gpcs": [
+            {
+              "grapheme": "t",
+              "phoneme": "t"
+            },
+            {
+              "grapheme": "o",
+              "phoneme": "ɑ"
+            },
+            {
+              "grapheme": "p",
+              "phoneme": "p"
+            }
+          ],
+          "audio": null,
+          "picture": null,
+          "thai": null
+        },
+        {
+          "text": "can",
+          "role": "reading",
+          "gpcs": [
+            {
+              "grapheme": "c",
+              "phoneme": "k"
+            },
+            {
+              "grapheme": "a",
+              "phoneme": "æ"
+            },
+            {
+              "grapheme": "n",
+              "phoneme": "n"
+            }
+          ],
+          "audio": null,
+          "picture": null,
+          "thai": null
+        },
+        {
+          "text": "on",
+          "role": "reading",
+          "gpcs": [
+            {
+              "grapheme": "o",
+              "phoneme": "ɑ"
+            },
+            {
+              "grapheme": "n",
+              "phoneme": "n"
+            }
+          ],
+          "audio": null,
+          "picture": null,
+          "thai": null
+        },
+        {
+          "text": "goat",
+          "role": "listening",
+          "gpcs": null,
+          "audio": null,
+          "picture": null,
+          "thai": null
+        },
+        {
+          "text": "coat",
+          "role": "listening",
+          "gpcs": null,
+          "audio": null,
+          "picture": null,
+          "thai": null
+        },
+        {
+          "text": "sock",
+          "role": "listening",
+          "gpcs": null,
+          "audio": null,
+          "picture": null,
+          "thai": null
+        },
+        {
+          "text": "back",
+          "role": "listening",
+          "gpcs": null,
+          "audio": null,
+          "picture": null,
+          "thai": null
+        }
+      ],
+      "sentences": [
+        "to the dog",
+        "to the pot"
+      ]
+    },
+    {
+      "level": 4,
+      "title": "ck e u r",
+      "playable": false,
+      "characters": [],
+      "focus": "/ɛ/ vs /æ/ (pen/pan; bed/bad by ear). /r/ vs /l/.",
+      "graphemes": [
+        {
+          "grapheme": "ck",
+          "phoneme": "k",
+          "audio": null,
+          "label": ""
+        },
+        {
+          "grapheme": "e",
+          "phoneme": "ɛ",
+          "audio": null,
+          "label": "short e as in bed"
+        },
+        {
+          "grapheme": "u",
+          "phoneme": "ʌ",
+          "audio": null,
+          "label": "short u as in cup"
+        },
+        {
+          "grapheme": "r",
+          "phoneme": "r",
+          "audio": null,
+          "label": ""
+        }
+      ],
+      "tricky": [
+        {
+          "word": "no",
+          "note": null
+        },
+        {
+          "word": "go",
+          "note": null
+        }
+      ],
+      "words": [
+        {
+          "text": "sock",
+          "role": "reading",
+          "gpcs": [
+            {
+              "grapheme": "s",
+              "phoneme": "s"
+            },
+            {
+              "grapheme": "o",
+              "phoneme": "ɑ"
+            },
+            {
+              "grapheme": "ck",
+              "phoneme": "k"
+            }
+          ],
+          "audio": null,
+          "picture": null,
+          "thai": null
+        },
+        {
+          "text": "duck",
+          "role": "reading",
+          "gpcs": [
+            {
+              "grapheme": "d",
+              "phoneme": "d"
+            },
+            {
+              "grapheme": "u",
+              "phoneme": "ʌ"
+            },
+            {
+              "grapheme": "ck",
+              "phoneme": "k"
+            }
+          ],
+          "audio": null,
+          "picture": null,
+          "thai": null
+        },
+        {
+          "text": "peg",
+          "role": "reading",
+          "gpcs": [
+            {
+              "grapheme": "p",
+              "phoneme": "p"
+            },
+            {
+              "grapheme": "e",
+              "phoneme": "ɛ"
+            },
+            {
+              "grapheme": "g",
+              "phoneme": "g"
+            }
+          ],
+          "audio": null,
+          "picture": null,
+          "thai": null
+        },
+        {
+          "text": "pen",
+          "role": "reading",
+          "gpcs": [
+            {
+              "grapheme": "p",
+              "phoneme": "p"
+            },
+            {
+              "grapheme": "e",
+              "phoneme": "ɛ"
+            },
+            {
+              "grapheme": "n",
+              "phoneme": "n"
+            }
+          ],
+          "audio": null,
+          "picture": null,
+          "thai": null
+        },
+        {
+          "text": "red",
+          "role": "reading",
+          "gpcs": [
+            {
+              "grapheme": "r",
+              "phoneme": "r"
+            },
+            {
+              "grapheme": "e",
+              "phoneme": "ɛ"
+            },
+            {
+              "grapheme": "d",
+              "phoneme": "d"
+            }
+          ],
+          "audio": null,
+          "picture": null,
+          "thai": null
+        },
+        {
+          "text": "rug",
+          "role": "reading",
+          "gpcs": [
+            {
+              "grapheme": "r",
+              "phoneme": "r"
+            },
+            {
+              "grapheme": "u",
+              "phoneme": "ʌ"
+            },
+            {
+              "grapheme": "g",
+              "phoneme": "g"
+            }
+          ],
+          "audio": null,
+          "picture": null,
+          "thai": null
+        },
+        {
+          "text": "sun",
+          "role": "reading",
+          "gpcs": [
+            {
+              "grapheme": "s",
+              "phoneme": "s"
+            },
+            {
+              "grapheme": "u",
+              "phoneme": "ʌ"
+            },
+            {
+              "grapheme": "n",
+              "phoneme": "n"
+            }
+          ],
+          "audio": null,
+          "picture": null,
+          "thai": null
+        },
+        {
+          "text": "cup",
+          "role": "reading",
+          "gpcs": [
+            {
+              "grapheme": "c",
+              "phoneme": "k"
+            },
+            {
+              "grapheme": "u",
+              "phoneme": "ʌ"
+            },
+            {
+              "grapheme": "p",
+              "phoneme": "p"
+            }
+          ],
+          "audio": null,
+          "picture": null,
+          "thai": null
+        },
+        {
+          "text": "kick",
+          "role": "reading",
+          "gpcs": [
+            {
+              "grapheme": "k",
+              "phoneme": "k"
+            },
+            {
+              "grapheme": "i",
+              "phoneme": "ɪ"
+            },
+            {
+              "grapheme": "ck",
+              "phoneme": "k"
+            }
+          ],
+          "audio": null,
+          "picture": null,
+          "thai": null
+        },
+        {
+          "text": "run",
+          "role": "reading",
+          "gpcs": [
+            {
+              "grapheme": "r",
+              "phoneme": "r"
+            },
+            {
+              "grapheme": "u",
+              "phoneme": "ʌ"
+            },
+            {
+              "grapheme": "n",
+              "phoneme": "n"
+            }
+          ],
+          "audio": null,
+          "picture": null,
+          "thai": null
+        },
+        {
+          "text": "led",
+          "role": "listening",
+          "gpcs": null,
+          "audio": null,
+          "picture": null,
+          "thai": null
+        },
+        {
+          "text": "bed",
+          "role": "listening",
+          "gpcs": null,
+          "audio": null,
+          "picture": null,
+          "thai": null
+        },
+        {
+          "text": "bad",
+          "role": "listening",
+          "gpcs": null,
+          "audio": null,
+          "picture": null,
+          "thai": null
+        }
+      ],
+      "sentences": []
+    },
+    {
+      "level": 5,
+      "title": "h b f l ff ll ss",
+      "playable": false,
+      "characters": [],
+      "focus": "Final /l/ is not /n/. Final /s/ and /f/.",
+      "graphemes": [
+        {
+          "grapheme": "h",
+          "phoneme": "h",
+          "audio": null,
+          "label": ""
+        },
+        {
+          "grapheme": "b",
+          "phoneme": "b",
+          "audio": null,
+          "label": ""
+        },
+        {
+          "grapheme": "f",
+          "phoneme": "f",
+          "audio": null,
+          "label": ""
+        },
+        {
+          "grapheme": "ff",
+          "phoneme": "f",
+          "audio": null,
+          "label": ""
+        },
+        {
+          "grapheme": "l",
+          "phoneme": "l",
+          "audio": null,
+          "label": ""
+        },
+        {
+          "grapheme": "ll",
+          "phoneme": "l",
+          "audio": null,
+          "label": ""
+        },
+        {
+          "grapheme": "ss",
+          "phoneme": "s",
+          "audio": null,
+          "label": ""
+        }
+      ],
+      "tricky": [
+        {
+          "word": "into",
+          "note": null
+        },
+        {
+          "word": "he",
+          "note": null
+        },
+        {
+          "word": "she",
+          "note": null
+        },
+        {
+          "word": "a",
+          "note": "Tricky word: the article 'a' (said /ə/). Separate from Level 1 grapheme a = /æ/."
+        },
+        {
+          "word": "is",
+          "note": "Tricky word: s says /z/ here."
+        }
+      ],
+      "words": [
+        {
+          "text": "hat",
+          "role": "reading",
+          "gpcs": [
+            {
+              "grapheme": "h",
+              "phoneme": "h"
+            },
+            {
+              "grapheme": "a",
+              "phoneme": "æ"
+            },
+            {
+              "grapheme": "t",
+              "phoneme": "t"
+            }
+          ],
+          "audio": null,
+          "picture": null,
+          "thai": null
+        },
+        {
+          "text": "big",
+          "role": "reading",
+          "gpcs": [
+            {
+              "grapheme": "b",
+              "phoneme": "b"
+            },
+            {
+              "grapheme": "i",
+              "phoneme": "ɪ"
+            },
+            {
+              "grapheme": "g",
+              "phoneme": "g"
+            }
+          ],
+          "audio": null,
+          "picture": null,
+          "thai": null
+        },
+        {
+          "text": "bus",
+          "role": "reading",
+          "gpcs": [
+            {
+              "grapheme": "b",
+              "phoneme": "b"
+            },
+            {
+              "grapheme": "u",
+              "phoneme": "ʌ"
+            },
+            {
+              "grapheme": "s",
+              "phoneme": "s"
+            }
+          ],
+          "audio": null,
+          "picture": null,
+          "thai": null
+        },
+        {
+          "text": "fan",
+          "role": "reading",
+          "gpcs": [
+            {
+              "grapheme": "f",
+              "phoneme": "f"
+            },
+            {
+              "grapheme": "a",
+              "phoneme": "æ"
+            },
+            {
+              "grapheme": "n",
+              "phoneme": "n"
+            }
+          ],
+          "audio": null,
+          "picture": null,
+          "thai": null
+        },
+        {
+          "text": "fun",
+          "role": "reading",
+          "gpcs": [
+            {
+              "grapheme": "f",
+              "phoneme": "f"
+            },
+            {
+              "grapheme": "u",
+              "phoneme": "ʌ"
+            },
+            {
+              "grapheme": "n",
+              "phoneme": "n"
+            }
+          ],
+          "audio": null,
+          "picture": null,
+          "thai": null
+        },
+        {
+          "text": "leg",
+          "role": "reading",
+          "gpcs": [
+            {
+              "grapheme": "l",
+              "phoneme": "l"
+            },
+            {
+              "grapheme": "e",
+              "phoneme": "ɛ"
+            },
+            {
+              "grapheme": "g",
+              "phoneme": "g"
+            }
+          ],
+          "audio": null,
+          "picture": null,
+          "thai": null
+        },
+        {
+          "text": "hill",
+          "role": "reading",
+          "gpcs": [
+            {
+              "grapheme": "h",
+              "phoneme": "h"
+            },
+            {
+              "grapheme": "i",
+              "phoneme": "ɪ"
+            },
+            {
+              "grapheme": "ll",
+              "phoneme": "l"
+            }
+          ],
+          "audio": null,
+          "picture": null,
+          "thai": null
+        },
+        {
+          "text": "bell",
+          "role": "reading",
+          "gpcs": [
+            {
+              "grapheme": "b",
+              "phoneme": "b"
+            },
+            {
+              "grapheme": "e",
+              "phoneme": "ɛ"
+            },
+            {
+              "grapheme": "ll",
+              "phoneme": "l"
+            }
+          ],
+          "audio": null,
+          "picture": null,
+          "thai": null
+        },
+        {
+          "text": "kiss",
+          "role": "reading",
+          "gpcs": [
+            {
+              "grapheme": "k",
+              "phoneme": "k"
+            },
+            {
+              "grapheme": "i",
+              "phoneme": "ɪ"
+            },
+            {
+              "grapheme": "ss",
+              "phoneme": "s"
+            }
+          ],
+          "audio": null,
+          "picture": null,
+          "thai": null
+        },
+        {
+          "text": "off",
+          "role": "reading",
+          "gpcs": [
+            {
+              "grapheme": "o",
+              "phoneme": "ɑ"
+            },
+            {
+              "grapheme": "ff",
+              "phoneme": "f"
+            }
+          ],
+          "audio": null,
+          "picture": null,
+          "thai": null
+        },
+        {
+          "text": "doll",
+          "role": "reading",
+          "gpcs": [
+            {
+              "grapheme": "d",
+              "phoneme": "d"
+            },
+            {
+              "grapheme": "o",
+              "phoneme": "ɑ"
+            },
+            {
+              "grapheme": "ll",
+              "phoneme": "l"
+            }
+          ],
+          "audio": null,
+          "picture": null,
+          "thai": null
+        },
+        {
+          "text": "ball",
+          "role": "listening",
+          "gpcs": null,
+          "audio": null,
+          "picture": null,
+          "thai": null
+        },
+        {
+          "text": "path",
+          "role": "listening",
+          "gpcs": null,
+          "audio": null,
+          "picture": null,
+          "thai": null
+        }
+      ],
+      "sentences": [
+        "he got a big hat",
+        "she is on a bus"
+      ]
+    },
+    {
+      "level": 6,
+      "title": "review",
+      "playable": false,
+      "characters": [],
+      "focus": "Every final sound.",
+      "graphemes": [],
+      "tricky": [
+        {
+          "word": "we",
+          "note": null
+        },
+        {
+          "word": "me",
+          "note": null
+        },
+        {
+          "word": "be",
+          "note": null
+        }
+      ],
+      "words": [
+        {
+          "text": "bug",
+          "role": "reading",
+          "gpcs": [
+            {
+              "grapheme": "b",
+              "phoneme": "b"
+            },
+            {
+              "grapheme": "u",
+              "phoneme": "ʌ"
+            },
+            {
+              "grapheme": "g",
+              "phoneme": "g"
+            }
+          ],
+          "audio": null,
+          "picture": null,
+          "thai": null
+        },
+        {
+          "text": "hot",
+          "role": "reading",
+          "gpcs": [
+            {
+              "grapheme": "h",
+              "phoneme": "h"
+            },
+            {
+              "grapheme": "o",
+              "phoneme": "ɑ"
+            },
+            {
+              "grapheme": "t",
+              "phoneme": "t"
+            }
+          ],
+          "audio": null,
+          "picture": null,
+          "thai": null
+        }
+      ],
+      "sentences": [
+        "a red bug in a hot pot",
+        "red bus",
+        "big dog"
+      ]
+    },
+    {
+      "level": 7,
+      "title": "j v w x",
+      "playable": false,
+      "characters": [],
+      "focus": "/v/ is not /w/. Final /ks/.",
+      "graphemes": [
+        {
+          "grapheme": "j",
+          "phoneme": "dʒ",
+          "audio": null,
+          "label": ""
+        },
+        {
+          "grapheme": "v",
+          "phoneme": "v",
+          "audio": null,
+          "label": ""
+        },
+        {
+          "grapheme": "w",
+          "phoneme": "w",
+          "audio": null,
+          "label": ""
+        },
+        {
+          "grapheme": "x",
+          "phoneme": "ks",
+          "audio": null,
+          "label": ""
+        }
+      ],
+      "tricky": [
+        {
+          "word": "was",
+          "note": null
+        },
+        {
+          "word": "my",
+          "note": null
+        }
+      ],
+      "words": [
+        {
+          "text": "jam",
+          "role": "reading",
+          "gpcs": [
+            {
+              "grapheme": "j",
+              "phoneme": "dʒ"
+            },
+            {
+              "grapheme": "a",
+              "phoneme": "æ"
+            },
+            {
+              "grapheme": "m",
+              "phoneme": "m"
+            }
+          ],
+          "audio": null,
+          "picture": null,
+          "thai": null
+        },
+        {
+          "text": "jet",
+          "role": "reading",
+          "gpcs": [
+            {
+              "grapheme": "j",
+              "phoneme": "dʒ"
+            },
+            {
+              "grapheme": "e",
+              "phoneme": "ɛ"
+            },
+            {
+              "grapheme": "t",
+              "phoneme": "t"
+            }
+          ],
+          "audio": null,
+          "picture": null,
+          "thai": null
+        },
+        {
+          "text": "van",
+          "role": "reading",
+          "gpcs": [
+            {
+              "grapheme": "v",
+              "phoneme": "v"
+            },
+            {
+              "grapheme": "a",
+              "phoneme": "æ"
+            },
+            {
+              "grapheme": "n",
+              "phoneme": "n"
+            }
+          ],
+          "audio": null,
+          "picture": null,
+          "thai": null
+        },
+        {
+          "text": "vet",
+          "role": "reading",
+          "gpcs": [
+            {
+              "grapheme": "v",
+              "phoneme": "v"
+            },
+            {
+              "grapheme": "e",
+              "phoneme": "ɛ"
+            },
+            {
+              "grapheme": "t",
+              "phoneme": "t"
+            }
+          ],
+          "audio": null,
+          "picture": null,
+          "thai": null
+        },
+        {
+          "text": "web",
+          "role": "reading",
+          "gpcs": [
+            {
+              "grapheme": "w",
+              "phoneme": "w"
+            },
+            {
+              "grapheme": "e",
+              "phoneme": "ɛ"
+            },
+            {
+              "grapheme": "b",
+              "phoneme": "b"
+            }
+          ],
+          "audio": null,
+          "picture": null,
+          "thai": null
+        },
+        {
+          "text": "wet",
+          "role": "reading",
+          "gpcs": [
+            {
+              "grapheme": "w",
+              "phoneme": "w"
+            },
+            {
+              "grapheme": "e",
+              "phoneme": "ɛ"
+            },
+            {
+              "grapheme": "t",
+              "phoneme": "t"
+            }
+          ],
+          "audio": null,
+          "picture": null,
+          "thai": null
+        },
+        {
+          "text": "box",
+          "role": "reading",
+          "gpcs": [
+            {
+              "grapheme": "b",
+              "phoneme": "b"
+            },
+            {
+              "grapheme": "o",
+              "phoneme": "ɑ"
+            },
+            {
+              "grapheme": "x",
+              "phoneme": "ks"
+            }
+          ],
+          "audio": null,
+          "picture": null,
+          "thai": null
+        },
+        {
+          "text": "fox",
+          "role": "reading",
+          "gpcs": [
+            {
+              "grapheme": "f",
+              "phoneme": "f"
+            },
+            {
+              "grapheme": "o",
+              "phoneme": "ɑ"
+            },
+            {
+              "grapheme": "x",
+              "phoneme": "ks"
+            }
+          ],
+          "audio": null,
+          "picture": null,
+          "thai": null
+        },
+        {
+          "text": "six",
+          "role": "reading",
+          "gpcs": [
+            {
+              "grapheme": "s",
+              "phoneme": "s"
+            },
+            {
+              "grapheme": "i",
+              "phoneme": "ɪ"
+            },
+            {
+              "grapheme": "x",
+              "phoneme": "ks"
+            }
+          ],
+          "audio": null,
+          "picture": null,
+          "thai": null
+        },
+        {
+          "text": "vine",
+          "role": "listening",
+          "gpcs": null,
+          "audio": null,
+          "picture": null,
+          "thai": null
+        },
+        {
+          "text": "wine",
+          "role": "listening",
+          "gpcs": null,
+          "audio": null,
+          "picture": null,
+          "thai": null
+        },
+        {
+          "text": "vest",
+          "role": "listening",
+          "gpcs": null,
+          "audio": null,
+          "picture": null,
+          "thai": null
+        },
+        {
+          "text": "west",
+          "role": "listening",
+          "gpcs": null,
+          "audio": null,
+          "picture": null,
+          "thai": null
+        }
+      ],
+      "sentences": [
+        "my jam",
+        "was in a box"
+      ]
+    },
+    {
+      "level": 8,
+      "title": "y z zz qu",
+      "playable": false,
+      "characters": [],
+      "focus": "/z/ buzzes. Aim for awareness.",
+      "graphemes": [
+        {
+          "grapheme": "y",
+          "phoneme": "j",
+          "audio": null,
+          "label": ""
+        },
+        {
+          "grapheme": "z",
+          "phoneme": "z",
+          "audio": null,
+          "label": ""
+        },
+        {
+          "grapheme": "zz",
+          "phoneme": "z",
+          "audio": null,
+          "label": ""
+        },
+        {
+          "grapheme": "qu",
+          "phoneme": "kw",
+          "audio": null,
+          "label": ""
+        }
+      ],
+      "tricky": [
+        {
+          "word": "you",
+          "note": null
+        },
+        {
+          "word": "they",
+          "note": null
+        }
+      ],
+      "words": [
+        {
+          "text": "yes",
+          "role": "reading",
+          "gpcs": [
+            {
+              "grapheme": "y",
+              "phoneme": "j"
+            },
+            {
+              "grapheme": "e",
+              "phoneme": "ɛ"
+            },
+            {
+              "grapheme": "s",
+              "phoneme": "s"
+            }
+          ],
+          "audio": null,
+          "picture": null,
+          "thai": null
+        },
+        {
+          "text": "yet",
+          "role": "reading",
+          "gpcs": [
+            {
+              "grapheme": "y",
+              "phoneme": "j"
+            },
+            {
+              "grapheme": "e",
+              "phoneme": "ɛ"
+            },
+            {
+              "grapheme": "t",
+              "phoneme": "t"
+            }
+          ],
+          "audio": null,
+          "picture": null,
+          "thai": null
+        },
+        {
+          "text": "zip",
+          "role": "reading",
+          "gpcs": [
+            {
+              "grapheme": "z",
+              "phoneme": "z"
+            },
+            {
+              "grapheme": "i",
+              "phoneme": "ɪ"
+            },
+            {
+              "grapheme": "p",
+              "phoneme": "p"
+            }
+          ],
+          "audio": null,
+          "picture": null,
+          "thai": null
+        },
+        {
+          "text": "zap",
+          "role": "reading",
+          "gpcs": [
+            {
+              "grapheme": "z",
+              "phoneme": "z"
+            },
+            {
+              "grapheme": "a",
+              "phoneme": "æ"
+            },
+            {
+              "grapheme": "p",
+              "phoneme": "p"
+            }
+          ],
+          "audio": null,
+          "picture": null,
+          "thai": null
+        },
+        {
+          "text": "buzz",
+          "role": "reading",
+          "gpcs": [
+            {
+              "grapheme": "b",
+              "phoneme": "b"
+            },
+            {
+              "grapheme": "u",
+              "phoneme": "ʌ"
+            },
+            {
+              "grapheme": "zz",
+              "phoneme": "z"
+            }
+          ],
+          "audio": null,
+          "picture": null,
+          "thai": null
+        },
+        {
+          "text": "fizz",
+          "role": "reading",
+          "gpcs": [
+            {
+              "grapheme": "f",
+              "phoneme": "f"
+            },
+            {
+              "grapheme": "i",
+              "phoneme": "ɪ"
+            },
+            {
+              "grapheme": "zz",
+              "phoneme": "z"
+            }
+          ],
+          "audio": null,
+          "picture": null,
+          "thai": null
+        },
+        {
+          "text": "quiz",
+          "role": "reading",
+          "gpcs": [
+            {
+              "grapheme": "qu",
+              "phoneme": "kw"
+            },
+            {
+              "grapheme": "i",
+              "phoneme": "ɪ"
+            },
+            {
+              "grapheme": "z",
+              "phoneme": "z"
+            }
+          ],
+          "audio": null,
+          "picture": null,
+          "thai": null
+        },
+        {
+          "text": "quick",
+          "role": "reading",
+          "gpcs": [
+            {
+              "grapheme": "qu",
+              "phoneme": "kw"
+            },
+            {
+              "grapheme": "i",
+              "phoneme": "ɪ"
+            },
+            {
+              "grapheme": "ck",
+              "phoneme": "k"
+            }
+          ],
+          "audio": null,
+          "picture": null,
+          "thai": null
+        },
+        {
+          "text": "quit",
+          "role": "reading",
+          "gpcs": [
+            {
+              "grapheme": "qu",
+              "phoneme": "kw"
+            },
+            {
+              "grapheme": "i",
+              "phoneme": "ɪ"
+            },
+            {
+              "grapheme": "t",
+              "phoneme": "t"
+            }
+          ],
+          "audio": null,
+          "picture": null,
+          "thai": null
+        },
+        {
+          "text": "sue",
+          "role": "listening",
+          "gpcs": null,
+          "audio": null,
+          "picture": null,
+          "thai": null
+        },
+        {
+          "text": "zoo",
+          "role": "listening",
+          "gpcs": null,
+          "audio": null,
+          "picture": null,
+          "thai": null
+        }
+      ],
+      "sentences": []
+    },
+    {
+      "level": 9,
+      "title": "sh ch th",
+      "playable": false,
+      "characters": [],
+      "focus": "/ʃ/ is not /tʃ/. th with the tongue showing (/θ/ and /ð/ tracked separately).",
+      "graphemes": [
+        {
+          "grapheme": "sh",
+          "phoneme": "ʃ",
+          "audio": null,
+          "label": ""
+        },
+        {
+          "grapheme": "ch",
+          "phoneme": "tʃ",
+          "audio": null,
+          "label": ""
+        },
+        {
+          "grapheme": "th",
+          "phoneme": "θ",
+          "audio": null,
+          "label": "th as in thin"
+        },
+        {
+          "grapheme": "th",
+          "phoneme": "ð",
+          "audio": null,
+          "label": "th as in this"
+        }
+      ],
+      "tricky": [
+        {
+          "word": "all",
+          "note": null
+        },
+        {
+          "word": "are",
+          "note": null
+        }
+      ],
+      "words": [
+        {
+          "text": "ship",
+          "role": "reading",
+          "gpcs": [
+            {
+              "grapheme": "sh",
+              "phoneme": "ʃ"
+            },
+            {
+              "grapheme": "i",
+              "phoneme": "ɪ"
+            },
+            {
+              "grapheme": "p",
+              "phoneme": "p"
+            }
+          ],
+          "audio": null,
+          "picture": null,
+          "thai": null
+        },
+        {
+          "text": "shop",
+          "role": "reading",
+          "gpcs": [
+            {
+              "grapheme": "sh",
+              "phoneme": "ʃ"
+            },
+            {
+              "grapheme": "o",
+              "phoneme": "ɑ"
+            },
+            {
+              "grapheme": "p",
+              "phoneme": "p"
+            }
+          ],
+          "audio": null,
+          "picture": null,
+          "thai": null
+        },
+        {
+          "text": "fish",
+          "role": "reading",
+          "gpcs": [
+            {
+              "grapheme": "f",
+              "phoneme": "f"
+            },
+            {
+              "grapheme": "i",
+              "phoneme": "ɪ"
+            },
+            {
+              "grapheme": "sh",
+              "phoneme": "ʃ"
+            }
+          ],
+          "audio": null,
+          "picture": null,
+          "thai": null
+        },
+        {
+          "text": "chip",
+          "role": "reading",
+          "gpcs": [
+            {
+              "grapheme": "ch",
+              "phoneme": "tʃ"
+            },
+            {
+              "grapheme": "i",
+              "phoneme": "ɪ"
+            },
+            {
+              "grapheme": "p",
+              "phoneme": "p"
+            }
+          ],
+          "audio": null,
+          "picture": null,
+          "thai": null
+        },
+        {
+          "text": "chin",
+          "role": "reading",
+          "gpcs": [
+            {
+              "grapheme": "ch",
+              "phoneme": "tʃ"
+            },
+            {
+              "grapheme": "i",
+              "phoneme": "ɪ"
+            },
+            {
+              "grapheme": "n",
+              "phoneme": "n"
+            }
+          ],
+          "audio": null,
+          "picture": null,
+          "thai": null
+        },
+        {
+          "text": "much",
+          "role": "reading",
+          "gpcs": [
+            {
+              "grapheme": "m",
+              "phoneme": "m"
+            },
+            {
+              "grapheme": "u",
+              "phoneme": "ʌ"
+            },
+            {
+              "grapheme": "ch",
+              "phoneme": "tʃ"
+            }
+          ],
+          "audio": null,
+          "picture": null,
+          "thai": null
+        },
+        {
+          "text": "thin",
+          "role": "reading",
+          "gpcs": [
+            {
+              "grapheme": "th",
+              "phoneme": "θ"
+            },
+            {
+              "grapheme": "i",
+              "phoneme": "ɪ"
+            },
+            {
+              "grapheme": "n",
+              "phoneme": "n"
+            }
+          ],
+          "audio": null,
+          "picture": null,
+          "thai": null
+        },
+        {
+          "text": "this",
+          "role": "reading",
+          "gpcs": [
+            {
+              "grapheme": "th",
+              "phoneme": "ð"
+            },
+            {
+              "grapheme": "i",
+              "phoneme": "ɪ"
+            },
+            {
+              "grapheme": "s",
+              "phoneme": "s"
+            }
+          ],
+          "audio": null,
+          "picture": null,
+          "thai": null
+        },
+        {
+          "text": "bath",
+          "role": "reading",
+          "gpcs": [
+            {
+              "grapheme": "b",
+              "phoneme": "b"
+            },
+            {
+              "grapheme": "a",
+              "phoneme": "æ"
+            },
+            {
+              "grapheme": "th",
+              "phoneme": "θ"
+            }
+          ],
+          "audio": null,
+          "picture": null,
+          "thai": null
+        },
+        {
+          "text": "moth",
+          "role": "reading",
+          "gpcs": [
+            {
+              "grapheme": "m",
+              "phoneme": "m"
+            },
+            {
+              "grapheme": "o",
+              "phoneme": "ɑ"
+            },
+            {
+              "grapheme": "th",
+              "phoneme": "θ"
+            }
+          ],
+          "audio": null,
+          "picture": null,
+          "thai": null
+        },
+        {
+          "text": "with",
+          "role": "reading",
+          "gpcs": [
+            {
+              "grapheme": "w",
+              "phoneme": "w"
+            },
+            {
+              "grapheme": "i",
+              "phoneme": "ɪ"
+            },
+            {
+              "grapheme": "th",
+              "phoneme": "θ"
+            }
+          ],
+          "audio": null,
+          "picture": null,
+          "thai": null
+        },
+        {
+          "text": "chips",
+          "role": "listening",
+          "gpcs": null,
+          "audio": null,
+          "picture": null,
+          "thai": null
+        },
+        {
+          "text": "have",
+          "role": "listening",
+          "gpcs": null,
+          "audio": null,
+          "picture": null,
+          "thai": null
+        }
+      ],
+      "sentences": [
+        "all the fish are in the shop"
+      ]
+    },
+    {
+      "level": 10,
+      "title": "ng nk plural s",
+      "playable": false,
+      "characters": [],
+      "focus": "Keep plural /s/ and /z/.",
+      "graphemes": [
+        {
+          "grapheme": "ng",
+          "phoneme": "ŋ",
+          "audio": null,
+          "label": ""
+        },
+        {
+          "grapheme": "nk",
+          "phoneme": "ŋk",
+          "audio": null,
+          "label": ""
+        },
+        {
+          "grapheme": "s",
+          "phoneme": "z",
+          "audio": null,
+          "label": "plural s as in dogs"
+        }
+      ],
+      "tricky": [
+        {
+          "word": "her",
+          "note": null
+        },
+        {
+          "word": "said",
+          "note": null
+        }
+      ],
+      "words": [
+        {
+          "text": "ring",
+          "role": "reading",
+          "gpcs": [
+            {
+              "grapheme": "r",
+              "phoneme": "r"
+            },
+            {
+              "grapheme": "i",
+              "phoneme": "ɪ"
+            },
+            {
+              "grapheme": "ng",
+              "phoneme": "ŋ"
+            }
+          ],
+          "audio": null,
+          "picture": null,
+          "thai": null
+        },
+        {
+          "text": "sing",
+          "role": "reading",
+          "gpcs": [
+            {
+              "grapheme": "s",
+              "phoneme": "s"
+            },
+            {
+              "grapheme": "i",
+              "phoneme": "ɪ"
+            },
+            {
+              "grapheme": "ng",
+              "phoneme": "ŋ"
+            }
+          ],
+          "audio": null,
+          "picture": null,
+          "thai": null
+        },
+        {
+          "text": "king",
+          "role": "reading",
+          "gpcs": [
+            {
+              "grapheme": "k",
+              "phoneme": "k"
+            },
+            {
+              "grapheme": "i",
+              "phoneme": "ɪ"
+            },
+            {
+              "grapheme": "ng",
+              "phoneme": "ŋ"
+            }
+          ],
+          "audio": null,
+          "picture": null,
+          "thai": null
+        },
+        {
+          "text": "pink",
+          "role": "reading",
+          "gpcs": [
+            {
+              "grapheme": "p",
+              "phoneme": "p"
+            },
+            {
+              "grapheme": "i",
+              "phoneme": "ɪ"
+            },
+            {
+              "grapheme": "nk",
+              "phoneme": "ŋk"
+            }
+          ],
+          "audio": null,
+          "picture": null,
+          "thai": null
+        },
+        {
+          "text": "bank",
+          "role": "reading",
+          "gpcs": [
+            {
+              "grapheme": "b",
+              "phoneme": "b"
+            },
+            {
+              "grapheme": "a",
+              "phoneme": "æ"
+            },
+            {
+              "grapheme": "nk",
+              "phoneme": "ŋk"
+            }
+          ],
+          "audio": null,
+          "picture": null,
+          "thai": null
+        },
+        {
+          "text": "sink",
+          "role": "reading",
+          "gpcs": [
+            {
+              "grapheme": "s",
+              "phoneme": "s"
+            },
+            {
+              "grapheme": "i",
+              "phoneme": "ɪ"
+            },
+            {
+              "grapheme": "nk",
+              "phoneme": "ŋk"
+            }
+          ],
+          "audio": null,
+          "picture": null,
+          "thai": null
+        },
+        {
+          "text": "cats",
+          "role": "reading",
+          "gpcs": [
+            {
+              "grapheme": "c",
+              "phoneme": "k"
+            },
+            {
+              "grapheme": "a",
+              "phoneme": "æ"
+            },
+            {
+              "grapheme": "t",
+              "phoneme": "t"
+            },
+            {
+              "grapheme": "s",
+              "phoneme": "s"
+            }
+          ],
+          "audio": null,
+          "picture": null,
+          "thai": null
+        },
+        {
+          "text": "dogs",
+          "role": "reading",
+          "gpcs": [
+            {
+              "grapheme": "d",
+              "phoneme": "d"
+            },
+            {
+              "grapheme": "o",
+              "phoneme": "ɑ"
+            },
+            {
+              "grapheme": "g",
+              "phoneme": "g"
+            },
+            {
+              "grapheme": "s",
+              "phoneme": "z"
+            }
+          ],
+          "audio": null,
+          "picture": null,
+          "thai": null
+        },
+        {
+          "text": "hens",
+          "role": "reading",
+          "gpcs": [
+            {
+              "grapheme": "h",
+              "phoneme": "h"
+            },
+            {
+              "grapheme": "e",
+              "phoneme": "ɛ"
+            },
+            {
+              "grapheme": "n",
+              "phoneme": "n"
+            },
+            {
+              "grapheme": "s",
+              "phoneme": "z"
+            }
+          ],
+          "audio": null,
+          "picture": null,
+          "thai": null
+        },
+        {
+          "text": "pens",
+          "role": "reading",
+          "gpcs": [
+            {
+              "grapheme": "p",
+              "phoneme": "p"
+            },
+            {
+              "grapheme": "e",
+              "phoneme": "ɛ"
+            },
+            {
+              "grapheme": "n",
+              "phoneme": "n"
+            },
+            {
+              "grapheme": "s",
+              "phoneme": "z"
+            }
+          ],
+          "audio": null,
+          "picture": null,
+          "thai": null
+        },
+        {
+          "text": "kings",
+          "role": "reading",
+          "gpcs": [
+            {
+              "grapheme": "k",
+              "phoneme": "k"
+            },
+            {
+              "grapheme": "i",
+              "phoneme": "ɪ"
+            },
+            {
+              "grapheme": "ng",
+              "phoneme": "ŋ"
+            },
+            {
+              "grapheme": "s",
+              "phoneme": "z"
+            }
+          ],
+          "audio": null,
+          "picture": null,
+          "thai": null
+        },
+        {
+          "text": "bananas",
+          "role": "listening",
+          "gpcs": null,
+          "audio": null,
+          "picture": null,
+          "thai": null
+        },
+        {
+          "text": "spoons",
+          "role": "listening",
+          "gpcs": null,
+          "audio": null,
+          "picture": null,
+          "thai": null
+        },
+        {
+          "text": "pegs",
+          "role": "listening",
+          "gpcs": null,
+          "audio": null,
+          "picture": null,
+          "thai": null
+        }
+      ],
+      "sentences": [
+        "she said the kings sing"
+      ]
+    },
+    {
+      "level": 11,
+      "title": "starting blends",
+      "playable": false,
+      "characters": [],
+      "focus": "No extra vowel inside a blend. Keep the /r/.",
+      "graphemes": [],
+      "tricky": [
+        {
+          "word": "have",
+          "note": null
+        },
+        {
+          "word": "like",
+          "note": null
+        }
+      ],
+      "words": [
+        {
+          "text": "stop",
+          "role": "reading",
+          "gpcs": [
+            {
+              "grapheme": "s",
+              "phoneme": "s"
+            },
+            {
+              "grapheme": "t",
+              "phoneme": "t"
+            },
+            {
+              "grapheme": "o",
+              "phoneme": "ɑ"
+            },
+            {
+              "grapheme": "p",
+              "phoneme": "p"
+            }
+          ],
+          "audio": null,
+          "picture": null,
+          "thai": null
+        },
+        {
+          "text": "spot",
+          "role": "reading",
+          "gpcs": [
+            {
+              "grapheme": "s",
+              "phoneme": "s"
+            },
+            {
+              "grapheme": "p",
+              "phoneme": "p"
+            },
+            {
+              "grapheme": "o",
+              "phoneme": "ɑ"
+            },
+            {
+              "grapheme": "t",
+              "phoneme": "t"
+            }
+          ],
+          "audio": null,
+          "picture": null,
+          "thai": null
+        },
+        {
+          "text": "snap",
+          "role": "reading",
+          "gpcs": [
+            {
+              "grapheme": "s",
+              "phoneme": "s"
+            },
+            {
+              "grapheme": "n",
+              "phoneme": "n"
+            },
+            {
+              "grapheme": "a",
+              "phoneme": "æ"
+            },
+            {
+              "grapheme": "p",
+              "phoneme": "p"
+            }
+          ],
+          "audio": null,
+          "picture": null,
+          "thai": null
+        },
+        {
+          "text": "slip",
+          "role": "reading",
+          "gpcs": [
+            {
+              "grapheme": "s",
+              "phoneme": "s"
+            },
+            {
+              "grapheme": "l",
+              "phoneme": "l"
+            },
+            {
+              "grapheme": "i",
+              "phoneme": "ɪ"
+            },
+            {
+              "grapheme": "p",
+              "phoneme": "p"
+            }
+          ],
+          "audio": null,
+          "picture": null,
+          "thai": null
+        },
+        {
+          "text": "flag",
+          "role": "reading",
+          "gpcs": [
+            {
+              "grapheme": "f",
+              "phoneme": "f"
+            },
+            {
+              "grapheme": "l",
+              "phoneme": "l"
+            },
+            {
+              "grapheme": "a",
+              "phoneme": "æ"
+            },
+            {
+              "grapheme": "g",
+              "phoneme": "g"
+            }
+          ],
+          "audio": null,
+          "picture": null,
+          "thai": null
+        },
+        {
+          "text": "plum",
+          "role": "reading",
+          "gpcs": [
+            {
+              "grapheme": "p",
+              "phoneme": "p"
+            },
+            {
+              "grapheme": "l",
+              "phoneme": "l"
+            },
+            {
+              "grapheme": "u",
+              "phoneme": "ʌ"
+            },
+            {
+              "grapheme": "m",
+              "phoneme": "m"
+            }
+          ],
+          "audio": null,
+          "picture": null,
+          "thai": null
+        },
+        {
+          "text": "clap",
+          "role": "reading",
+          "gpcs": [
+            {
+              "grapheme": "c",
+              "phoneme": "k"
+            },
+            {
+              "grapheme": "l",
+              "phoneme": "l"
+            },
+            {
+              "grapheme": "a",
+              "phoneme": "æ"
+            },
+            {
+              "grapheme": "p",
+              "phoneme": "p"
+            }
+          ],
+          "audio": null,
+          "picture": null,
+          "thai": null
+        },
+        {
+          "text": "frog",
+          "role": "reading",
+          "gpcs": [
+            {
+              "grapheme": "f",
+              "phoneme": "f"
+            },
+            {
+              "grapheme": "r",
+              "phoneme": "r"
+            },
+            {
+              "grapheme": "o",
+              "phoneme": "ɑ"
+            },
+            {
+              "grapheme": "g",
+              "phoneme": "g"
+            }
+          ],
+          "audio": null,
+          "picture": null,
+          "thai": null
+        },
+        {
+          "text": "trip",
+          "role": "reading",
+          "gpcs": [
+            {
+              "grapheme": "t",
+              "phoneme": "t"
+            },
+            {
+              "grapheme": "r",
+              "phoneme": "r"
+            },
+            {
+              "grapheme": "i",
+              "phoneme": "ɪ"
+            },
+            {
+              "grapheme": "p",
+              "phoneme": "p"
+            }
+          ],
+          "audio": null,
+          "picture": null,
+          "thai": null
+        },
+        {
+          "text": "grin",
+          "role": "reading",
+          "gpcs": [
+            {
+              "grapheme": "g",
+              "phoneme": "g"
+            },
+            {
+              "grapheme": "r",
+              "phoneme": "r"
+            },
+            {
+              "grapheme": "i",
+              "phoneme": "ɪ"
+            },
+            {
+              "grapheme": "n",
+              "phoneme": "n"
+            }
+          ],
+          "audio": null,
+          "picture": null,
+          "thai": null
+        },
+        {
+          "text": "frogs",
+          "role": "reading",
+          "gpcs": [
+            {
+              "grapheme": "f",
+              "phoneme": "f"
+            },
+            {
+              "grapheme": "r",
+              "phoneme": "r"
+            },
+            {
+              "grapheme": "o",
+              "phoneme": "ɑ"
+            },
+            {
+              "grapheme": "g",
+              "phoneme": "g"
+            },
+            {
+              "grapheme": "s",
+              "phoneme": "z"
+            }
+          ],
+          "audio": null,
+          "picture": null,
+          "thai": null
+        },
+        {
+          "text": "legs",
+          "role": "reading",
+          "gpcs": [
+            {
+              "grapheme": "l",
+              "phoneme": "l"
+            },
+            {
+              "grapheme": "e",
+              "phoneme": "ɛ"
+            },
+            {
+              "grapheme": "g",
+              "phoneme": "g"
+            },
+            {
+              "grapheme": "s",
+              "phoneme": "z"
+            }
+          ],
+          "audio": null,
+          "picture": null,
+          "thai": null
+        }
+      ],
+      "sentences": [
+        "I like to clap.",
+        "frogs have legs"
+      ]
+    },
+    {
+      "level": 12,
+      "title": "ending blends",
+      "playable": false,
+      "characters": [],
+      "focus": "Say both final sounds.",
+      "graphemes": [],
+      "tricky": [
+        {
+          "word": "some",
+          "note": null
+        },
+        {
+          "word": "come",
+          "note": null
+        }
+      ],
+      "words": [
+        {
+          "text": "fast",
+          "role": "reading",
+          "gpcs": [
+            {
+              "grapheme": "f",
+              "phoneme": "f"
+            },
+            {
+              "grapheme": "a",
+              "phoneme": "æ"
+            },
+            {
+              "grapheme": "s",
+              "phoneme": "s"
+            },
+            {
+              "grapheme": "t",
+              "phoneme": "t"
+            }
+          ],
+          "audio": null,
+          "picture": null,
+          "thai": null
+        },
+        {
+          "text": "best",
+          "role": "reading",
+          "gpcs": [
+            {
+              "grapheme": "b",
+              "phoneme": "b"
+            },
+            {
+              "grapheme": "e",
+              "phoneme": "ɛ"
+            },
+            {
+              "grapheme": "s",
+              "phoneme": "s"
+            },
+            {
+              "grapheme": "t",
+              "phoneme": "t"
+            }
+          ],
+          "audio": null,
+          "picture": null,
+          "thai": null
+        },
+        {
+          "text": "hand",
+          "role": "reading",
+          "gpcs": [
+            {
+              "grapheme": "h",
+              "phoneme": "h"
+            },
+            {
+              "grapheme": "a",
+              "phoneme": "æ"
+            },
+            {
+              "grapheme": "n",
+              "phoneme": "n"
+            },
+            {
+              "grapheme": "d",
+              "phoneme": "d"
+            }
+          ],
+          "audio": null,
+          "picture": null,
+          "thai": null
+        },
+        {
+          "text": "sand",
+          "role": "reading",
+          "gpcs": [
+            {
+              "grapheme": "s",
+              "phoneme": "s"
+            },
+            {
+              "grapheme": "a",
+              "phoneme": "æ"
+            },
+            {
+              "grapheme": "n",
+              "phoneme": "n"
+            },
+            {
+              "grapheme": "d",
+              "phoneme": "d"
+            }
+          ],
+          "audio": null,
+          "picture": null,
+          "thai": null
+        },
+        {
+          "text": "jump",
+          "role": "reading",
+          "gpcs": [
+            {
+              "grapheme": "j",
+              "phoneme": "dʒ"
+            },
+            {
+              "grapheme": "u",
+              "phoneme": "ʌ"
+            },
+            {
+              "grapheme": "m",
+              "phoneme": "m"
+            },
+            {
+              "grapheme": "p",
+              "phoneme": "p"
+            }
+          ],
+          "audio": null,
+          "picture": null,
+          "thai": null
+        },
+        {
+          "text": "lamp",
+          "role": "reading",
+          "gpcs": [
+            {
+              "grapheme": "l",
+              "phoneme": "l"
+            },
+            {
+              "grapheme": "a",
+              "phoneme": "æ"
+            },
+            {
+              "grapheme": "m",
+              "phoneme": "m"
+            },
+            {
+              "grapheme": "p",
+              "phoneme": "p"
+            }
+          ],
+          "audio": null,
+          "picture": null,
+          "thai": null
+        },
+        {
+          "text": "tent",
+          "role": "reading",
+          "gpcs": [
+            {
+              "grapheme": "t",
+              "phoneme": "t"
+            },
+            {
+              "grapheme": "e",
+              "phoneme": "ɛ"
+            },
+            {
+              "grapheme": "n",
+              "phoneme": "n"
+            },
+            {
+              "grapheme": "t",
+              "phoneme": "t"
+            }
+          ],
+          "audio": null,
+          "picture": null,
+          "thai": null
+        },
+        {
+          "text": "milk",
+          "role": "reading",
+          "gpcs": [
+            {
+              "grapheme": "m",
+              "phoneme": "m"
+            },
+            {
+              "grapheme": "i",
+              "phoneme": "ɪ"
+            },
+            {
+              "grapheme": "l",
+              "phoneme": "l"
+            },
+            {
+              "grapheme": "k",
+              "phoneme": "k"
+            }
+          ],
+          "audio": null,
+          "picture": null,
+          "thai": null
+        },
+        {
+          "text": "nest",
+          "role": "reading",
+          "gpcs": [
+            {
+              "grapheme": "n",
+              "phoneme": "n"
+            },
+            {
+              "grapheme": "e",
+              "phoneme": "ɛ"
+            },
+            {
+              "grapheme": "s",
+              "phoneme": "s"
+            },
+            {
+              "grapheme": "t",
+              "phoneme": "t"
+            }
+          ],
+          "audio": null,
+          "picture": null,
+          "thai": null
+        },
+        {
+          "text": "lost",
+          "role": "reading",
+          "gpcs": [
+            {
+              "grapheme": "l",
+              "phoneme": "l"
+            },
+            {
+              "grapheme": "o",
+              "phoneme": "ɑ"
+            },
+            {
+              "grapheme": "s",
+              "phoneme": "s"
+            },
+            {
+              "grapheme": "t",
+              "phoneme": "t"
+            }
+          ],
+          "audio": null,
+          "picture": null,
+          "thai": null
+        }
+      ],
+      "sentences": []
+    }
+  ]
+}

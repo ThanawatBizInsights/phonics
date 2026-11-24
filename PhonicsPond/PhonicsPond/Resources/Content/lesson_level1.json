@@ -1,0 +1,60 @@
+{
+  "level": 1,
+  "pages": [
+    {
+      "page": 1,
+      "intro": "prompt_today_four_sounds",
+      "stages": [
+        { "stone": "ears",    "activity": { "type": "pictureTap", "words": ["sock", "pen", "pot"] } },
+        { "stone": "sounds",  "activity": { "type": "soundCards", "letters": ["s", "a", "t", "p"] } },
+        { "stone": "try",     "activity": { "type": "offlineCard", "card": "soundHunt" } },
+        { "stone": "words",   "activity": { "type": "oralBlend", "words": ["sat", "pat"] } },
+        { "stone": "sticker", "activity": { "type": "finish" } }
+      ]
+    },
+    {
+      "page": 2,
+      "intro": "prompt_tap_glowing_stone",
+      "stages": [
+        { "stone": "ears",    "activity": { "type": "reviewSounds", "letters": ["s", "a", "t", "p"] } },
+        { "stone": "sounds",  "activity": { "type": "soundCards", "letters": ["s", "a", "t", "p"] } },
+        { "stone": "try",     "activity": { "type": "trace", "letters": ["s", "a", "t", "p"] } },
+        { "stone": "words",   "activity": { "type": "readWords", "words": ["sat"] } },
+        { "stone": "sticker", "activity": { "type": "finish" } }
+      ]
+    },
+    {
+      "page": 3,
+      "intro": "prompt_tap_glowing_stone",
+      "stages": [
+        { "stone": "ears",    "activity": { "type": "reviewSounds", "letters": ["s", "a", "t", "p"] } },
+        { "stone": "sounds",  "activity": { "type": "soundCards", "letters": ["s", "a", "t"] } },
+        { "stone": "try",     "activity": { "type": "wordBuilder", "tray": ["s", "a", "t", "p"], "build": "sat", "change": "pat" } },
+        { "stone": "words",   "activity": { "type": "readWords", "words": ["tap"] } },
+        { "stone": "sticker", "activity": { "type": "finish" } }
+      ]
+    },
+    {
+      "page": 4,
+      "intro": "prompt_tap_glowing_stone",
+      "stages": [
+        { "stone": "ears",    "activity": { "type": "reviewSounds", "letters": ["s", "a", "t", "p"] } },
+        { "stone": "sounds",  "activity": { "type": "soundCards", "letters": ["t", "p"] } },
+        { "stone": "try",     "activity": { "type": "lastSound", "rounds": ["sat", "tap", "tap", "sat"], "choices": ["t", "p"] } },
+        { "stone": "words",   "activity": { "type": "readWords", "words": ["at"] } },
+        { "stone": "sticker", "activity": { "type": "finish" } }
+      ]
+    },
+    {
+      "page": 5,
+      "intro": "prompt_tap_glowing_stone",
+      "stages": [
+        { "stone": "ears",    "activity": { "type": "reviewSounds", "letters": ["s", "a", "t", "p"] } },
+        { "stone": "sounds",  "activity": { "type": "soundCards", "letters": ["s", "a", "t", "p"] } },
+        { "stone": "try",     "activity": { "type": "readWords", "words": ["sat", "tap", "pat", "at"] } },
+        { "stone": "words",   "activity": { "type": "grownUpCheck", "words": ["sat", "tap", "pat", "at"], "letters": ["s", "a", "t", "p"] } },
+        { "stone": "sticker", "activity": { "type": "finish" } }
+      ]
+    }
+  ]
+}

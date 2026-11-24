@@ -27,7 +27,13 @@ Severity: **Block** = must change before it appears in a lesson. **Change** = fi
 
 ## B. Accent decision (affects recording and later levels)
 
-**Chosen: Standard Southern British English**, one voice for all models. Reasons: the source sequence is UK *Letters and Sounds*, the Thai hint for short o (เอาะ) matches the British rounded /ɒ/, and the plan uses British vocabulary (torch). Consequences you need to approve:
+> **Approved for build 1: General American** (cot–caught merged, so short o is /ɑ/ in hot, dog, off).
+> B1 and B2 below no longer apply: **bath** and **fast** keep a short /æ/ in General American and stay in Levels 9 and 12.
+> The plan's Thai hint for short o (เอาะ) should be revised to an open, unrounded /ɑ/ before Level 3 is built.
+
+The original design-phase recommendation follows for the record.
+
+**Recommended in design v1: Standard Southern British English**, one voice for all models. Reasons: the source sequence is UK *Letters and Sounds*, the Thai hint for short o (เอาะ) matches the British rounded /ɒ/, and the plan uses British vocabulary (torch). Consequences you need to approve:
 
 | # | Level | Item | Problem in this accent | Action | Sev |
 |---|---|---|---|---|---|
@@ -71,6 +77,14 @@ Both need your call:
 
 - **C6 / C7 / C9 (function words).** "is", "has", "as", "his" and the article "a" keep showing up in sentences. The cleanest fix is to add **a, is** as tricky words in Level 5 (with **he, she, into**). That makes "she is on a bus" legal at Level 5 and "a red bug in a hot pot" legal at Level 6. Recommended.
 - **C10.** Use **vet / wet** as the only on-screen minimal pair. Put **van, vest/west, vine/wine** in the ears-only game with pictures.
+
+## C2. Found while building (curriculum data validator)
+
+| # | Level | Item | Problem | Action | Sev |
+|---|---|---|---|---|---|
+| C23 | 4 | **bed** (example word, and the bed/bad game) | b is taught in Level 5 | Moved bed and bad to listening-only. Reading pair is now **pen / pan** | Block |
+| C24 | 3/5 | **on** in "she is on a bus" | Decodable from Level 3 but in no word list, so the sentence failed the check | Added **on** to Level 3 reading words | Change |
+| C25 | 5 | Tricky words **a**, **is** | Approved | Added to Level 5 as separate tricky-word entries; Level 1 grapheme a = /æ/ is unchanged | Done |
 
 ## D. What is eligible right now (Level 1)
 

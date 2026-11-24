@@ -1,8 +1,10 @@
-# Phonics App · Design Phase v1 (awaiting approval)
+# Phonics App · Design v1 (approved)
 
 An original English phonics app for a 6-year-old Thai learner, built from `source/Iris-12-Week-Home-Phonics-Plan.md`. "Week" is now **Level**; each level has 4–6 **pages** that replace the Mon–Fri days. iPad landscape first, adaptable to iPhone.
 
-**Status: design only. Nothing is implemented until this design is approved.**
+**Status: approved. Build 1 (Level 1, iPad) is in `PhonicsPond/`; see `PhonicsPond/README.md`.**
+Approved decisions: General American; tricky words a and is in Level 5; sound hunt and tissue game offline-only; Pat in Level 1, Pip from Level 2.
+Build 1 files: `level-1-audio-manifest.csv` (recording list), `level-1-asset-list.md` (artwork).
 
 | # | Deliverable | File |
 |---|---|---|
