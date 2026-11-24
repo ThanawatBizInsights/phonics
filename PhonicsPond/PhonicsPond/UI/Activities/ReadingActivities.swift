@@ -45,7 +45,8 @@ struct LastSoundView: View {
                     .foregroundStyle(Palette.ink)
                     .accessibilityAddTraits(.isHeader)
                 HStack(spacing: u(36)) {
-                    BlueButton(title: "hear", systemImage: "speaker.wave.2.fill", height: 130) { app.playWord(word) }
+                    BlueButton(title: "hear", systemImage: "speaker.wave.2.fill", height: 130) { app.playWord(word, highlight: "last.word") }
+                        .playingHighlight(app.audio.isHighlighted("last.word"), radius: u(65))
                         .accessibilityLabel("hear the word")
                     ForEach(choices, id: \.self) { choice in
                         Button { choose(choice) } label: {
@@ -57,6 +58,7 @@ struct LastSoundView: View {
                                     .fill(answered && choice == lastLetter ? Palette.butter : Palette.lavender))
                                 .overlay(RoundedRectangle(cornerRadius: u(34), style: .continuous)
                                     .stroke(Palette.lavenderDeep, lineWidth: lastWrong == choice ? u(8) : 0))
+                                .playingHighlight(app.audio.isHighlighted("last.\(choice)"), radius: u(34))
                         }
                         .buttonStyle(PressableStyle())
                         .accessibilityLabel("letter \(choice)")
@@ -70,7 +72,7 @@ struct LastSoundView: View {
         }
         .animation(.easeOut(duration: 0.25), value: answered)
         .onAppear(perform: appear)
-        .onDisappear { app.audio.stop() }
+        .onDisappear { app.audio.leaveScreen() }
     }
 
     private func appear() {
@@ -89,11 +91,11 @@ struct LastSoundView: View {
             answered = true
             lastWrong = nil
             app.store.update { $0.count("lastSound.correct") }
-            app.audio.play(.thatsIt)
+            app.audio.play(Prompt.thatsIt.rawValue, highlight: "last.\(choice)")
         } else {
             lastWrong = choice
             app.store.update { $0.count("lastSound.retry") }
-            app.audio.play(.tryLastSound) { app.playWord(word) }
+            app.audio.play(Prompt.tryLastSound.rawValue, highlight: "last.\(choice)") { app.playWord(word, highlight: "last.word") }
         }
     }
 
@@ -105,7 +107,7 @@ struct LastSoundView: View {
             lastWrong = nil
             context.saveStep(index)
             context.cues.dotIndex = index
-            app.playWord(word)
+            app.playWord(word, highlight: "last.word")
         } else {
             context.complete()
         }
@@ -170,7 +172,7 @@ struct ReadWordsView: View {
         }
         .onDisappear {
             quietTask?.cancel()
-            app.audio.stop()
+            app.audio.leaveScreen()
         }
     }
 
@@ -183,34 +185,52 @@ struct ReadWordsView: View {
                     Button {
                         tappedLetters[word, default: []].insert(i)
                         restartQuietTimer()
-                        app.playPhoneme(letter)
+                        app.playPhoneme(letter, highlight: "read.\(word).\(i)")
                     } label: {
                         Text(letter)
                             .font(Typeface.letter(u(tileSize)))
                             .foregroundStyle(Palette.ink)
                             .frame(minWidth: u(tileSize * 0.55))
+                            .background(RoundedRectangle(cornerRadius: u(14), style: .continuous)
+                                .fill(letterLit(word, i) ? Palette.butter : Color.clear))
                     }
                     .buttonStyle(PressableStyle())
                     .accessibilityLabel("letter \(letter)")
                     .accessibilityHint("Plays the sound.")
                 }
             }
-            BlueButton(title: words.count > 2 ? "" : "hear the word", systemImage: "speaker.wave.2.fill", height: 58, enabled: ready) {
-                app.playWord(word) {
-                    heardWords.insert(word)
-                    revealedWord = word
-                    app.store.update { $0.count("read.heard.\(word)") }
+            HStack(spacing: u(10)) {
+                // "Hear the sounds" helps decoding and is always available.
+                BlueButton(title: words.count > 2 ? "" : "hear the sounds", systemImage: "waveform", height: 58, style: .cream) {
+                    restartQuietTimer()
+                    app.playSounds(of: word, highlightPrefix: "read.\(word).")
                 }
+                .accessibilityLabel("hear the sounds in \(word)")
+                // "Hear the word" waits for an attempt; the meaning picture comes after it.
+                BlueButton(title: words.count > 2 ? "" : "hear the word", systemImage: "speaker.wave.2.fill", height: 58, enabled: ready) {
+                    app.playWord(word, highlight: "read.\(word).word") {
+                        heardWords.insert(word)
+                        revealedWord = word
+                        app.store.update { $0.count("read.heard.\(word)") }
+                    }
+                }
+                .accessibilityLabel("hear the word \(word)")
             }
-            .accessibilityLabel("hear the word \(word)")
         }
         .padding(.vertical, u(16))
         .padding(.horizontal, u(18))
         .frame(minWidth: u(words.count > 2 ? 240 : 420))
         .background(RoundedRectangle(cornerRadius: u(30), style: .continuous)
             .fill(revealedWord == word ? Palette.butter.opacity(0.6) : Palette.lavender))
+        .playingHighlight(app.audio.isHighlighted("read.\(word).word"), radius: u(30))
         .accessibilityElement(children: .contain)
         .accessibilityLabel("word card")
+    }
+
+    private func letterLit(_ word: String, _ index: Int) -> Bool {
+        app.audio.isHighlighted("read.\(word).\(index)")
+            || app.audio.isHighlighted("read.\(word).all")
+            || app.audio.isHighlighted("read.\(word).word")
     }
 
     private func revealCard(_ word: String) -> some View {
@@ -280,7 +300,7 @@ struct GrownUpCheckView: View {
             context.cues.replay = { app.audio.play(.grownUpTime) }
             if context.autoplay { app.audio.play(.grownUpTime) }
         }
-        .onDisappear { app.audio.stop() }
+        .onDisappear { app.audio.leaveScreen() }
     }
 
     private var marksPanel: some View {
@@ -416,7 +436,7 @@ struct FinishView: View {
             cues.replay = { app.audio.play(.pickASticker) }
             app.audio.play(.pickASticker)
         }
-        .onDisappear { app.audio.stop() }
+        .onDisappear { app.audio.leaveScreen() }
     }
 
     private func pick(_ kind: StickerKind) {
@@ -424,6 +444,6 @@ struct FinishView: View {
         picked = kind
         app.store.update { $0.addSticker(kind, level: app.level, page: page) }
         app.audio.stop()
-        if app.store.data.settings.chime { app.audio.playEffect(.stickerChime) }
+        if app.store.data.settings.chime { app.audio.playEffect(.softChime) }
     }
 }

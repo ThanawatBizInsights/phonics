@@ -46,7 +46,7 @@ struct TraceView: View {
                 .position(x: u(1070), y: u(760))
         }
         .onAppear(perform: appear)
-        .onDisappear { app.audio.stop() }
+        .onDisappear { app.audio.leaveScreen() }
     }
 
     private var sandTray: some View {

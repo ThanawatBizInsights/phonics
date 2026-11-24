@@ -67,7 +67,13 @@ if "a" in tricky(4):
 n = plan["level"]
 letters_taught = {g for g, _ in taught(n)}
 reading_shown, listening_used, words_audio, blends = set(), set(), [], []
+CAST_FIRST_LEVEL = {"pat": 1, "puppy": 1, "pip": 2}
 for page in plan["pages"]:
+    for member in page.get("cast", ["pat"]):
+        if member not in CAST_FIRST_LEVEL:
+            problems.append(f"page {page['page']}: unknown cast member '{member}'")
+        elif CAST_FIRST_LEVEL[member] > n:
+            problems.append(f"page {page['page']}: '{member}' appears before Level {CAST_FIRST_LEVEL[member]}")
     stones = [s["stone"] for s in page["stages"]]
     if stones != ["ears", "sounds", "try", "words", "sticker"]:
         problems.append(f"page {page['page']}: stones out of order {stones}")
@@ -130,8 +136,11 @@ if len(mids) != len(set(mids)):
 for r in rows:
     if r["filename"] != r["audio_id"] + ".wav":
         problems.append(f"manifest filename mismatch for {r['audio_id']}")
-    if r["status"] != "To record" and not os.path.exists(os.path.join(APP, "Resources", "Audio", r["filename"])):
+    bundled = os.path.exists(os.path.join(APP, "Resources", "Audio", r["filename"]))
+    if r["status"].startswith("Ready") and not bundled:
         problems.append(f"{r['audio_id']} marked '{r['status']}' but file is missing")
+    if (r["status"] in ("To record", "Needs human recording")) and bundled:
+        problems.append(f"{r['audio_id']} is '{r['status']}' but a file is bundled (keep candidates out of the app)")
     p = re.search(r'case (\w+) = "%s"' % r["audio_id"], prompt_block)
     if p:
         text = re.search(r'case \.%s: return "((?:[^"\\]|\\.)*)"' % p.group(1), swift).group(1).replace('\\"', '"')

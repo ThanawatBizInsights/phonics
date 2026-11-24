@@ -72,9 +72,10 @@ enum Prompt: String, CaseIterable {
     }
 }
 
-/// Non-teaching sounds. Never played over speech.
+/// Non-teaching sounds. Never played over speech; phonics buttons make no effect sounds.
 enum Effect: String, CaseIterable {
-    case stickerChime = "effect_sticker_chime"
+    /// One soft chime, reused for a completed activity and for picking a sticker.
+    case softChime = "effect_soft_chime"
 }
 
 /// Audio IDs derived from curriculum data.

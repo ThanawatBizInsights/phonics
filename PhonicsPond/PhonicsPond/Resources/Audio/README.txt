@@ -7,4 +7,6 @@ Drop finished Level 1 recordings in this folder.
   are bundled on the next build. No project edits needed.
 - Missing clips never block a lesson. Debug builds show an orange
   "audio pending" banner and Grown-ups > Recordings lists what is still missing.
-- Do not add synthesized (text-to-speech) phonemes or word models.
+- Do not add synthesized (text-to-speech) isolated sounds or blending models.
+  phoneme_s/short_a/t/p and blend_s_a_t/blend_p_a_t still need human recordings.
+  The ElevenLabs instruction lines and whole words here were auto-checked and await a listening sign-off.

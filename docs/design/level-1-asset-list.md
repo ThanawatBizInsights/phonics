@@ -7,29 +7,31 @@ used as layout references, and only clean regions were cropped as interim illust
 Add finished art to `PhonicsPond/PhonicsPond/Resources/Assets.xcassets` with the exact name below. The app picks it up
 automatically; missing art shows a marked "art needed" placeholder with the asset name.
 
-## Supplied (cropped from the approved references)
+## Supplied
 
-| Asset | Source image | Used on |
+| Asset | Source | Used on |
 |---|---|---|
-| `pat_waving` | Phonics Pond with Periwinkle Penguin (12) | Home and every lesson screen (soft oval edge until a cut-out arrives) |
-| `pat_sitting_log` | Sat: Penguin Sitting on a Log (14) | Meaning picture for **sat** |
-| `object_sock`, `object_pen`, `object_pot` | Pebble's Level 1 Picture Tap (4) | Picture-tap warm-up; sound-hunt card |
-| `mouth_s`, `action_s` | Pat practices the letter s (3) | Sound Card s |
-| `sticker_penguin`, `sticker_lilypad`, `sticker_star` | Pebble's Level 1 Sticker Celebration (7) | Finish, sticker book; penguin sticker also the app icon |
+| `pond_background` | Sunny Pond Storybook Landscape (artwork pack 3) | Fixed background behind every screen |
+| `pat_waving_cutout` | Pat the plush penguin waving (pack 2), transparent, trimmed to the feet | Pat on Home and every lesson screen (wobbling layer) |
+| `pat_patting` | Pat pats a golden puppy (pack 4), transparent | Meaning picture for **pat** (wobbling layer) |
+| `pat_tapping` | Pat Taps a Wooden Table (pack 1), transparent | Meaning picture for **tap** (wobbling layer). Pack 11 is an alternate take, not used |
+| `pat_sitting_log` | Crop of "Sat: Penguin Sitting on a Log" (reference 14) | Meaning picture for **sat** |
+| `mouth_a`, `mouth_t`, `mouth_p` | Short A mouth shape (7), Tongue tip meets the alveolar ridge (9), Closed lips for /p/ (8) | Sound Cards a, t, p |
+| `action_a`, `action_t`, `action_p` | Three felt ants on an arm (10), Fingertip tap on a table (6), Puppet blows a candle (5) | Sound Cards a, t, p |
+| `mouth_s`, `action_s` | Crops of "Pat practices the letter s" (reference 3) | Sound Card s |
+| `object_sock`, `object_pen`, `object_pot` | Crops of the Picture Tap reference (4) | Picture-tap warm-up, sound-hunt card |
+| `sticker_penguin`, `sticker_lilypad`, `sticker_star` | Crops of the Sticker Celebration reference (7) | Finish, sticker book |
+| `pat_waving` | Crop of reference 12 | Fallback only (if the cut-out is removed) |
+| App icon | Phonics-Pond-App-Icon (1254 px, resized to 1024 px, no alpha) | `AppIcon.appiconset` |
 
-## Still needed (placeholders shown)
+## Still needed
 
-| Asset | What it should show | Size and format | Used on |
-|---|---|---|---|
-| `pond_background` | The sunny pond scene with no characters, text, buttons or panels | 2388 × 1668 px (11-inch @2x), JPG/PNG | Behind every screen (a drawn pond stands in) |
-| `pat_waving_cutout` | Pat (periwinkle plush penguin, peach scarf) waving, transparent background | ~1200 px tall PNG with alpha | Home, lessons |
-| `pat_patting` | Pat gently patting a small puppy or friend | ~800 × 840 px | Meaning picture for **pat** |
-| `pat_tapping` | Pat tapping a drum or the table | ~800 × 840 px | Meaning picture for **tap** |
-| `mouth_a`, `action_a` | Mouth open wide for /æ/; "ants on your arm" hand action | ~760 × 330 px each | Sound Card a |
-| `mouth_t`, `action_t` | Tongue tip behind top teeth; tapping the table | ~760 × 330 px each | Sound Card t |
-| `mouth_p`, `action_p` | Lips closed, ready to pop; blowing a candle | ~760 × 330 px each | Sound Card p |
+| Asset | What it should show | Why |
+|---|---|---|
+| `puppy_cutout` | The golden puppy alone, transparent, feet at the bottom edge | Pages 3 and 5 list the puppy in their cast. In pack 4, Pat's hand covers the puppy's head, so it can't be separated. Until this arrives, the puppy appears only inside the "pat" picture |
+| `pip_cutout` (Level 2) | Pip, transparent, feet at the bottom edge | Pip joins in Level 2 with short i |
 
-**at** has no picture by design (abstract word). With Thai help on, its meaning (ที่) appears instead.
+Character cut-outs are separate layers that sway around their feet. Each character has its own rhythm: Pat 2.8 s, puppy 2.15 s, Pip 3.25 s. A tap adds one quick wobble. With Reduce Motion, characters stay still and a tap shows a soft glow instead.
 
 ## Reference images not used for layout
 

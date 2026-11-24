@@ -8,7 +8,6 @@ struct PictureTapView: View {
     let words: [String]
     let context: ActivityContext
     @State private var heard: Set<String> = []
-    @State private var lifted: String?
 
     var body: some View {
         ZStack(alignment: .topLeading) {
@@ -26,8 +25,7 @@ struct PictureTapView: View {
                     let entry = app.word(word)
                     Button {
                         heard.insert(word)
-                        lifted = word
-                        app.playWord(word) { if lifted == word { lifted = nil } }
+                        app.playWord(word, highlight: "pic.\(word)")
                     } label: {
                         Illustration(assetName: entry?.picture, description: "picture of a \(word)", corner: 30)
                             .frame(width: u(300), height: u(230))
@@ -39,8 +37,7 @@ struct PictureTapView: View {
                                     .background(Circle().fill(Color.white.opacity(0.9)))
                                     .padding(u(12))
                             }
-                            .offset(y: lifted == word ? -u(14) : 0)
-                            .animation(.easeOut(duration: 0.2), value: lifted)
+                            .playingHighlight(app.audio.isHighlighted("pic.\(word)"), radius: u(30))
                     }
                     .buttonStyle(PressableStyle())
                     .accessibilityLabel("picture: \(word)")
@@ -60,7 +57,7 @@ struct PictureTapView: View {
             context.cues.replay = { app.audio.play(.tapAPicture) }
             if context.autoplay { app.audio.play(.tapAPicture) }
         }
-        .onDisappear { app.audio.stop() }
+        .onDisappear { app.audio.leaveScreen() }
     }
 }
 
@@ -74,7 +71,7 @@ struct SoundCardsView: View {
 
     @State private var index = 0
     @State private var playedOnce = false
-    @State private var playing = false
+    private var playing: Bool { app.audio.isHighlighted("card.\(letter)") }
     @State private var yourTurn = false
     @State private var showTip = false
     @State private var helpTaps = 0
@@ -153,7 +150,7 @@ struct SoundCardsView: View {
             if showTip { tipSheet }
         }
         .onAppear(perform: appear)
-        .onDisappear { app.audio.stop() }
+        .onDisappear { app.audio.leaveScreen() }
     }
 
     private func cueCard(asset: String, caption: String, kind: String) -> some View {
@@ -209,9 +206,7 @@ struct SoundCardsView: View {
 
     private func playSound() {
         let first = !playedOnce
-        playing = true
-        app.playPhoneme(letter) {
-            playing = false
+        app.playPhoneme(letter, highlight: "card.\(letter)") {
             playedOnce = true
             guard first, let cuePrompt = AudioID.cue(for: letter) else { return }
             app.audio.play(cuePrompt) {
@@ -243,7 +238,6 @@ struct SoundCardsView: View {
             index += 1
             playedOnce = false
             yourTurn = false
-            playing = false
             helpTaps = 0
             context.saveStep(index)
             updateDots()
@@ -284,7 +278,6 @@ struct ReviewSoundsView: View {
     let letters: [String]
     let context: ActivityContext
     @State private var tapped: Set<String> = []
-    @State private var playing: String?
 
     var body: some View {
         ZStack(alignment: .topLeading) {
@@ -301,10 +294,9 @@ struct ReviewSoundsView: View {
                 ForEach(letters, id: \.self) { letter in
                     Button {
                         tapped.insert(letter)
-                        playing = letter
-                        app.playPhoneme(letter) { if playing == letter { playing = nil } }
+                        app.playPhoneme(letter, highlight: "review.\(letter)")
                     } label: {
-                        LetterTile(text: letter, size: 190, fill: Palette.lavender, lit: playing == letter)
+                        LetterTile(text: letter, size: 190, fill: Palette.lavender, lit: app.audio.isHighlighted("review.\(letter)"))
                     }
                     .buttonStyle(PressableStyle())
                     .accessibilityLabel("letter \(letter)")
@@ -324,7 +316,7 @@ struct ReviewSoundsView: View {
             context.cues.replay = { app.audio.play(.tapToHearSound) }
             if context.autoplay { app.audio.play(.tapToHearSound) }
         }
-        .onDisappear { app.audio.stop() }
+        .onDisappear { app.audio.leaveScreen() }
     }
 }
 
@@ -389,7 +381,7 @@ struct OfflineCardView: View {
             context.cues.dotCount = 0
             context.cues.replay = nil
         }
-        .onDisappear { app.audio.stop() }
+        .onDisappear { app.audio.leaveScreen() }
     }
 }
 
@@ -445,7 +437,8 @@ struct OralBlendView: View {
                 .position(x: u(720), y: u(190))
 
             HStack(spacing: u(40)) {
-                BlueButton(title: "hear", systemImage: "speaker.wave.2.fill", height: 110, action: playBlend)
+                BlueButton(title: "hear the sounds", systemImage: "waveform", height: 100, action: playBlend)
+                    .playingHighlight(app.audio.isHighlighted("blend.all") || app.audio.currentID?.hasPrefix("phoneme_") == true, radius: u(50))
 
                 ZStack {
                     RoundedRectangle(cornerRadius: u(34), style: .continuous)
@@ -475,9 +468,10 @@ struct OralBlendView: View {
             .position(x: u(710), y: u(500))
 
             HStack(spacing: u(30)) {
-                BlueButton(title: "hear the word", systemImage: "speaker.wave.2.fill", height: 92, enabled: canHearWord && !revealed) {
-                    app.playWord(word) { revealed = true }
+                BlueButton(title: "hear the word", systemImage: "speaker.wave.2.fill", height: 92, enabled: canHearWord) {
+                    app.playWord(word, highlight: "oral.word") { revealed = true }
                 }
+                .playingHighlight(app.audio.isHighlighted("oral.word"), radius: u(46))
                 NextButton(enabled: revealed) { next() }
                     .opacity(revealed ? 1 : 0)
             }
@@ -486,7 +480,7 @@ struct OralBlendView: View {
         .onAppear(perform: appear)
         .onDisappear {
             waitTask?.cancel()
-            app.audio.stop()
+            app.audio.leaveScreen()
         }
     }
 
@@ -501,7 +495,7 @@ struct OralBlendView: View {
     }
 
     private func playBlend() {
-        app.audio.play(AudioID.blend(word)) {
+        app.playSounds(of: word, highlightPrefix: "blend.") {
             blendHeard = true
             // Time to try saying the word before the recording is offered.
             waitTask?.cancel()

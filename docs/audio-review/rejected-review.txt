@@ -1,0 +1,8 @@
+!! cand_blend_p_a_t                1.35s voiced=[(130, 230), (470, 500), (950, 1080)] F=[424, 2780] release=-77.6dB peak=-1.9 3 voiced segments [(130, 230), (470, 500), (950, 1080)] (expected only the vowel)
+!! cand_blend_s_a_t                1.49s voiced=[(650, 770), (1210, 1320)] F=[783, 0] release=-77.1dB peak=-3.9 2 voiced segments [(650, 770), (1210, 1320)] (expected only the vowel)
+!! cand_phoneme_p                  0.60s voiced=[(30, 60), (100, 350)] F=[420, 2824] release=-71.6dB peak=-7.1 voiced [30, 250] ms after the stop (added vowel / letter name)
+!! cand_phoneme_s                  0.79s voiced=[] F= release=dB peak=-23.0 too short for a sustained /s/
+!! cand_phoneme_short_a            0.65s voiced=[(60, 150), (160, 200)] F=[881, 1522] release=-62.4dB peak=-1.3 2 voiced segments; formants F1=881 F2=1522 not /æ/-like
+!! cand_phoneme_t                  0.74s voiced=[(130, 400)] F=[356, 2801] release=-48.7dB peak=-10.1 voiced [270] ms after the stop (added vowel / letter name)
+OK word_sat_take1                  0.88s voiced=[(100, 540), (550, 600)] F=[512, 1945] release=-52.2dB peak=-1.0 
+OK word_tap_take2b                 0.84s voiced=[(110, 350), (520, 580)] F=[1151, 0] release=-21.6dB peak=-0.4 

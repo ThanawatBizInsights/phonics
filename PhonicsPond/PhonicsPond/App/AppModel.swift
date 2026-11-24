@@ -88,12 +88,40 @@ final class AppModel {
 
     func wordID(_ text: String) -> String { word(text)?.audio ?? "word_\(text)" }
 
-    func playPhoneme(_ letter: String, then completion: (() -> Void)? = nil) {
-        audio.play(phonemeID(letter), then: completion)
+    /// The letter's taught sound (never its alphabet name). `highlight` lights the tapped tile while it plays.
+    func playPhoneme(_ letter: String, highlight: String? = nil, then completion: (() -> Void)? = nil) {
+        audio.play(phonemeID(letter), highlight: highlight, then: completion)
     }
 
-    func playWord(_ text: String, then completion: (() -> Void)? = nil) {
-        audio.play(wordID(text), then: completion)
+    /// The natural whole-word recording.
+    func playWord(_ text: String, highlight: String? = nil, then completion: (() -> Void)? = nil) {
+        audio.play(wordID(text), highlight: highlight, then: completion)
+    }
+
+    /// "Hear the sounds": the recorded blending model (e.g. blend_s_a_t) when there is one,
+    /// otherwise each taught sound in turn, lighting the matching letter (`highlightPrefix` + index).
+    func playSounds(of word: String, highlightPrefix: String, then completion: (() -> Void)? = nil) {
+        let model = AudioID.blend(word)
+        if audio.isAvailable(model) {
+            audio.play(model, highlight: highlightPrefix + "all", then: completion)
+        } else {
+            playLetters(Array(word.map { String($0) }.enumerated()), prefix: highlightPrefix, then: completion)
+        }
+    }
+
+    private func playLetters(_ letters: [(offset: Int, element: String)], prefix: String, then completion: (() -> Void)?) {
+        guard let first = letters.first else { completion?(); return }
+        playPhoneme(first.element, highlight: prefix + String(first.offset)) { [weak self] in
+            guard let self else { return }
+            let rest = Array(letters.dropFirst())
+            let expected = self.audio.currentToken
+            Task { @MainActor in
+                try? await Task.sleep(nanoseconds: 350_000_000)
+                // A newer tap, a stop, or leaving the screen has taken over: end the sequence.
+                guard self.audio.currentToken == expected else { return }
+                self.playLetters(rest, prefix: prefix, then: completion)
+            }
+        }
     }
 
     func setChime(_ on: Bool) {

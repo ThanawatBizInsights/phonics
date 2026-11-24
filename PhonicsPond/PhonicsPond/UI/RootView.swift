@@ -4,6 +4,12 @@ import SwiftUI
 struct RootView: View {
     @Environment(AppModel.self) private var app
     @Environment(\.scenePhase) private var scenePhase
+    @Environment(\.accessibilityReduceMotion) private var systemReduceMotion
+
+    /// System Reduce Motion, or `-reduceMotion` for UI tests.
+    private var reduced: Bool {
+        systemReduceMotion || ProcessInfo.processInfo.arguments.contains("-reduceMotion")
+    }
 
     var body: some View {
         GeometryReader { geo in
@@ -23,10 +29,12 @@ struct RootView: View {
                 .padding(12)
             }
             .environment(\.u, Unit(k: k))
+            .environment(\.reducedStoryMotion, reduced)
         }
         .fullScreenCover(isPresented: Binding(get: { app.showParentArea }, set: { app.showParentArea = $0 })) {
             ParentAreaView()
                 .environment(app)
+                .environment(\.reducedStoryMotion, reduced)
         }
         .onChange(of: scenePhase) { _, phase in
             // Leaving the foreground (or the app switcher) stops audio. Nothing auto-plays on return.

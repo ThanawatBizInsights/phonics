@@ -4,7 +4,7 @@ import SwiftUI
 struct HomeView: View {
     @Environment(AppModel.self) private var app
     @Environment(\.u) private var u
-    @State private var breathe = false
+    @State private var invite = false
     @State private var idleTask: Task<Void, Never>?
 
     private var prompt: Prompt { app.hasPageInProgress ? .welcomeBack : .tapToStart }
@@ -53,7 +53,7 @@ struct HomeView: View {
         .onAppear(perform: appear)
         .onDisappear {
             idleTask?.cancel()
-            app.audio.stop()
+            app.audio.leaveScreen()
         }
     }
 
@@ -77,7 +77,7 @@ struct HomeView: View {
             }
             .padding(u(30))
             .creamPanel(radius: 44)
-            .scaleEffect(breathe ? 1.025 : 1)
+            .pulse(invite, radius: u(44))
         }
         .buttonStyle(PressableStyle())
         .accessibilityLabel("today. Level \(app.level), page \(app.todayPage). Sounds \(app.levelLetters.joined(separator: ", ")).")
@@ -94,7 +94,7 @@ struct HomeView: View {
             app.audio.play(firstPrompt)
             try? await Task.sleep(nanoseconds: 3_000_000_000)
             guard !Task.isCancelled else { return }
-            withAnimation(.easeInOut(duration: 1.6).repeatForever(autoreverses: true)) { breathe = true }
+            invite = true   // a soft ring, not a moving button
             try? await Task.sleep(nanoseconds: 10_000_000_000)
             guard !Task.isCancelled, !app.audio.isPlaying else { return }
             app.audio.play(firstPrompt) // one repeat only

@@ -78,9 +78,15 @@ struct WordBuilderView: View {
                     .position(x: u(400), y: u(430))
             }
 
-            BlueButton(title: "hear the word", systemImage: "speaker.wave.2.fill", height: 84,
-                       enabled: model.isComplete && (attemptReady || isReveal)) { hearWord() }
-                .position(x: u(400), y: u(522))
+            // "Hear the sounds" (the s–a–t model) is always available; "hear the word" only after a try.
+            HStack(spacing: u(20)) {
+                BlueButton(title: "hear the sounds", systemImage: "waveform", height: 76, style: .lavender) { hearSounds() }
+                    .playingHighlight(app.audio.currentID.map { $0.hasPrefix("blend_") } == true, radius: u(38))
+                BlueButton(title: "hear the word", systemImage: "speaker.wave.2.fill", height: 76,
+                           enabled: model.isComplete && (attemptReady || isReveal)) { hearWord() }
+                    .playingHighlight(app.audio.isHighlighted("builder.word"), radius: u(38))
+            }
+            .position(x: u(400), y: u(522))
 
             // Right: Pat, or the meaning picture after the word has been heard
             Group {
@@ -125,7 +131,7 @@ struct WordBuilderView: View {
         .onAppear(perform: appear)
         .onDisappear {
             waitTask?.cancel()
-            app.audio.stop()
+            app.audio.leaveScreen()
         }
     }
 
@@ -135,7 +141,7 @@ struct WordBuilderView: View {
         let tile = model.slots[slot]
         return Group {
             if let tile {
-                LetterTile(text: tile.letter, size: slotSize, lit: litSlot == slot, glow: glowSlot == slot)
+                LetterTile(text: tile.letter, size: slotSize, lit: isLit(slot), glow: glowSlot == slot)
             } else {
                 LetterTile(text: "", size: slotSize, dashed: true)
             }
@@ -205,6 +211,15 @@ struct WordBuilderView: View {
             .accessibilityAction { tapTray(tile) }
     }
 
+    /// A slot lights while its own sound plays, during a blend, or while the word or sounds play.
+    private func isLit(_ slot: Int) -> Bool {
+        litSlot == slot
+            || app.audio.isHighlighted("slot.\(slot)")
+            || app.audio.isHighlighted("bsounds.\(slot)")
+            || app.audio.isHighlighted("bsounds.all")
+            || app.audio.isHighlighted("builder.word")
+    }
+
     private func trayX(_ offset: Int, count: Int) -> CGFloat {
         let spacing: CGFloat = 170
         let start: CGFloat = 520 - spacing * CGFloat(count - 1) / 2
@@ -259,7 +274,7 @@ struct WordBuilderView: View {
             }
         case .correct(let slot):
             if glowSlot == slot { glowSlot = nil }
-            app.playPhoneme(letter) {
+            app.playPhoneme(letter, highlight: "slot.\(slot)") {
                 if model.isComplete { builtWord() }
             }
         case .misplaced(let slot):
@@ -268,9 +283,9 @@ struct WordBuilderView: View {
             attemptReady = false
             app.store.update { $0.count("builder.misplaced") }
             let hint = Prompt.tryPosition(slot, of: model.slots.count)
-            app.playPhoneme(letter) {
+            app.playPhoneme(letter, highlight: "slot.\(slot)") {
                 app.audio.play(hint) {
-                    app.audio.play(AudioID.blend(currentWord))
+                    app.playSounds(of: currentWord, highlightPrefix: "bsounds.")
                 }
             }
         }
@@ -321,7 +336,7 @@ struct WordBuilderView: View {
             return
         }
         litSlot = i
-        app.playPhoneme(tile.letter) {
+        app.playPhoneme(tile.letter, highlight: "slot.\(i)") {
             Task { @MainActor in
                 try? await Task.sleep(nanoseconds: 150_000_000)
                 blendStep(i + 1)
@@ -333,7 +348,7 @@ struct WordBuilderView: View {
         guard model.isComplete else { return }
         waitTask?.cancel()
         let word = currentWord
-        app.playWord(word) {
+        app.playWord(word, highlight: "builder.word") {
             switch phase {
             case .build:
                 phase = .buildReveal
@@ -345,6 +360,12 @@ struct WordBuilderView: View {
                 break
             }
         }
+    }
+
+    /// The target word modelled sound by sound (blend recording, or each taught sound in turn).
+    private func hearSounds() {
+        guard !blending else { return }
+        app.playSounds(of: currentWord, highlightPrefix: "bsounds.")
     }
 
     private func next() {
@@ -369,10 +390,10 @@ struct WordBuilderView: View {
         app.store.update { $0.count("builder.help") }
         switch level {
         case 1:
-            app.audio.play(AudioID.blend(currentWord))
+            hearSounds()
         case 2:
             helpPulse = model.firstProblemSlot
-            app.audio.play(AudioID.blend(currentWord))
+            hearSounds()
         default:
             helpPulse = model.firstProblemSlot
             ghostTile = model.suggestedTile?.id

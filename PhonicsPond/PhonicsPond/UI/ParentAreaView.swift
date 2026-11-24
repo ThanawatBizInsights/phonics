@@ -286,6 +286,6 @@ struct AudioStatusView: View {
                 }
             }
         }
-        .onDisappear { app.audio.stop() }
+        .onDisappear { app.audio.leaveScreen() }
     }
 }

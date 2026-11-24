@@ -71,39 +71,63 @@ struct InstructionBubble: View {
 
 // MARK: - Buttons
 
+/// Brief press-and-release: a quick dip and a springy return. With Reduce Motion, a brightness change only.
 struct PressableStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
-        configuration.label
-            .scaleEffect(configuration.isPressed ? 0.95 : 1)
-            .animation(.easeOut(duration: 0.12), value: configuration.isPressed)
+        PressableBody(configuration: configuration)
+    }
+
+    private struct PressableBody: View {
+        let configuration: ButtonStyleConfiguration
+        @Environment(\.reducedStoryMotion) private var reduced
+
+        var body: some View {
+            configuration.label
+                .scaleEffect(!reduced && configuration.isPressed ? 0.93 : 1)
+                .brightness(configuration.isPressed ? -0.07 : 0)
+                .animation(reduced ? .easeOut(duration: 0.1) : .spring(response: 0.22, dampingFraction: 0.55),
+                           value: configuration.isPressed)
+        }
     }
 }
 
-/// Slow breathing scale used to draw attention, without flashing. Off with Reduce Motion
-/// (a steady butter ring is shown instead).
+/// Draws attention without moving the control: a butter ring that softly fades in and out
+/// (steady with Reduce Motion). Navigation, tiles and text never change position or size.
 struct Pulse: ViewModifier {
     let active: Bool
     var radius: CGFloat = 24
-    @State private var on = false
-    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @State private var bright = false
+    @Environment(\.reducedStoryMotion) private var reduced
 
     func body(content: Content) -> some View {
         content
-            .scaleEffect(active && on && !reduceMotion ? 1.07 : 1)
             .overlay {
                 if active {
                     RoundedRectangle(cornerRadius: radius, style: .continuous)
-                        .stroke(Palette.butterDeep, lineWidth: 5)
+                        .stroke(Palette.butterDeep, lineWidth: 6)
                         .padding(-7)
+                        .opacity(reduced ? 1 : (bright ? 1 : 0.35))
+                        .animation(reduced ? nil : .easeInOut(duration: 1.1).repeatForever(autoreverses: true), value: bright)
+                        .onAppear { bright = true }
+                        .allowsHitTesting(false)
                 }
             }
-            .animation(active && !reduceMotion ? .easeInOut(duration: 0.9).repeatForever(autoreverses: true) : .default, value: on)
-            .onAppear { on = active }
-            .onChange(of: active) { _, newValue in on = newValue }
     }
 }
 
 extension View {
+    /// Immediate highlight on the letter, word or picture whose clip is playing. No movement.
+    func playingHighlight(_ on: Bool, radius: CGFloat) -> some View {
+        overlay(
+            RoundedRectangle(cornerRadius: radius, style: .continuous)
+                .stroke(Palette.butterDeep, lineWidth: on ? 7 : 0)
+                .padding(-4)
+                .allowsHitTesting(false)
+        )
+        .animation(.easeOut(duration: 0.08), value: on)
+        .accessibilityAddTraits(on ? .updatesFrequently : [])
+    }
+
     func pulse(_ active: Bool, radius: CGFloat = 24) -> some View { modifier(Pulse(active: active, radius: radius)) }
 }
 
@@ -210,10 +234,14 @@ struct NextButton: View {
     var title = "next"
     var enabled = true
     let action: () -> Void
+    @State private var gate = TapGate()
 
     var body: some View {
-        BlueButton(title: title, trailingImage: "arrow.right", height: 88, enabled: enabled, action: action)
-            .accessibilityLabel(title)
+        BlueButton(title: title, trailingImage: "arrow.right", height: 88, enabled: enabled) {
+            // Rapid double taps must not skip a step.
+            if gate.allow() { action() }
+        }
+        .accessibilityLabel(title)
     }
 }
 
@@ -265,19 +293,26 @@ struct Illustration: View {
     var fill: Bool = true
 
     var body: some View {
-        Group {
-            if let assetName, UIImage(named: assetName) != nil {
-                Image(assetName)
-                    .resizable()
-                    .aspectRatio(contentMode: fill ? .fill : .fit)
-            } else {
-                PlaceholderArt(assetName: assetName ?? "(none)", description: description)
+        if let assetName, ArtworkNames.characterCutouts.contains(assetName), UIImage(named: assetName) != nil {
+            // Story pictures with Pat and friends are cut-outs: they stand on the card and gently wobble.
+            WobblingCutout(asset: assetName, fallback: nil, label: description, period: 2.5, phase: 0.7, amplitude: 1.8)
+                .padding(u(10))
+                .background(RoundedRectangle(cornerRadius: u(corner), style: .continuous).fill(Palette.cream))
+        } else {
+            Group {
+                if let assetName, UIImage(named: assetName) != nil {
+                    Image(assetName)
+                        .resizable()
+                        .aspectRatio(contentMode: fill ? .fill : .fit)
+                } else {
+                    PlaceholderArt(assetName: assetName ?? "(none)", description: description)
+                }
             }
+            .clipShape(RoundedRectangle(cornerRadius: u(corner), style: .continuous))
+            .accessibilityElement()
+            .accessibilityLabel(description)
+            .accessibilityAddTraits(.isImage)
         }
-        .clipShape(RoundedRectangle(cornerRadius: u(corner), style: .continuous))
-        .accessibilityElement()
-        .accessibilityLabel(description)
-        .accessibilityAddTraits(.isImage)
     }
 }
 
@@ -318,30 +353,14 @@ struct PlaceholderArt: View {
     }
 }
 
-/// Pat, the periwinkle plush penguin with the peach scarf.
-/// Uses a transparent cut-out when supplied; until then, the approved artwork crop with a soft oval edge.
+/// The page's story characters (Pat in Level 1), layered as separate cut-outs that gently wobble.
+/// Kept as `Mascot` so every screen places the cast the same way.
 struct Mascot: View {
-    enum Pose { case waving, sitting }
+    enum Pose { case waving }
     var pose: Pose = .waving
 
     var body: some View {
-        Group {
-            if pose == .waving, UIImage(named: ArtworkNames.patWavingCutout) != nil {
-                Image(ArtworkNames.patWavingCutout).resizable().scaledToFit()
-            } else {
-                Image(pose == .waving ? ArtworkNames.patWaving : ArtworkNames.patSittingLog)
-                    .resizable()
-                    .scaledToFit()
-                    .mask(
-                        EllipticalGradient(stops: [.init(color: .black, location: 0),
-                                                   .init(color: .black, location: 0.62),
-                                                   .init(color: .clear, location: 0.98)],
-                                           center: .center)
-                    )
-            }
-        }
-        .accessibilityLabel("Pat the penguin")
-        .accessibilityAddTraits(.isImage)
+        StoryCast()
     }
 }
 

@@ -11,8 +11,8 @@ final class LessonFlowUITests: XCTestCase {
         app = XCUIApplication()
     }
 
-    private func launch(reset: Bool = true) {
-        app.launchArguments = reset ? ["-uiTestReset"] : []
+    private func launch(reset: Bool = true, extra: [String] = []) {
+        app.launchArguments = (reset ? ["-uiTestReset"] : []) + extra
         app.launch()
     }
 
@@ -83,14 +83,12 @@ final class LessonFlowUITests: XCTestCase {
     func testMissingRecordingsAreFlaggedButDoNotBlock() {
         launch()
         button(beginningWith: "today").tap()
-        button(beginningWith: "ears").tap()
-        app.buttons["picture: sock"].tap()
-        // With no recordings in Resources/Audio, the debug build shows the pending banner.
+        button(beginningWith: "sounds").tap()
+        // Isolated sounds still need human recordings: tapping a letter shows the debug banner, and the card still works.
+        app.buttons["letter s"].tap()
         let banner = app.buttons["pendingAudioBanner"]
-        if banner.waitForExistence(timeout: 3) {
-            XCTAssertTrue(banner.label.contains("audio pending"))
-        }
-        app.buttons["picture: pen"].tap()
+        XCTAssertTrue(banner.waitForExistence(timeout: 3))
+        XCTAssertTrue(banner.label.contains("phoneme_s"))
         waitEnabled(app.buttons["next"])
     }
 
@@ -172,5 +170,84 @@ final class LessonFlowUITests: XCTestCase {
         app.buttons["finishHome"].tap()
         button(beginningWith: "today").tap()
         XCTAssertTrue(app.staticTexts["Trace the letter."].waitForExistence(timeout: 5), "today resumes the stopped activity")
+    }
+
+    // MARK: - Storytelling motion and feedback
+
+    func testCharactersWobbleAndRespondToTaps() {
+        launch()
+        let pat = app.buttons["Pat the penguin"].firstMatch
+        XCTAssertTrue(pat.waitForExistence(timeout: 5))
+        XCTAssertEqual(pat.value as? String, "gently moving")
+        pat.tap()   // one brief wobble; nothing else changes
+        XCTAssertTrue(button(beginningWith: "today").exists, "navigation stays put")
+    }
+
+    func testReduceMotionKeepsCharactersStill() {
+        launch(extra: ["-reduceMotion"])
+        let pat = app.buttons["Pat the penguin"].firstMatch
+        XCTAssertTrue(pat.waitForExistence(timeout: 5))
+        XCTAssertEqual(pat.value as? String, "still")
+        pat.tap()   // highlight only
+        button(beginningWith: "today").tap()
+        let lessonPat = app.buttons["Pat the penguin"].firstMatch
+        XCTAssertTrue(lessonPat.waitForExistence(timeout: 5))
+        XCTAssertEqual(lessonPat.value as? String, "still")
+    }
+
+    func testRapidTapsNeverSkipAStep() {
+        launch()
+        button(beginningWith: "today").tap()
+        button(beginningWith: "sounds").tap()
+        let s = app.buttons["letter s"]
+        XCTAssertTrue(s.waitForExistence(timeout: 5))
+        for _ in 0..<5 { s.tap() }          // each tap restarts the sound; no pile-up
+        waitEnabled(app.buttons["next"])
+        app.buttons["next"].doubleTap()     // a double tap moves one card only
+        XCTAssertTrue(app.buttons["letter a"].waitForExistence(timeout: 3))
+        XCTAssertFalse(app.buttons["letter t"].exists)
+    }
+
+    func testReplayAfterInterruptionWithoutAutoplay() {
+        launch()
+        button(beginningWith: "today").tap()
+        button(beginningWith: "page 3").tap()
+        button(beginningWith: "try").tap()
+        XCTAssertTrue(app.staticTexts["Build sat."].waitForExistence(timeout: 5))
+        XCUIDevice.shared.press(.home)
+        app.activate()
+        XCTAssertTrue(app.staticTexts["Build sat."].waitForExistence(timeout: 5), "same activity after returning")
+        let replay = app.buttons["hear again"]
+        XCTAssertTrue(replay.exists)
+        replay.tap()                       // the child chooses to replay
+        XCTAssertTrue(app.staticTexts["Build sat."].exists)
+    }
+
+    func testLevelOneReadingFlow() {
+        launch()
+        button(beginningWith: "today").tap()
+        button(beginningWith: "page 5").tap()
+        button(beginningWith: "try").tap()
+        XCTAssertTrue(app.staticTexts["Read the words."].waitForExistence(timeout: 5))
+        for word in ["sat", "tap", "pat", "at"] {
+            XCTAssertTrue(app.buttons["hear the sounds in \(word)"].exists, word)
+            XCTAssertTrue(app.buttons["hear the word \(word)"].exists, word)
+        }
+        // Reading comes first: "hear the word" waits for an attempt.
+        XCTAssertFalse(app.buttons["hear the word sat"].isEnabled)
+        waitEnabled(app.buttons["hear the word sat"], timeout: 8)
+        app.buttons["hear the word sat"].tap()
+        XCTAssertTrue(app.otherElements["Pat sitting on a log"].waitForExistence(timeout: 3)
+                      || app.images["picture for sat"].exists || app.buttons["picture for sat"].exists,
+                      "meaning picture appears after the word is heard")
+        app.buttons["next"].tap()
+        // Grown-up marks
+        let lock = app.buttons["Grown-up check"]
+        XCTAssertTrue(lock.waitForExistence(timeout: 5))
+        lock.press(forDuration: 3.4)
+        let mark = app.buttons["sat: On her own"]
+        XCTAssertTrue(mark.waitForExistence(timeout: 3))
+        mark.tap()
+        XCTAssertTrue(mark.isSelected)
     }
 }

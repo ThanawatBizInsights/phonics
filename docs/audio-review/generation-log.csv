@@ -1,0 +1,44 @@
+audio_id,tts_text,elevenlabs_session/generation,outcome
+prompt_tap_to_start,Tap to start.,oNJvUoQEvZl9YThellTT/zPzWJHBTsGYX2R9c4no1,bundled
+word_sat,sat.,aVaBredIWDVGbXdECgH4/jkAzytYHdwtU1arAMXHH,rejected take (see review)
+word_sat,sat!,RCLSd3tDgcbdXdJumYU7/5XAQ54IzHwNQvhSmITMO,bundled (take b of retry)
+word_tap,tap.,0KYjSl04h8MyWTE9FztM/IVwstSMTYtV8YLFFgHsI,rejected take (see review)
+word_tap,tap!,CoZZTJSiFwZu2ZbSerK8/OzTWB4MIUCiddKkwKtb7,bundled (take c of retry)
+word_pat,pat.,cngCpasXlDQ2btZR8vQw/Xv45AVGWs9DRR2wW3TJn,bundled
+word_at,at.,jdWQsck7gmPjesrWbjab/fWowsRpA6Ve3eBSh4RSk,bundled
+word_sock,sock.,jepF55OlUDXuK3qddCHl/47ZhX7HklkyQH001OzCR,bundled
+word_pen,pen.,bqBFKxnLLn3joQ5jqqwY/gy2HWQVZSW3QHKlzPCR6,bundled
+word_pot,pot.,X1MIsOCW2MJudJLCLnoZ/Ab4q0rFgHnCjlRX4WJb1,bundled
+prompt_welcome_back,Welcome back. Tap to go on.,8k25v1CmZ8rgEw7CtcBq/SSnWW0ByyK6bJGtECXvS,bundled
+prompt_today_four_sounds,Today you meet four sounds.,wbGY1fnUad02HiM7USIn/mhbfHroW7aPNLEVCnHZD,bundled
+prompt_tap_glowing_stone,Tap the glowing stone.,9wEMPBDmtV1Sw8l0NDkD/sc8DV8hAPjLrvOFnW3Zg,bundled
+prompt_tap_a_picture,Tap a picture.,VwMAlfMaP8bfmTo4nwMg/hegH1oq4r9KAXE7bxweI,bundled
+prompt_tap_to_hear_sound,Tap to hear the sound.,UDJ5Lg33AJXxuSZHSzZC/WrW79PCwp66iYvXqHEYr,bundled
+prompt_your_turn,Your turn.,ks0WResFxMsofor82HYI/ERaSUBEbTw7yyCLbsjt4,bundled
+prompt_trace_the_letter,Trace the letter.,GamT5U4fOoAiYYK4MnE9/y0nBOqrExhSzkPCKEQ5Q,bundled
+prompt_listen_what_word,Listen. What word is it?,QXdQEAoQM9k8EZDEyk1g/A6Ua00Gh0oZc5yifbjpj,bundled
+prompt_build_sat,Build sat.,6DfoQXJJo7izrhm4U6j6/otRpBJPfWzzXDqMyoW9c,bundled
+prompt_try_first_sound,Try the first sound.,Zf0k4JKiiDZmAss2FoWJ/VCokl379chdFXNZrasxp,bundled
+prompt_try_middle_sound,Try the middle sound.,bt8vmkbSNhTdB7ZNqcTh/rxzQS16SzLogH33FMBAO,bundled
+prompt_try_last_sound,Try the last sound.,9UWxpkcWJslbUUOuaHzH/B0vnN0GvHonQt40VureP,bundled
+prompt_say_sounds_say_word,Say the sounds. Now say the word.,Y53tKFfsOEz6E8kDpn7K/AvbyZxSkD82MX17Itivh,bundled
+prompt_change_make_pat,Change one sound. Make pat.,LTTAm3sUpo4yCsQWR8Y4/GAwRnOtlu8LwrVGfKDTS,bundled
+prompt_changed_one_sound,You changed one sound and made a new word!,U2S3y3CNYsDc0BCmV07D/J5tlpAw1mkw7yGN70cHV,bundled
+prompt_what_sound_at_end,What sound do you hear at the end?,pyrP2ra86yvUi5aLPYtw/wXGgPqKUaeJrqn5UboCr,bundled
+prompt_thats_it,That's it!,fw2QrMLuSS3mrnWZDkG9/da7F4xcg098Z9bwibYqB,bundled
+prompt_read_the_words,Read the words.,SrWFTOJkqtb9o4SxQyLe/R0cmMaLHpQZb3dvgEVSB,bundled
+prompt_grown_up_time,Grown-up time!,zymspzKord5d28ybHECm/oeTpzn1I4fgJvCeLi2NK,bundled
+prompt_stop_for_today,Stop for today?,xaZGe18yHoPRJmR6hZzX/0i3UZ6OIDjkIZx4dvyxE,bundled
+prompt_pick_a_sticker,Pick a sticker.,wIOg1u9RRkpwj9JUtZ2p/kbg0MjKwn7lw2VWmIIbB,bundled
+cue_s,Snake sound. Teeth together.,kVy7Nh4fHfrEmyhIViQu/DYxukJbtnYpVUtF2JaHY,bundled
+cue_short_a,Open wide. Quick!,OEzOJxwGtKVbgbMMlqhP/ePQxKWhMkCcB9t7Vnq9D,bundled
+cue_t,Tongue taps. Feel the puff.,hNDUw1FbQk2piYtvUen2/0A69v5pH5BqsNr37JUdV,bundled
+cue_p,Lips pop. Feel the puff.,tWR8fXd3UgMvnbwnEWtm/XgY0muXR55AT8i0HcCe3,bundled
+phoneme_s,Ssssss.,nlbU64iTi3qBqeyhLrqU/Bp8U9AppsAVACUE93Z0u,kept out of app: needs human recording
+phoneme_short_a,ă.,eG3mXEZlQigWxAs2bc39/GygxwBsnkq3dIQm6h6EB,kept out of app: needs human recording
+phoneme_t,t.,TXosCesYiwW5LumM8ClX/PqYtcTRmPpQobVZWEDoq,kept out of app: needs human recording
+phoneme_p,p.,mtiwZqFUqHLLXtBvpn0o/UXpwz2cXwg0ip3XyA0df,kept out of app: needs human recording
+blend_s_a_t,sss... ă... t.,spwGJsGbOU594sn3hMVP/2k2bBLJK9bvtCbOej8ry,kept out of app: needs human recording
+blend_p_a_t,p... ă... t.,3zGPFFZPaZ4zjPpBxdRk/pFZD0cQn5HlzpmdEpwVq,kept out of app: needs human recording
+word_sat,sat!,S2uHAYCLw0TMBuF5R603 / cYiiSFv6dGECTmw5ZGYB,"other retry takes, not used"
+word_tap,tap!,HHunfBCxOyW1GDBnyYn5 / yjvASLBCyzmhkajwwMSR,"other retry takes, not used (b added a vowel after /p/)"

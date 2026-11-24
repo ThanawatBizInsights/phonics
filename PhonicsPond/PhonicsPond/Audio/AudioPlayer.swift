@@ -15,6 +15,8 @@ import Observation
 @Observable
 final class AudioPlayer: NSObject {
     private(set) var currentID: String?
+    /// Key of the letter/word/picture to highlight while the current clip plays.
+    private(set) var highlight: String?
     private(set) var missingIDs: Set<String> = []
     /// The most recent missing clip, for the debug banner.
     var lastMissing: String?
@@ -25,6 +27,7 @@ final class AudioPlayer: NSObject {
     @ObservationIgnored private var effectPlayer: AVAudioPlayer?
     @ObservationIgnored private var completion: (() -> Void)?
     @ObservationIgnored private var token = 0
+    @ObservationIgnored private var playRequestedAt = Date.distantPast
     @ObservationIgnored private var observers: [NSObjectProtocol] = []
     @ObservationIgnored private let bundle: Bundle
 
@@ -39,6 +42,9 @@ final class AudioPlayer: NSObject {
 
     var isPlaying: Bool { currentID != nil }
 
+    /// Changes whenever a clip starts or audio is stopped; lets multi-clip sequences notice they were cancelled.
+    var currentToken: Int { token }
+
     func url(for id: String) -> URL? {
         for ext in Self.fileExtensions {
             if let url = bundle.url(forResource: id, withExtension: ext) { return url }
@@ -49,20 +55,41 @@ final class AudioPlayer: NSObject {
     func isAvailable(_ id: String) -> Bool { url(for: id) != nil }
 
     /// Play one clip, stopping anything already playing.
-    func play(_ id: String, then completion: (() -> Void)? = nil) {
+    /// `highlight` names the on-screen letter or word to light up while this clip plays.
+    /// If the soft chime is still ringing, speech waits for it (max 1.2 s) so they never overlap.
+    func play(_ id: String, highlight: String? = nil, then completion: (() -> Void)? = nil) {
         stopSpeech()
+        playRequestedAt = Date()
         token += 1
         let myToken = token
         currentID = id
+        self.highlight = highlight
         self.completion = completion
+        let wait = effectRemaining
+        if wait > 0.02 {
+            Task { @MainActor in
+                try? await Task.sleep(nanoseconds: UInt64(wait * 1_000_000_000))
+                guard self.token == myToken else { return }
+                self.start(id, token: myToken)
+            }
+        } else {
+            start(id, token: myToken)
+        }
+    }
 
+    private var effectRemaining: TimeInterval {
+        guard let effect = effectPlayer, effect.isPlaying else { return 0 }
+        return min(1.2, max(0, effect.duration - effect.currentTime))
+    }
+
+    private func start(_ id: String, token myToken: Int) {
         guard let url = url(for: id) else {
             missingIDs.insert(id)
             lastMissing = id
             #if DEBUG
             print("[audio] missing recording: \(id)")
             #endif
-            // Keep the flow moving at a natural pace without the clip.
+            // Keep the flow moving at a natural pace without the clip (the highlight still shows).
             Task { @MainActor in
                 try? await Task.sleep(nanoseconds: 450_000_000)
                 self.finish(token: myToken)
@@ -73,7 +100,6 @@ final class AudioPlayer: NSObject {
             let player = try AVAudioPlayer(contentsOf: url)
             player.delegate = self
             self.player = player
-            effectPlayer?.stop()
             player.play()
         } catch {
             missingIDs.insert(id)
@@ -85,6 +111,9 @@ final class AudioPlayer: NSObject {
     func play(_ prompt: Prompt, then completion: (() -> Void)? = nil) {
         play(prompt.rawValue, then: completion)
     }
+
+    /// True while the clip started with this highlight key is playing.
+    func isHighlighted(_ key: String) -> Bool { highlight == key }
 
     /// Play clips one after another with a gap between them. Any new `play` cancels the rest.
     func playSequence(_ ids: [String], gap: TimeInterval = 0.25, then completion: (() -> Void)? = nil) {
@@ -102,14 +131,21 @@ final class AudioPlayer: NSObject {
         }
     }
 
-    /// Stop everything and drop pending completions. Used when leaving a screen.
+    /// Stop speech and drop pending completions. The soft chime is left to finish.
     func stop() {
         stopSpeech()
-        effectPlayer?.stop()
         token += 1
     }
 
-    /// Soft chime after a sticker. Skipped if speech is playing or effects are off.
+    /// Called when a screen disappears. Stops speech that screen started, but not a clip the
+    /// next screen started in the same transition (its autoplay may run before this is called).
+    func leaveScreen() {
+        guard Date().timeIntervalSince(playRequestedAt) > 0.05 else { return }
+        stop()
+    }
+
+    /// Soft chime for a completed activity or a sticker. Skipped if speech is playing or effects are off;
+    /// speech started during the chime waits for it to end.
     func playEffect(_ effect: Effect) {
         guard let url = url(for: effect.rawValue) else {
             missingIDs.insert(effect.rawValue)
@@ -126,6 +162,7 @@ final class AudioPlayer: NSObject {
     /// The replay button pulses afterwards; nothing auto-plays on return.
     func interrupt() {
         stop()
+        effectPlayer?.stop()
         needsReplayCue = true
     }
 
@@ -136,11 +173,13 @@ final class AudioPlayer: NSObject {
         player = nil
         completion = nil
         currentID = nil
+        highlight = nil
     }
 
     fileprivate func finish(token finishedToken: Int) {
         guard finishedToken == token else { return }
         currentID = nil
+        highlight = nil
         player = nil
         let done = completion
         completion = nil

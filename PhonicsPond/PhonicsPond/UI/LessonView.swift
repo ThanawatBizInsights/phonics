@@ -49,8 +49,9 @@ struct LessonView: View {
             if showStop { stopDialog }
         }
         .frame(width: u(CanvasSize.width), height: u(CanvasSize.height))
+        .environment(\.pageCast, lessonPage?.castIDs ?? ["pat"])
         .onAppear(perform: start)
-        .onDisappear { app.audio.stop() }
+        .onDisappear { app.audio.leaveScreen() }
     }
 
     // MARK: Content
@@ -169,6 +170,8 @@ struct LessonView: View {
         guard let current = stage else { return }
         app.audio.stop()
         app.store.update { $0.completeStage(level: app.level, page: page, stage: current) }
+        // Soft chime for a completed activity. The next screen's instruction waits for it to finish.
+        if app.store.data.settings.chime { app.audio.playEffect(.softChime) }
         let next = current + 1
         autoplay = true
         step = 0
@@ -265,6 +268,7 @@ struct StonePickerView: View {
     private var progress: PageProgress { app.store.data.progress(level: app.level, page: page) }
     private var nextStone: Int { stages.indices.first { !progress.completedStages.contains($0) } ?? 0 }
     private var intro: String { app.plan.page(page)?.intro ?? Prompt.tapGlowingStone.rawValue }
+    @State private var gate = TapGate()
     private var introText: String { Prompt(rawValue: intro)?.text ?? "" }
 
     var body: some View {
@@ -331,7 +335,7 @@ struct StonePickerView: View {
         let isNext = index == nextStone
         let isDone = progress.completedStages.contains(index)
         return Button {
-            onPick(index)
+            if gate.allow() { onPick(index) }
         } label: {
             VStack(spacing: u(14)) {
                 ZStack(alignment: .bottom) {

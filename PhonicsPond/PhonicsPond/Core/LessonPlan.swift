@@ -119,7 +119,18 @@ struct LessonStage: Decodable, Equatable {
 struct LessonPage: Decodable, Equatable {
     let page: Int
     let intro: String
+    /// Story characters drawn on this page (ids from `StoryCharacterArt.all`). Defaults to Pat.
+    let cast: [String]?
     let stages: [LessonStage]
+
+    init(page: Int, intro: String, cast: [String]? = nil, stages: [LessonStage]) {
+        self.page = page
+        self.intro = intro
+        self.cast = cast
+        self.stages = stages
+    }
+
+    var castIDs: [String] { cast ?? ["pat"] }
 }
 
 struct LessonPlan: Decodable, Equatable {

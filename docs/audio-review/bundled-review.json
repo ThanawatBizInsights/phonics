@@ -1,0 +1,1092 @@
+{
+ "cue_p": {
+  "duration_s": 1.886,
+  "lead_ms": 30,
+  "trail_ms": 480,
+  "peak_dbfs": -1.5,
+  "voiced_ms": [
+   [
+    10,
+    180
+   ],
+   [
+    360,
+    400
+   ],
+   [
+    430,
+    500
+   ],
+   [
+    960,
+    1170
+   ],
+   [
+    1220,
+    1270
+   ],
+   [
+    1290,
+    1390
+   ]
+  ],
+  "F1_F2": [
+   527,
+   1307
+  ],
+  "release_db_rel": -57.8,
+  "closure_ms": 240,
+  "post_vowel_energy_db": -49.4,
+  "post_vowel_ms": 496,
+  "problems": []
+ },
+ "cue_s": {
+  "duration_s": 2.123,
+  "lead_ms": 80,
+  "trail_ms": 340,
+  "peak_dbfs": -1.9,
+  "voiced_ms": [
+   [
+    150,
+    300
+   ],
+   [
+    440,
+    750
+   ],
+   [
+    1050,
+    1090
+   ],
+   [
+    1100,
+    1170
+   ],
+   [
+    1310,
+    1550
+   ],
+   [
+    1560,
+    1770
+   ]
+  ],
+  "F1_F2": [
+   488,
+   1395
+  ],
+  "release_db_rel": -77.8,
+  "closure_ms": 220,
+  "post_vowel_energy_db": -51.2,
+  "post_vowel_ms": 353,
+  "problems": []
+ },
+ "cue_short_a": {
+  "duration_s": 1.288,
+  "lead_ms": 30,
+  "trail_ms": 320,
+  "peak_dbfs": -2.2,
+  "voiced_ms": [
+   [
+    20,
+    130
+   ],
+   [
+    180,
+    490
+   ],
+   [
+    820,
+    890
+   ],
+   [
+    900,
+    940
+   ]
+  ],
+  "F1_F2": [
+   292,
+   0
+  ],
+  "release_db_rel": -82.1,
+  "closure_ms": 240,
+  "post_vowel_energy_db": -36.5,
+  "post_vowel_ms": 347,
+  "problems": []
+ },
+ "cue_t": {
+  "duration_s": 1.851,
+  "lead_ms": 30,
+  "trail_ms": 480,
+  "peak_dbfs": -1.4,
+  "voiced_ms": [
+   [
+    70,
+    250
+   ],
+   [
+    290,
+    340
+   ],
+   [
+    350,
+    400
+   ],
+   [
+    890,
+    1030
+   ],
+   [
+    1040,
+    1110
+   ],
+   [
+    1150,
+    1280
+   ],
+   [
+    1320,
+    1370
+   ]
+  ],
+  "F1_F2": [
+   415,
+   1730
+  ],
+  "release_db_rel": -56.4,
+  "closure_ms": 240,
+  "post_vowel_energy_db": -56.3,
+  "post_vowel_ms": 481,
+  "problems": []
+ },
+ "effect_soft_chime": {
+  "duration_s": 1.4,
+  "lead_ms": 0,
+  "trail_ms": 490,
+  "peak_dbfs": -14.2,
+  "voiced_ms": [
+   [
+    0,
+    640
+   ]
+  ],
+  "F1_F2": [
+   1389,
+   1802
+  ],
+  "release_db_rel": -24.7,
+  "closure_ms": 240,
+  "post_vowel_energy_db": -48.3,
+  "post_vowel_ms": 760,
+  "problems": []
+ },
+ "prompt_build_sat": {
+  "duration_s": 0.944,
+  "lead_ms": 30,
+  "trail_ms": 390,
+  "peak_dbfs": -1.7,
+  "voiced_ms": [
+   [
+    20,
+    240
+   ],
+   [
+    380,
+    430
+   ],
+   [
+    440,
+    490
+   ]
+  ],
+  "F1_F2": [
+   496,
+   1515
+  ],
+  "release_db_rel": -74.7,
+  "closure_ms": 170,
+  "post_vowel_energy_db": -27.3,
+  "post_vowel_ms": 454,
+  "problems": []
+ },
+ "prompt_change_make_pat": {
+  "duration_s": 1.623,
+  "lead_ms": 40,
+  "trail_ms": 290,
+  "peak_dbfs": -1.6,
+  "voiced_ms": [
+   [
+    80,
+    420
+   ],
+   [
+    490,
+    530
+   ],
+   [
+    660,
+    710
+   ],
+   [
+    900,
+    1050
+   ],
+   [
+    1170,
+    1200
+   ],
+   [
+    1210,
+    1270
+   ]
+  ],
+  "F1_F2": [
+   3397,
+   0
+  ],
+  "release_db_rel": -171.1,
+  "closure_ms": 240,
+  "post_vowel_energy_db": -25.0,
+  "post_vowel_ms": 353,
+  "problems": []
+ },
+ "prompt_changed_one_sound": {
+  "duration_s": 2.219,
+  "lead_ms": 30,
+  "trail_ms": 410,
+  "peak_dbfs": -2.2,
+  "voiced_ms": [
+   [
+    10,
+    140
+   ],
+   [
+    260,
+    430
+   ],
+   [
+    520,
+    760
+   ],
+   [
+    880,
+    1640
+   ],
+   [
+    1660,
+    1690
+   ]
+  ],
+  "F1_F2": [
+   388,
+   2196
+  ],
+  "release_db_rel": -52.2,
+  "closure_ms": 230,
+  "post_vowel_energy_db": -36.1,
+  "post_vowel_ms": 528,
+  "problems": []
+ },
+ "prompt_grown_up_time": {
+  "duration_s": 1.122,
+  "lead_ms": 60,
+  "trail_ms": 340,
+  "peak_dbfs": -1.8,
+  "voiced_ms": [
+   [
+    40,
+    310
+   ],
+   [
+    430,
+    770
+   ]
+  ],
+  "F1_F2": [
+   2032,
+   0
+  ],
+  "release_db_rel": -76.8,
+  "closure_ms": 210,
+  "post_vowel_energy_db": -54.2,
+  "post_vowel_ms": 352,
+  "problems": []
+ },
+ "prompt_listen_what_word": {
+  "duration_s": 1.355,
+  "lead_ms": 50,
+  "trail_ms": 440,
+  "peak_dbfs": -1.7,
+  "voiced_ms": [
+   [
+    30,
+    150
+   ],
+   [
+    300,
+    450
+   ],
+   [
+    480,
+    760
+   ],
+   [
+    820,
+    880
+   ]
+  ],
+  "F1_F2": [
+   468,
+   1732
+  ],
+  "release_db_rel": -79.5,
+  "closure_ms": 180,
+  "post_vowel_energy_db": -34.0,
+  "post_vowel_ms": 475,
+  "problems": []
+ },
+ "prompt_pick_a_sticker": {
+  "duration_s": 1.043,
+  "lead_ms": 30,
+  "trail_ms": 400,
+  "peak_dbfs": -1.5,
+  "voiced_ms": [
+   [
+    20,
+    110
+   ],
+   [
+    150,
+    210
+   ],
+   [
+    360,
+    420
+   ],
+   [
+    600,
+    630
+   ]
+  ],
+  "F1_F2": [
+   456,
+   0
+  ],
+  "release_db_rel": -48.8,
+  "closure_ms": 230,
+  "post_vowel_energy_db": -56.2,
+  "post_vowel_ms": 412,
+  "problems": []
+ },
+ "prompt_read_the_words": {
+  "duration_s": 1.09,
+  "lead_ms": 30,
+  "trail_ms": 320,
+  "peak_dbfs": -1.5,
+  "voiced_ms": [
+   [
+    10,
+    200
+   ],
+   [
+    210,
+    440
+   ]
+  ],
+  "F1_F2": [
+   409,
+   0
+  ],
+  "release_db_rel": -28.3,
+  "closure_ms": 150,
+  "post_vowel_energy_db": -34.3,
+  "post_vowel_ms": 649,
+  "problems": []
+ },
+ "prompt_say_sounds_say_word": {
+  "duration_s": 2.263,
+  "lead_ms": 90,
+  "trail_ms": 370,
+  "peak_dbfs": -1.5,
+  "voiced_ms": [
+   [
+    110,
+    320
+   ],
+   [
+    430,
+    760
+   ],
+   [
+    1020,
+    1170
+   ],
+   [
+    1280,
+    1620
+   ],
+   [
+    1650,
+    1730
+   ],
+   [
+    1840,
+    1880
+   ]
+  ],
+  "F1_F2": [
+   433,
+   1812
+  ],
+  "release_db_rel": -48.1,
+  "closure_ms": 240,
+  "post_vowel_energy_db": -51.4,
+  "post_vowel_ms": 382,
+  "problems": []
+ },
+ "prompt_stop_for_today": {
+  "duration_s": 1.241,
+  "lead_ms": 100,
+  "trail_ms": 350,
+  "peak_dbfs": -1.7,
+  "voiced_ms": [
+   [
+    210,
+    280
+   ],
+   [
+    420,
+    510
+   ],
+   [
+    570,
+    880
+   ]
+  ],
+  "F1_F2": [
+   747,
+   0
+  ],
+  "release_db_rel": -69.3,
+  "closure_ms": 200,
+  "post_vowel_energy_db": -50.8,
+  "post_vowel_ms": 361,
+  "problems": []
+ },
+ "prompt_tap_a_picture": {
+  "duration_s": 1.141,
+  "lead_ms": 30,
+  "trail_ms": 370,
+  "peak_dbfs": -1.3,
+  "voiced_ms": [
+   [
+    60,
+    180
+   ],
+   [
+    220,
+    300
+   ],
+   [
+    350,
+    460
+   ],
+   [
+    600,
+    640
+   ],
+   [
+    730,
+    760
+   ]
+  ],
+  "F1_F2": [
+   1059,
+   1870
+  ],
+  "release_db_rel": -15.1,
+  "closure_ms": 40,
+  "post_vowel_energy_db": -51.8,
+  "post_vowel_ms": 381,
+  "problems": []
+ },
+ "prompt_tap_glowing_stone": {
+  "duration_s": 1.569,
+  "lead_ms": 30,
+  "trail_ms": 350,
+  "peak_dbfs": -1.6,
+  "voiced_ms": [
+   [
+    100,
+    230
+   ],
+   [
+    350,
+    420
+   ],
+   [
+    470,
+    750
+   ],
+   [
+    900,
+    1010
+   ],
+   [
+    1040,
+    1080
+   ],
+   [
+    1150,
+    1200
+   ]
+  ],
+  "F1_F2": [
+   390,
+   1241
+  ],
+  "release_db_rel": -54.5,
+  "closure_ms": 240,
+  "post_vowel_energy_db": -50.6,
+  "post_vowel_ms": 368,
+  "problems": []
+ },
+ "prompt_tap_to_hear_sound": {
+  "duration_s": 1.474,
+  "lead_ms": 80,
+  "trail_ms": 340,
+  "peak_dbfs": -1.6,
+  "voiced_ms": [
+   [
+    110,
+    200
+   ],
+   [
+    320,
+    650
+   ],
+   [
+    770,
+    920
+   ],
+   [
+    930,
+    980
+   ],
+   [
+    1050,
+    1080
+   ]
+  ],
+  "F1_F2": [
+   495,
+   2193
+  ],
+  "release_db_rel": -62.5,
+  "closure_ms": 240,
+  "post_vowel_energy_db": -50.0,
+  "post_vowel_ms": 393,
+  "problems": []
+ },
+ "prompt_tap_to_start": {
+  "duration_s": 1.076,
+  "lead_ms": 30,
+  "trail_ms": 460,
+  "peak_dbfs": -1.4,
+  "voiced_ms": [
+   [
+    90,
+    150
+   ],
+   [
+    270,
+    310
+   ],
+   [
+    450,
+    530
+   ],
+   [
+    570,
+    600
+   ]
+  ],
+  "F1_F2": [
+   1089,
+   0
+  ],
+  "release_db_rel": -33.0,
+  "closure_ms": 80,
+  "post_vowel_energy_db": -48.5,
+  "post_vowel_ms": 475,
+  "problems": []
+ },
+ "prompt_thats_it": {
+  "duration_s": 0.788,
+  "lead_ms": 30,
+  "trail_ms": 390,
+  "peak_dbfs": -1.4,
+  "voiced_ms": [
+   [
+    30,
+    120
+   ],
+   [
+    210,
+    330
+   ]
+  ],
+  "F1_F2": [
+   600,
+   2275
+  ],
+  "release_db_rel": -36.7,
+  "closure_ms": 70,
+  "post_vowel_energy_db": -25.0,
+  "post_vowel_ms": 457,
+  "problems": []
+ },
+ "prompt_today_four_sounds": {
+  "duration_s": 1.609,
+  "lead_ms": 30,
+  "trail_ms": 390,
+  "peak_dbfs": -1.5,
+  "voiced_ms": [
+   [
+    70,
+    510
+   ],
+   [
+    670,
+    830
+   ],
+   [
+    1050,
+    1110
+   ],
+   [
+    1170,
+    1200
+   ]
+  ],
+  "F1_F2": [
+   283,
+   2654
+  ],
+  "release_db_rel": -19.2,
+  "closure_ms": 70,
+  "post_vowel_energy_db": -47.1,
+  "post_vowel_ms": 409,
+  "problems": []
+ },
+ "prompt_trace_the_letter": {
+  "duration_s": 1.306,
+  "lead_ms": 30,
+  "trail_ms": 350,
+  "peak_dbfs": -1.5,
+  "voiced_ms": [
+   [
+    170,
+    300
+   ],
+   [
+    440,
+    700
+   ],
+   [
+    710,
+    940
+   ]
+  ],
+  "F1_F2": [
+   333,
+   980
+  ],
+  "release_db_rel": -49.9,
+  "closure_ms": 210,
+  "post_vowel_energy_db": -51.4,
+  "post_vowel_ms": 365,
+  "problems": []
+ },
+ "prompt_try_first_sound": {
+  "duration_s": 1.234,
+  "lead_ms": 30,
+  "trail_ms": 360,
+  "peak_dbfs": -1.6,
+  "voiced_ms": [
+   [
+    80,
+    220
+   ],
+   [
+    230,
+    300
+   ],
+   [
+    400,
+    490
+   ],
+   [
+    630,
+    660
+   ],
+   [
+    790,
+    820
+   ]
+  ],
+  "F1_F2": [
+   881,
+   1935
+  ],
+  "release_db_rel": -54.2,
+  "closure_ms": 240,
+  "post_vowel_energy_db": -51.7,
+  "post_vowel_ms": 414,
+  "problems": []
+ },
+ "prompt_try_last_sound": {
+  "duration_s": 1.349,
+  "lead_ms": 30,
+  "trail_ms": 350,
+  "peak_dbfs": -1.7,
+  "voiced_ms": [
+   [
+    110,
+    600
+   ],
+   [
+    760,
+    810
+   ],
+   [
+    950,
+    980
+   ]
+  ],
+  "F1_F2": [
+   568,
+   3288
+  ],
+  "release_db_rel": -55.6,
+  "closure_ms": 240,
+  "post_vowel_energy_db": -49.2,
+  "post_vowel_ms": 369,
+  "problems": []
+ },
+ "prompt_try_middle_sound": {
+  "duration_s": 1.354,
+  "lead_ms": 80,
+  "trail_ms": 380,
+  "peak_dbfs": -1.6,
+  "voiced_ms": [
+   [
+    70,
+    500
+   ],
+   [
+    610,
+    940
+   ]
+  ],
+  "F1_F2": [
+   270,
+   3868
+  ],
+  "release_db_rel": -77.3,
+  "closure_ms": 210,
+  "post_vowel_energy_db": -49.4,
+  "post_vowel_ms": 414,
+  "problems": []
+ },
+ "prompt_welcome_back": {
+  "duration_s": 1.829,
+  "lead_ms": 30,
+  "trail_ms": 350,
+  "peak_dbfs": -1.9,
+  "voiced_ms": [
+   [
+    30,
+    130
+   ],
+   [
+    170,
+    340
+   ],
+   [
+    350,
+    400
+   ],
+   [
+    900,
+    1010
+   ],
+   [
+    1090,
+    1290
+   ],
+   [
+    1430,
+    1460
+   ]
+  ],
+  "F1_F2": [
+   508,
+   1878
+  ],
+  "release_db_rel": -70.9,
+  "closure_ms": 200,
+  "post_vowel_energy_db": -50.0,
+  "post_vowel_ms": 369,
+  "problems": []
+ },
+ "prompt_what_sound_at_end": {
+  "duration_s": 1.698,
+  "lead_ms": 30,
+  "trail_ms": 440,
+  "peak_dbfs": -2.0,
+  "voiced_ms": [
+   [
+    10,
+    130
+   ],
+   [
+    230,
+    600
+   ],
+   [
+    630,
+    820
+   ],
+   [
+    890,
+    1120
+   ],
+   [
+    1130,
+    1170
+   ],
+   [
+    1180,
+    1240
+   ]
+  ],
+  "F1_F2": [
+   277,
+   0
+  ],
+  "release_db_rel": -61.3,
+  "closure_ms": 240,
+  "post_vowel_energy_db": -48.0,
+  "post_vowel_ms": 458,
+  "problems": []
+ },
+ "prompt_your_turn": {
+  "duration_s": 0.874,
+  "lead_ms": 30,
+  "trail_ms": 380,
+  "peak_dbfs": -1.6,
+  "voiced_ms": [
+   [
+    30,
+    150
+   ],
+   [
+    230,
+    270
+   ],
+   [
+    300,
+    340
+   ],
+   [
+    390,
+    420
+   ],
+   [
+    430,
+    490
+   ]
+  ],
+  "F1_F2": [
+   579,
+   0
+  ],
+  "release_db_rel": -71.5,
+  "closure_ms": 210,
+  "post_vowel_energy_db": -55.8,
+  "post_vowel_ms": 384,
+  "problems": []
+ },
+ "word_at": {
+  "duration_s": 0.73,
+  "lead_ms": 10,
+  "trail_ms": 440,
+  "peak_dbfs": -1.6,
+  "voiced_ms": [
+   [
+    20,
+    90
+   ]
+  ],
+  "F1_F2": [
+   1002,
+   1872
+  ],
+  "release_db_rel": -27.2,
+  "closure_ms": 80,
+  "post_vowel_energy_db": -26.7,
+  "post_vowel_ms": 640,
+  "problems": []
+ },
+ "word_pat": {
+  "duration_s": 0.669,
+  "lead_ms": 30,
+  "trail_ms": 400,
+  "peak_dbfs": -1.6,
+  "voiced_ms": [
+   [
+    20,
+    50
+   ],
+   [
+    100,
+    130
+   ],
+   [
+    140,
+    200
+   ]
+  ],
+  "F1_F2": [
+   1157,
+   1855
+  ],
+  "release_db_rel": -32.1,
+  "closure_ms": 90,
+  "post_vowel_energy_db": -26.0,
+  "post_vowel_ms": 469,
+  "problems": []
+ },
+ "word_pen": {
+  "duration_s": 0.817,
+  "lead_ms": 30,
+  "trail_ms": 350,
+  "peak_dbfs": -1.6,
+  "voiced_ms": [
+   [
+    100,
+    450
+   ]
+  ],
+  "F1_F2": [
+   419,
+   2011
+  ],
+  "release_db_rel": -46.9,
+  "closure_ms": 110,
+  "post_vowel_energy_db": -53.7,
+  "post_vowel_ms": 367,
+  "problems": []
+ },
+ "word_pot": {
+  "duration_s": 0.825,
+  "lead_ms": 30,
+  "trail_ms": 590,
+  "peak_dbfs": -1.5,
+  "voiced_ms": [
+   [
+    20,
+    80
+   ],
+   [
+    130,
+    160
+   ],
+   [
+    180,
+    220
+   ]
+  ],
+  "F1_F2": [
+   0,
+   0
+  ],
+  "release_db_rel": -32.5,
+  "closure_ms": 80,
+  "post_vowel_energy_db": -48.8,
+  "post_vowel_ms": 605,
+  "problems": []
+ },
+ "word_sat": {
+  "duration_s": 0.823,
+  "lead_ms": 110,
+  "trail_ms": 530,
+  "peak_dbfs": -1.9,
+  "voiced_ms": [
+   [
+    110,
+    220
+   ]
+  ],
+  "F1_F2": [
+   1099,
+   1908
+  ],
+  "release_db_rel": -34.6,
+  "closure_ms": 40,
+  "post_vowel_energy_db": -25.1,
+  "post_vowel_ms": 603,
+  "problems": []
+ },
+ "word_sock": {
+  "duration_s": 0.823,
+  "lead_ms": 10,
+  "trail_ms": 380,
+  "peak_dbfs": -2.6,
+  "voiced_ms": [
+   [
+    110,
+    240
+   ],
+   [
+    250,
+    320
+   ]
+  ],
+  "F1_F2": [
+   1115,
+   2987
+  ],
+  "release_db_rel": -22.2,
+  "closure_ms": 80,
+  "post_vowel_energy_db": -42.6,
+  "post_vowel_ms": 503,
+  "problems": []
+ },
+ "word_tap": {
+  "duration_s": 0.655,
+  "lead_ms": 80,
+  "trail_ms": 400,
+  "peak_dbfs": -3.5,
+  "voiced_ms": [
+   [
+    70,
+    100
+   ],
+   [
+    120,
+    230
+   ]
+  ],
+  "F1_F2": [
+   1207,
+   1952
+  ],
+  "release_db_rel": -31.9,
+  "closure_ms": 110,
+  "post_vowel_energy_db": -46.9,
+  "post_vowel_ms": 424,
+  "problems": []
+ }
+}

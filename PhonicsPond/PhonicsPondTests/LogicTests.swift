@@ -200,3 +200,100 @@ final class AudioPlayerTests: XCTestCase {
         XCTAssertFalse(player.isPlaying)
     }
 }
+
+final class StoryMotionTests: XCTestCase {
+    func testIdleSwayIsGentleAndCharactersHaveDifferentRhythms() {
+        let pat = StoryCharacterArt.all["pat"]!, puppy = StoryCharacterArt.all["puppy"]!, pip = StoryCharacterArt.all["pip"]!
+        XCTAssertEqual(Set([pat.period, puppy.period, pip.period]).count, 3, "each character sways at its own rhythm")
+        for t in stride(from: 0.0, to: 10, by: 0.05) {
+            XCTAssertLessThanOrEqual(abs(Wobble.angle(at: t, period: pat.period, phase: pat.phase, amplitude: pat.amplitude, tappedAt: nil)), 2.21)
+        }
+    }
+
+    func testTapAddsOneBriefWobbleThatFadesOut() {
+        let calm = { (t: Double) in Wobble.angle(at: t, period: 2.8, phase: 0, amplitude: 2.2, tappedAt: nil) }
+        let tapped = { (t: Double) in Wobble.angle(at: t, period: 2.8, phase: 0, amplitude: 2.2, tappedAt: 10) }
+        XCTAssertNotEqual(tapped(10.08), calm(10.08), accuracy: 0.5, "a tap wobbles at once")
+        XCTAssertEqual(tapped(10 + Wobble.tapDuration + 0.01), calm(10 + Wobble.tapDuration + 0.01), accuracy: 0.0001, "and stops")
+        XCTAssertEqual(tapped(9.9), calm(9.9), accuracy: 0.0001, "nothing before the tap")
+    }
+
+    func testPipIsNotBeforeLevelTwo() {
+        XCTAssertEqual(StoryCharacterArt.all["pip"]?.firstLevel, 2)
+        XCTAssertEqual(StoryCharacterArt.all["pat"]?.firstLevel, 1)
+    }
+
+    func testPageCastComesFromLessonData() throws {
+        let plan = try LessonPlan.load(level: 1)
+        for page in plan.pages {
+            XCTAssertEqual(page.castIDs.first, "pat", "Pat leads every Level 1 page")
+            XCTAssertFalse(page.castIDs.contains("pip"), "Pip arrives in Level 2")
+            for id in page.castIDs { XCTAssertNotNil(StoryCharacterArt.all[id], id) }
+        }
+    }
+
+    func testRapidTapsAreIgnored() {
+        var gate = TapGate()
+        let t0 = Date()
+        XCTAssertTrue(gate.allow(now: t0))
+        XCTAssertFalse(gate.allow(now: t0.addingTimeInterval(0.1)))
+        XCTAssertFalse(gate.allow(now: t0.addingTimeInterval(0.3)))
+        XCTAssertTrue(gate.allow(now: t0.addingTimeInterval(0.5)))
+    }
+
+    func testAppIconIsConfigured() {
+        let icons = Bundle.main.infoDictionary?["CFBundleIcons"] as? [String: Any]
+        let primary = icons?["CFBundlePrimaryIcon"] as? [String: Any]
+        XCTAssertEqual(primary?["CFBundleIconName"] as? String, "AppIcon")
+    }
+}
+
+@MainActor
+final class PlaybackFeedbackTests: XCTestCase {
+    func testHighlightShowsWhileClipPlaysAndClears() {
+        let player = AudioPlayer(bundle: Bundle(for: PlaybackFeedbackTests.self))
+        let done = expectation(description: "clip finished")
+        player.play("missing_clip", highlight: "card.s") { done.fulfill() }
+        XCTAssertTrue(player.isHighlighted("card.s"), "highlight is immediate")
+        wait(for: [done], timeout: 2)
+        XCTAssertFalse(player.isHighlighted("card.s"))
+    }
+
+    func testNewTapMovesTheHighlight() {
+        let player = AudioPlayer(bundle: Bundle(for: PlaybackFeedbackTests.self))
+        player.play("missing_a", highlight: "review.s")
+        player.play("missing_b", highlight: "review.a")
+        XCTAssertFalse(player.isHighlighted("review.s"))
+        XCTAssertTrue(player.isHighlighted("review.a"))
+        player.stop()
+        XCTAssertFalse(player.isHighlighted("review.a"))
+    }
+
+    func testLeavingAScreenKeepsTheNextScreensInstruction() {
+        let player = AudioPlayer(bundle: Bundle(for: PlaybackFeedbackTests.self))
+        player.play("next_screen_prompt")      // new screen's autoplay
+        player.leaveScreen()                   // old screen disappears in the same transition
+        XCTAssertEqual(player.currentID, "next_screen_prompt")
+    }
+
+    func testLeavingAScreenStopsItsOwnOlderClip() {
+        let player = AudioPlayer(bundle: Bundle(for: PlaybackFeedbackTests.self))
+        player.play("old_clip")
+        let later = expectation(description: "wait")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) { later.fulfill() }
+        wait(for: [later], timeout: 1)
+        player.leaveScreen()
+        XCTAssertNil(player.currentID)
+    }
+
+    func testBundledLevelOneClipsAreAvailable() {
+        let player = AudioPlayer()
+        for id in ["prompt_tap_to_start", "prompt_build_sat", "word_sat", "word_tap", "word_pat", "word_at",
+                   "word_sock", "word_pen", "word_pot", "cue_s", "effect_soft_chime"] {
+            XCTAssertTrue(player.isAvailable(id), id)
+        }
+        for id in ["phoneme_s", "phoneme_short_a", "phoneme_t", "phoneme_p", "blend_s_a_t", "blend_p_a_t"] {
+            XCTAssertFalse(player.isAvailable(id), "\(id) must stay out until a human recording is approved")
+        }
+    }
+}

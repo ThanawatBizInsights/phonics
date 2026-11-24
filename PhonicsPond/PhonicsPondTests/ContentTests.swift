@@ -77,7 +77,7 @@ final class ContentTests: XCTestCase {
         XCTAssertEqual(ids.count, Set(ids).count, "duplicate clip IDs")
         for id in ["phoneme_s", "phoneme_short_a", "phoneme_t", "phoneme_p",
                    "word_sat", "word_tap", "word_pat", "word_at", "word_sock", "word_pen", "word_pot",
-                   "blend_s_a_t", "blend_p_a_t", "effect_sticker_chime"] {
+                   "blend_s_a_t", "blend_p_a_t", "effect_soft_chime"] {
             XCTAssertTrue(ids.contains(id), id)
         }
     }
