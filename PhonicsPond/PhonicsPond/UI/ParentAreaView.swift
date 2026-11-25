@@ -143,9 +143,9 @@ struct ParentAreaView: View {
                              "\(p.pageTrophies.count)/\(book.pages.count) pages\(p.levelTrophy ? " · big trophy" : "")")
                             .foregroundStyle(.secondary)
                             .monospacedDigit()
-                        Button("Open") {
+                        Button(p.levelTrophy ? "Read again" : "Open book") {
                             dismiss()
-                            app.openStory(book.id)
+                            app.openStory(book.id)   // always Page 1
                         }
                         .buttonStyle(.bordered)
                         .disabled(!unlocked)
@@ -153,7 +153,7 @@ struct ParentAreaView: View {
                 }
             }
             SwiftUI.Section {
-                Text("Books open in order: finishing every page of a level earns its big trophy and opens the next book. Levels 2–12 open once their stories are written.")
+                Text("Every book opens at Page 1. Books open in order: finishing every page of a level earns its big trophy and opens the next book. Levels 2–12 open once their stories are written.")
                     .font(.footnote).foregroundStyle(.secondary)
             }
         }

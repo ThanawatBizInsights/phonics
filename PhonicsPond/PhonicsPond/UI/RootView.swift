@@ -66,9 +66,11 @@ struct RootView: View {
             StoryPageView(bookID: bookID, startPage: page)
                 .id("story-\(bookID)-\(page)")
         case .phonics(let level):
-            PhonicsHomeView(level: level)
+            PhonicsView(level: level, tileID: nil)
+                .id("phonics-\(level)")
         case .sound(let level, let tileID):
-            SoundDetailView(level: level, tileID: tileID)
+            PhonicsView(level: level, tileID: tileID)
+                .id("phonics-\(level)-\(tileID)")
         case .stickers:
             StickersView()
         case .trophies:

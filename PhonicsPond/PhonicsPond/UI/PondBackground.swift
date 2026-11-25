@@ -89,8 +89,8 @@ enum ArtworkNames {
     static let requiredAssets: [String] = [
         pondBackground, patWavingCutout, patWaving, patSittingLog, "pat_patting", "pat_tapping",
         "object_sock", "object_pen", "object_pot",
-        "mouth_s", "action_s", "mouth_a", "action_a",
-        "mouth_t", "action_t", "mouth_p", "action_p",
+        // mouth_* art stays in the catalog for a future pronunciation update; no screen requires it.
+        "action_s", "action_a", "action_t", "action_p",
         "sticker_pat", "sticker_lily", "sticker_star", "puppy_sitting",
         "pat_sitting_on_log", "pat_tapping_log", "pat_and_puppy_on_log", "pip_waving_cutout",
         "trophy_page", "trophy_level", "home_storybook", "home_phonics", "home_stickers", "home_grownups",

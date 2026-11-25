@@ -101,25 +101,28 @@ final class AppModel {
         route = .shelf
     }
 
-    /// Opens a book at a page (clamped), saving the position.
+    /// Opens a book. Books always start at Page 1, whether new, unfinished or finished,
+    /// from the shelf, Home, Grown-ups or the level trophy. Trophies and unlocks are untouched.
+    /// (A short trip to the background keeps the open page: the story view stays alive.)
     func openStory(_ bookID: String, page: Int? = nil) {
         guard let book = library.book(id: bookID), store.data.isUnlocked(book, in: library) else { return }
         audio.stop()
-        let target = min(max(page ?? store.data.book(bookID).lastPage, 0), book.pages.count - 1)
-        store.update { $0.setStoryPosition(bookID: bookID, page: target) }
+        let target = Self.openingPage(requested: page, pageCount: book.pages.count)
+        store.update { $0.setStoryPosition(bookID: bookID, page: target) }   // remembers the last book for Home
         route = .story(bookID: bookID, page: target)
     }
 
-    /// The book and page "Continue story" opens: the last book read, else Level 1.
-    var continueBookID: String {
-        if let id = store.data.lastBook, let book = library.book(id: id), store.data.isUnlocked(book, in: library) { return id }
-        return library.book(level: 1)?.id ?? "book.l1"
+    /// Page 1 unless a page is asked for explicitly (clamped to the book).
+    nonisolated static func openingPage(requested: Int?, pageCount: Int) -> Int {
+        min(max(requested ?? 0, 0), max(pageCount - 1, 0))
     }
 
-    /// "Level 1 · Page 3" for the Home card, when a book has been started.
+    /// "Level 1 · 3 of 5 trophies" (or "Level 1 · finished") for the Home card, once a book has been opened.
     var storyProgressLine: String? {
         guard let id = store.data.lastBook, let book = library.book(id: id) else { return nil }
-        return "Level \(book.level) · Page \(store.data.book(id).lastPage + 1)"
+        let p = store.data.book(id)
+        if p.levelTrophy { return "Level \(book.level) · finished" }
+        return "Level \(book.level) · \(p.pageTrophies.count) of \(book.pages.count) trophies"
     }
 
     func openPhonics(level: Int? = nil) {

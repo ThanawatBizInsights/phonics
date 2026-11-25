@@ -117,6 +117,61 @@ final class StorybookTests: XCTestCase {
         for level in 2...12 { XCTAssertFalse(data.isUnlocked(library.book(level: level)!, in: library)) }
     }
 
+    // MARK: Opening a book (v1.2: always Page 1)
+
+    func testBooksAlwaysOpenAtPageOne() {
+        // New, unfinished (saved position on page 4) and finished books all open at Page 1.
+        XCTAssertEqual(AppModel.openingPage(requested: nil, pageCount: 5), 0)
+        var data = ProgressData()
+        let book = library.book(level: 1)!
+        data.setStoryPosition(bookID: book.id, page: 3)
+        XCTAssertEqual(AppModel.openingPage(requested: nil, pageCount: book.pages.count), 0, "an old saved position is ignored")
+        for page in book.pages { _ = data.finishPage(page, in: book, library: library) }
+        XCTAssertEqual(AppModel.openingPage(requested: nil, pageCount: book.pages.count), 0)
+        // An explicit page is still clamped to the book.
+        XCTAssertEqual(AppModel.openingPage(requested: 9, pageCount: 5), 4)
+        XCTAssertEqual(AppModel.openingPage(requested: -2, pageCount: 5), 0)
+    }
+
+    func testRereadingAFinishedBookKeepsTrophiesUnlocksAndStickers() {
+        let lib = Self.testLibrary(firstPages: 5)
+        let book = lib.book(level: 1)!
+        var data = ProgressData()
+        for page in book.pages { _ = data.finishPage(page, in: book, library: lib) }
+        let before = data
+        let poolBefore = StickerPool.eligible(kind: .word, completed: data.completedLevels, filter: nil, library: lib, phonics: phonics)
+
+        // Read again from Page 1 to the end.
+        data.setStoryPosition(bookID: book.id, page: 0)
+        for page in book.pages { XCTAssertTrue(data.finishPage(page, in: book, library: lib).isEmpty, page.id) }
+
+        XCTAssertEqual(data.book(book.id).pageTrophies, before.book(book.id).pageTrophies)
+        XCTAssertTrue(data.book(book.id).levelTrophy)
+        XCTAssertEqual(data.book(book.id).completedAt, before.book(book.id).completedAt, "the finish date is not overwritten")
+        XCTAssertEqual(data.completedLevels, [1])
+        XCTAssertTrue(data.isUnlocked(lib.book(level: 2)!, in: lib))
+        XCTAssertEqual(StickerPool.eligible(kind: .word, completed: data.completedLevels, filter: nil, library: lib, phonics: phonics),
+                       poolBefore)
+    }
+
+    // MARK: Phonics (no mouth shapes in the app)
+
+    func testNoScreenRequiresMouthArt() {
+        XCTAssertFalse(ArtworkNames.requiredAssets.contains { $0.hasPrefix("mouth_") })
+        XCTAssertNotNil(UIImage(named: "mouth_s"), "the original art stays in the catalog for a later update")
+        for level in phonics.levels {
+            for tile in level.tiles {
+                XCTAssertFalse(tile.label.lowercased().contains("mouth"), tile.id)
+                XCTAssertFalse(tile.actionAsset.hasPrefix("mouth_"), tile.id)
+            }
+        }
+    }
+
+    func testLevelOneSoundTabsUseIPA() {
+        XCTAssertEqual(phonics.tiles(level: 1).map(\.phoneme), ["s", "æ", "t", "p"])
+        XCTAssertEqual(phonics.tiles(level: 1).first { $0.grapheme == "p" }?.examples, ["pat", "tap"])
+    }
+
     // MARK: Stickers
 
     func testStickerPoolIsEmptyUntilALevelIsComplete() {

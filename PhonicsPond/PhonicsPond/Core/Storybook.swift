@@ -74,8 +74,7 @@ struct SoundTile: Codable, Equatable, Identifiable {
     let audio: String
     let examples: [String]
 
-    /// Mouth picture for this sound, when one exists (Level 1: s, a, t, p).
-    var mouthAsset: String { "mouth_\(grapheme)" }
+    /// Gesture picture for this sound, when one exists (Level 1: s, a, t, p).
     var actionAsset: String { "action_\(grapheme)" }
 }
 

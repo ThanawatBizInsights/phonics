@@ -9,15 +9,22 @@ An original phonics app for a 6-year-old Thai learner of English. iPad landscape
   **Grown-ups** lock. Cards come from one array in `UI/V11/HomeView.swift`, and the row below is kept clear
   for future activities.
 - **Storybook shelf**: 12 illustrated covers on two screens of six. A cover is open, finished (big trophy),
-  locked, or coming soon. **Continue story** opens the saved page.
+  locked, or coming soon. Unlocked covers say **Open book** (unfinished) or **Read again** (finished).
+- **Every book opens at Page 1**, from the shelf, Grown-ups › Books or the level trophy's Next level, whether it's new,
+  unfinished or finished. A short trip to the background keeps the open page. Leaving the book and opening it again
+  starts at Page 1. Earned trophies, unlocks and sticker practice are kept, and rereading never awards a duplicate.
 - **Story pages** work for books of any length (Level 1 has 5). Each page shows:
   - Back to books, "Level 1 · Page X of Y", and Read to me.
   - The layered scene, the line, and one to three word chips.
   - Hear sounds (where set), and previous/next. The last page shows Finish story.
 - **Trophies**: the first finish of a page earns a small trophy, and finishing every required page earns
   the level's big trophy. Both are saved in one write with the unlock. Rereading never awards a duplicate.
-- **Phonics**: a sound picker for unlocked levels, then a sound detail screen with the mouth and gesture
-  art and two or three examples checked against the curriculum.
+- **Phonics** is one "Listen and repeat" screen.
+  - A level menu (unlocked levels only) and IPA sound tabs (Level 1: /s/ /æ/ /t/ /p/).
+  - The large sound with Pat and the gesture picture, one **Hear sound** button, and "Your turn!".
+  - **Try these words**: rows with fixed picture, word and speaker columns. The speaker is labelled "Hear pat".
+  - No mouth pictures or mouth instructions. The `mouth_*` art stays in the asset catalog for a later
+    pronunciation update. There are no video controls in this release.
 - **Stickers**: random word or sound from completed levels only, with no repeats until the pool is used up.
   There's an optional single-level filter and My trophies. With nothing finished, it says
   "Finish Level 1 to start sticker practice."
@@ -27,6 +34,14 @@ An original phonics app for a 6-year-old Thai learner of English. iPad landscape
   1. Write its lines and layers in `tools/build_storybooks.py`.
   2. Set it to `ready`.
   3. Run `tools/build_storybooks.py` and `tools/validate_content.py`.
+- **Controls in a row line up.** Buttons, word chips and speakers sharing a row use one height, one padding,
+  and one centre line (`ControlMetrics`, `PillLabel`, `alignedRow()` in `UI/V11/V11Components.swift`).
+  - On story pages, Previous page stays at the left edge and Next page / Finish story at the right, on the same
+    row as the word chips.
+  - Control labels follow the system text size, capped at about Accessibility 1. They wrap to two lines
+    rather than being cut off.
+  - The story row stacks the word chips above the navigation when it doesn't fit.
+  - A control with no recording shows a small clock inside the button instead of a caption below it.
 - The old five-stone Level 1 lessons are retired from navigation. Their code (`LessonView`,
   `UI/Activities`, `LegacyLessonHomeView`) is kept.
 
@@ -71,11 +86,15 @@ Manual check on the simulator:
 1. Home → each of the three cards.
 2. Storybook: both shelf screens.
 3. Read all five Level 1 pages; each first finish shows a small trophy, and Finish story shows the big trophy.
-4. Quit and relaunch: Continue story reopens the saved page.
-5. Reread: no new trophy.
+4. Open an unfinished book and a finished one (Read again): both start at Page 1. Trophies and unlocks are unchanged
+   after rereading, and no new trophy appears.
+5. Press Home during a book and come back: the same page is still open.
 6. Stickers: random word and sound, then the Level 1 filter.
-7. Music keeps looping across screens and stays lower on story pages.
-8. Grown-ups → Settings → Background music Off survives a relaunch.
+7. Phonics: four IPA tabs, one Hear sound, example rows aligned, and no mouth pictures.
+   Repeat steps 3 and 7 at Settings › Accessibility › Display & Text Size › Larger Text (Accessibility sizes):
+   labels fit and rows stay aligned.
+8. Music keeps looping across screens and stays lower on story pages.
+9. Grown-ups → Settings → Background music Off survives a relaunch.
 
 From the command line:
 

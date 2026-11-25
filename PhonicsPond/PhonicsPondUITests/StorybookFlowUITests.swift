@@ -56,11 +56,8 @@ final class StorybookFlowUITests: XCTestCase {
         app.buttons["Home"].tap()
 
         tapWhenReady("home.phonics")
-        XCTAssertTrue(el("tile.s").waitForExistence(timeout: 5), "Phonics sound picker")
-        el("tile.a").tap()
-        XCTAssertTrue(app.descendants(matching: .any)["sound a"].waitForExistence(timeout: 5), "sound detail")
-        app.buttons["Back to sounds"].firstMatch.tap()
-        XCTAssertTrue(el("tile.s").waitForExistence(timeout: 5))
+        XCTAssertTrue(el("tile.s").waitForExistence(timeout: 5), "Phonics sound tabs")
+        XCTAssertTrue(app.staticTexts["Listen and repeat"].exists)
         app.buttons["Home"].tap()
 
         tapWhenReady("home.stickers")
@@ -83,9 +80,10 @@ final class StorybookFlowUITests: XCTestCase {
 
     // MARK: Story
 
-    func testReadPagesThenResumeAtSavedPage() {
+    func testUnfinishedBookReopensAtPageOne() {
         launch()
         tapWhenReady("home.storybook")
+        XCTAssertTrue(el("cover.l1").label.hasSuffix("Open book"))
         tapWhenReady("cover.l1")
         XCTAssertEqual(el("story.line").label, "Pat sat.")
         tapWhenReady("story.next")
@@ -95,17 +93,36 @@ final class StorybookFlowUITests: XCTestCase {
         tapWhenReady("trophy.nextPage")
         XCTAssertEqual(pageChip(), "Level 1 · Page 3 of 5")
 
+        // Leave the book and open it again: Page 1.
+        tapWhenReady("story.back")
+        tapWhenReady("cover.l1")
+        XCTAssertEqual(pageChip(), "Level 1 · Page 1 of 5")
+
+        // After a relaunch too; earned trophies are kept.
         app.terminate()
         launch(reset: false)
-        XCTAssertTrue(app.buttons["home.storybook"].label.contains("Page 3"), "Home shows where the story is")
+        XCTAssertTrue(app.buttons["home.storybook"].label.contains("2 of 5 trophies"))
         tapWhenReady("home.storybook")
-        tapWhenReady("shelf.continue")
-        XCTAssertEqual(pageChip(), "Level 1 · Page 3 of 5")
-        tapWhenReady("story.previous")
-        XCTAssertEqual(pageChip(), "Level 1 · Page 2 of 5")
+        tapWhenReady("cover.l1")
+        XCTAssertEqual(pageChip(), "Level 1 · Page 1 of 5")
         tapWhenReady("story.next")   // already earned: turns the page, no trophy
         XCTAssertFalse(el("trophy.nextPage").waitForExistence(timeout: 1.5), "a reread awards nothing")
+        XCTAssertEqual(pageChip(), "Level 1 · Page 2 of 5")
+    }
+
+    func testBriefBackgroundKeepsTheOpenPage() {
+        launch()
+        tapWhenReady("home.storybook")
+        tapWhenReady("cover.l1")
+        for _ in 0..<2 {
+            tapWhenReady("story.next")
+            tapWhenReady("trophy.nextPage")
+        }
         XCTAssertEqual(pageChip(), "Level 1 · Page 3 of 5")
+        XCUIDevice.shared.press(.home)
+        app.activate()
+        XCTAssertTrue(el("story.pageChip").waitForExistence(timeout: 5))
+        XCTAssertEqual(pageChip(), "Level 1 · Page 3 of 5", "a short trip to the background keeps the page")
     }
 
     func testFinishStoryAwardsSmallThenBigTrophyOnce() {
@@ -117,16 +134,30 @@ final class StorybookFlowUITests: XCTestCase {
         XCTAssertFalse(app.buttons["Next level, coming soon"].isEnabled)
         tapWhenReady("trophy.bookshelf")
         XCTAssertTrue(el("cover.l1").label.contains("finished"))
+        XCTAssertTrue(el("cover.l1").label.hasSuffix("Read again"))
 
-        // Reread the last page: the big trophy shows again, nothing new is earned.
+        // Read again: starts at Page 1; no page earns a second trophy; the big trophy shows again.
         tapWhenReady("cover.l1")
-        XCTAssertEqual(pageChip(), "Level 1 · Page 5 of 5", "reopens at the saved page")
+        XCTAssertEqual(pageChip(), "Level 1 · Page 1 of 5", "a finished book opens at Page 1")
+        for n in 2...5 {
+            tapWhenReady("story.next")
+            XCTAssertFalse(el("trophy.nextPage").exists, "no second small trophy")
+            XCTAssertEqual(pageChip(), "Level 1 · Page \(n) of 5")
+        }
         tapWhenReady("story.finish")
         XCTAssertFalse(el("trophy.seeBig").waitForExistence(timeout: 1.5), "no second small trophy")
         XCTAssertTrue(app.staticTexts["Level 1 trophy"].waitForExistence(timeout: 3))
         tapWhenReady("trophy.bookshelf")
         app.buttons["Home"].tap()
         tapWhenReady("home.stickers")
+        tapWhenReady("stickers.trophies")
+        XCTAssertEqual(el("trophies.l1").label, "Level 1: 5 of 5 page trophies, big trophy earned")
+
+        // Still there after a relaunch.
+        app.terminate()
+        launch(reset: false)
+        tapWhenReady("home.stickers")
+        XCTAssertFalse(el("stickers.empty").waitForExistence(timeout: 1.5), "sticker practice stays open")
         tapWhenReady("stickers.trophies")
         XCTAssertEqual(el("trophies.l1").label, "Level 1: 5 of 5 page trophies, big trophy earned")
     }
@@ -214,6 +245,96 @@ final class StorybookFlowUITests: XCTestCase {
         openGrownUps()
         app.staticTexts["Settings"].firstMatch.tap()
         XCTAssertEqual(app.switches["settings.music"].value as? String, "0", "Music Off is remembered")
+    }
+
+    // MARK: Phonics
+
+    func testPhonicsListenAndRepeatWithoutMouthShapes() {
+        launch()
+        tapWhenReady("home.phonics")
+        for (g, ipa) in [("s", "/s/"), ("a", "/æ/"), ("t", "/t/"), ("p", "/p/")] {
+            XCTAssertTrue(el("tile.\(g)").waitForExistence(timeout: 5), g)
+            XCTAssertTrue(el("tile.\(g)").label.hasPrefix("sound \(ipa)"), el("tile.\(g)").label)
+        }
+        tapWhenReady("tile.p")
+        XCTAssertTrue(el("tile.p").isSelected)
+        XCTAssertEqual(el("phonics.sound").label, "sound /p/")
+        XCTAssertTrue(app.staticTexts["Listen and repeat"].exists)
+        XCTAssertTrue(app.staticTexts["Try these words"].exists)
+        XCTAssertEqual(app.buttons.matching(NSPredicate(format: "label BEGINSWITH 'Hear sound'")).count, 1, "one Hear sound control")
+        XCTAssertTrue(app.buttons["Hear pat"].exists)
+        XCTAssertTrue(app.buttons["Hear tap"].exists)
+        let mouth = app.descendants(matching: .any).matching(NSPredicate(format: "label CONTAINS[c] 'mouth'"))
+        XCTAssertEqual(mouth.count, 0, "no mouth pictures or mouth instructions")
+        let video = app.descendants(matching: .any).matching(NSPredicate(format: "label CONTAINS[c] 'video'"))
+        XCTAssertEqual(video.count, 0, "no video controls in this release")
+
+        // Example rows: picture, word and speaker share one centre line.
+        let row = el("phonics.example.pat")
+        let speaker = app.buttons["Hear pat"]
+        XCTAssertEqual(row.frame.midY, speaker.frame.midY, accuracy: 2)
+    }
+
+    // MARK: Alignment and larger text
+
+    private func assertSameCentre(_ ids: [XCUIElement], file: StaticString = #filePath, line: UInt = #line) {
+        let centres = ids.map(\.frame.midY)
+        guard let first = centres.first else { return }
+        for c in centres { XCTAssertEqual(c, first, accuracy: 2, "controls share one centre line", file: file, line: line) }
+    }
+
+    func testStoryControlsShareOneRow() {
+        launch()
+        tapWhenReady("home.storybook")
+        tapWhenReady("cover.l1")
+        XCTAssertTrue(el("story.next").waitForExistence(timeout: 5))
+        assertSameCentre([el("story.previous"), app.buttons["word sat"], el("story.next")])
+        XCTAssertEqual(el("story.previous").frame.height, el("story.next").frame.height, accuracy: 1)
+        let previousX = el("story.previous").frame.minX, nextX = el("story.next").frame.maxX
+        for _ in 0..<4 {
+            tapWhenReady("story.next")
+            tapWhenReady("trophy.nextPage")
+        }
+        // Last page: "Finish story" in the same place as "Next page", on the same row as the chips.
+        let finish = el("story.finish")
+        XCTAssertTrue(finish.waitForExistence(timeout: 5))
+        XCTAssertEqual(finish.label, "Finish story")
+        XCTAssertEqual(finish.frame.maxX, nextX, accuracy: 2)
+        XCTAssertEqual(el("story.previous").frame.minX, previousX, accuracy: 2)
+        assertSameCentre([el("story.previous"), app.buttons["word sat"], finish])
+    }
+
+    func testStickerRowsAreAligned() {
+        launch()
+        readLevelOne()
+        tapWhenReady("trophy.seeBig")
+        tapWhenReady("trophy.bookshelf")
+        app.buttons["Home"].tap()
+        tapWhenReady("home.stickers")
+        tapWhenReady("stickers.randomWord")
+        assertSameCentre([el("stickers.randomWord"), el("stickers.randomSound"), el("stickers.filter")])
+        XCTAssertEqual(el("stickers.randomWord").frame.height, el("stickers.filter").frame.height, accuracy: 1)
+    }
+
+    func testLabelsFitAtLargerTextSizes() {
+        launch(extra: ["-UIPreferredContentSizeCategoryName", "UICTContentSizeCategoryAccessibilityL"])
+        let window = app.windows.firstMatch.frame
+        tapWhenReady("home.phonics")
+        let hear = app.buttons.matching(NSPredicate(format: "label BEGINSWITH 'Hear sound'")).firstMatch
+        XCTAssertTrue(hear.waitForExistence(timeout: 5))
+        XCTAssertTrue(window.contains(hear.frame))
+        app.buttons["Home"].tap()
+        tapWhenReady("home.storybook")
+        tapWhenReady("cover.l1")
+        for _ in 0..<4 {
+            tapWhenReady("story.next")
+            tapWhenReady("trophy.nextPage")
+        }
+        let finish = el("story.finish")
+        XCTAssertTrue(finish.waitForExistence(timeout: 5))
+        XCTAssertTrue(finish.isHittable)
+        XCTAssertTrue(window.contains(finish.frame), "Finish story is not clipped")
+        XCTAssertTrue(window.contains(el("story.previous").frame))
     }
 
     // MARK: Motion
