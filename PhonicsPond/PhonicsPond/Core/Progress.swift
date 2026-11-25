@@ -155,7 +155,7 @@ struct ProgressData: Codable, Equatable {
     var settings = AppSettings()
     /// Storybook progress by book ID (e.g. "book.l1").
     var books: [String: BookProgress] = [:]
-    /// The book last opened, for "Continue story".
+    /// The book last opened, for the Home card progress line.
     var lastBook: String?
     /// Sticker practice: items already drawn from each pool, so nothing repeats until the pool is used up.
     var stickerDrawn: [String: [String]] = [:]
